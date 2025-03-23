@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, DollarSign, TrendingUp } from 'lucide-react';
@@ -8,10 +9,10 @@ const Hero: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-28 md:pt-36">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-16 md:pt-24">
       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent"></div>
       
-      <div className="container-custom relative z-10 py-12 md:py-16">
+      <div className="container-custom relative z-10 py-8 md:py-12">
         <div className="max-w-4xl mx-auto text-center">
           
           <MotionWrapper animation="fade-in-up" delay={400}>
