@@ -55,16 +55,6 @@ const Portfolio: React.FC = () => {
   return (
     <section id="work" className="py-20 md:py-32 bg-secondary/50">
       <div className="container-custom">
-        <MotionWrapper animation="fade-in-up">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <p className="tag bg-white text-primary mb-3">Our Work</p>
-            <h2 className="h2 mb-5">Featured Projects</h2>
-            <p className="text-muted-foreground text-lg">
-              Explore our portfolio of award-winning work created for clients across diverse industries.
-            </p>
-          </div>
-        </MotionWrapper>
-
         <MotionWrapper animation="fade-in-up" delay={200}>
           <div className="flex justify-center mb-12 overflow-x-auto pb-2">
             <div className="flex space-x-2">

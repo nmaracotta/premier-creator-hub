@@ -69,35 +69,6 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <MotionWrapper animation="fade-in-right">
-              <p className="tag bg-secondary text-secondary-foreground mb-3">About Us</p>
-              <h2 className="h2 mb-6">Who We Are</h2>
-              <p className="text-muted-foreground mb-6">
-                Premier Creator is an award-winning creative agency dedicated to crafting exceptional digital experiences that captivate audiences and drive results. Since our founding, we've partnered with visionary brands to tell their stories and build their digital presence.
-              </p>
-              <p className="text-muted-foreground mb-8">
-                Our team of experienced creators, strategists, and technologists work collaboratively to develop innovative solutions that bring your vision to life with precision and artistic excellence.
-              </p>
-              <Button className="btn-hover" size="lg">
-                Our Process
-              </Button>
-            </MotionWrapper>
-          </div>
-
-          <MotionWrapper animation="fade-in-left" delay={300}>
-            <div className="aspect-video overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-                alt="Premier Creator team at work" 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </MotionWrapper>
-        </div>
-
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-20 py-12 border-y">
           {stats.map((stat, index) => (
             <StatItem 
