@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-28 md:pt-36">
       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent"></div>
       
       <div className="container-custom relative z-10 py-12 md:py-16">
