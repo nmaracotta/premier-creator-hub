@@ -29,10 +29,8 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  const navItems = [
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  // Empty navItems array since we're removing About and Contact
+  const navItems = [];
 
   return (
     <>
@@ -48,6 +46,7 @@ const Navbar: React.FC = () => {
               Premier<span className="text-accent">Creator</span>
             </Link>
 
+            {/* Empty nav section since we removed all items */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
@@ -67,57 +66,62 @@ const Navbar: React.FC = () => {
               <Link to="/contact">Get Started</Link>
             </Button>
 
-            <button
-              className="md:hidden flex items-center"
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+            {/* Only show mobile menu button if there's any content in the menu */}
+            {navItems.length > 0 && (
+              <button
+                className="md:hidden flex items-center"
+                onClick={() => setIsMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            )}
           </div>
         </div>
       </header>
 
       {/* Mobile menu */}
-      <div
-        className={cn(
-          'fixed inset-0 z-50 bg-white dark:bg-black transition-transform duration-300 ease-in-out md:hidden',
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        )}
-      >
-        <div className="flex flex-col h-full p-6">
-          <div className="flex justify-between items-center mb-12">
-            <Link to="/" className="text-xl font-semibold tracking-tight">
-              Premier<span className="text-accent">Creator</span>
-            </Link>
-            <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          <nav className="flex flex-col space-y-6 text-center">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={cn(
-                  "text-lg font-medium transition-colors",
-                  location.pathname === item.path ? "text-accent" : "hover:text-accent"
-                )}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
+      {navItems.length > 0 && (
+        <div
+          className={cn(
+            'fixed inset-0 z-50 bg-white dark:bg-black transition-transform duration-300 ease-in-out md:hidden',
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          )}
+        >
+          <div className="flex flex-col h-full p-6">
+            <div className="flex justify-between items-center mb-12">
+              <Link to="/" className="text-xl font-semibold tracking-tight">
+                Premier<span className="text-accent">Creator</span>
               </Link>
-            ))}
-          </nav>
+              <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
 
-          <div className="mt-8 flex flex-col gap-4">
-            <Button className="w-full btn-hover" size="lg">
-              <Link to="/contact">Get Started</Link>
-            </Button>
+            <nav className="flex flex-col space-y-6 text-center">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={cn(
+                    "text-lg font-medium transition-colors",
+                    location.pathname === item.path ? "text-accent" : "hover:text-accent"
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-8 flex flex-col gap-4">
+              <Button className="w-full btn-hover" size="lg">
+                <Link to="/contact">Get Started</Link>
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
