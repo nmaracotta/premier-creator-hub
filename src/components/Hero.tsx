@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, DollarSign, TrendingUp } from 'lucide-react';
@@ -14,9 +13,6 @@ const Hero: React.FC = () => {
       
       <div className="container-custom relative z-10 py-12 md:py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <MotionWrapper animation="fade-in-up" delay={300}>
-            <p className="tag bg-accent/10 text-accent mb-4 md:mb-6">Premier Creator Agency</p>
-          </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={400}>
             <h1 className="h1 mb-4 md:mb-6 px-2">
