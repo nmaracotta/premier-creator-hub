@@ -51,20 +51,20 @@ const Hero: React.FC = () => {
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={600}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
-              <div className="flex items-center gap-2 text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8 justify-center items-center">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <Sparkles className="w-5 h-5 text-accent" />
                 <span>Brand Deal Negotiation</span>
               </div>
-              <div className="flex items-center gap-2 text-left">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <DollarSign className="w-5 h-5 text-accent" />
                 <span>Payment Protection</span>
               </div>
-              <div className="flex items-center gap-2 text-left">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <TrendingUp className="w-5 h-5 text-accent" />
                 <span>ROI Maximization</span>
               </div>
-              <div className="flex items-center gap-2 text-left">
+              <div className="flex items-center gap-2 justify-center sm:justify-start">
                 <Sparkles className="w-5 h-5 text-accent" />
                 <span>1-on-1 Support</span>
               </div>
