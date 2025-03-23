@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Portfolio from '@/components/Portfolio';
 import Footer from '@/components/Footer';
 import MotionWrapper from '@/components/MotionWrapper';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -42,8 +41,6 @@ const WorkPage: React.FC = () => {
           </div>
         </section>
         
-        <Portfolio />
-
         <section className="py-20 md:py-32 relative overflow-hidden">
           <div className="container-custom">
             <MotionWrapper animation="fade-in-up">
