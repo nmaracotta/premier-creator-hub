@@ -67,9 +67,9 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="about" className="py-12 md:py-20 relative overflow-hidden">
       <div className="container-custom">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-20 py-12 border-y">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-10 py-10 border-y">
           {stats.map((stat, index) => (
             <StatItem 
               key={index} 
@@ -82,9 +82,9 @@ const About: React.FC = () => {
 
         <div className="max-w-3xl mx-auto">
           <MotionWrapper animation="fade-in-up">
-            <h3 className="h3 text-center mb-12">Our Core Values</h3>
+            <h3 className="h3 text-center mb-8">Our Core Values</h3>
           </MotionWrapper>
-          <div className="space-y-10">
+          <div className="space-y-8">
             {values.map((value, index) => (
               <ValueItem 
                 key={index} 

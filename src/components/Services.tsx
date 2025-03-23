@@ -59,10 +59,10 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="services" className="py-12 md:py-20 relative overflow-hidden">
       <div className="container-custom">
         <MotionWrapper animation="fade-in-up">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <p className="tag bg-secondary text-secondary-foreground mb-3">Our Services</p>
             <h2 className="h2 mb-5">Creator Management & Monetization</h2>
             <p className="text-muted-foreground text-lg mb-8">
@@ -74,7 +74,7 @@ const Services: React.FC = () => {
           </div>
         </MotionWrapper>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {services.map((service, index) => (
             <ServiceCard 
               key={index}
@@ -87,7 +87,7 @@ const Services: React.FC = () => {
         </div>
 
         <MotionWrapper animation="fade-in-up" delay={900}>
-          <div className="text-center mt-16">
+          <div className="text-center">
             <Button className="btn-hover" size="lg">
               <Link to="/contact">Start Maximizing Your Creator Income</Link>
             </Button>

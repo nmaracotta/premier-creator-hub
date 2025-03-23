@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -34,7 +35,7 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       <Navbar />
-      <main>
+      <main className="space-y-0">
         <Hero />
         <Services />
         <About />
