@@ -20,9 +20,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
       </div>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <Button className="w-full btn-hover" size="sm">
-        <Link to="/contact">Get Started</Link>
-      </Button>
     </div>
   </MotionWrapper>
 );
