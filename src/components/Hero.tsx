@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
@@ -50,20 +51,20 @@ const Hero: React.FC = () => {
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={600}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8 place-items-center">
-              <div className="flex items-center gap-2 text-center">
+            <div className="grid grid-cols-2 gap-x-16 gap-y-4 max-w-xl mx-auto mb-8">
+              <div className="flex items-center justify-center gap-2">
                 <Sparkles className="w-5 h-5 text-accent" />
                 <span>Brand Deal Negotiation</span>
               </div>
-              <div className="flex items-center gap-2 text-center">
+              <div className="flex items-center justify-center gap-2">
                 <DollarSign className="w-5 h-5 text-accent" />
                 <span>Payment Protection</span>
               </div>
-              <div className="flex items-center gap-2 text-center">
+              <div className="flex items-center justify-center gap-2">
                 <TrendingUp className="w-5 h-5 text-accent" />
                 <span>ROI Maximization</span>
               </div>
-              <div className="flex items-center gap-2 text-center">
+              <div className="flex items-center justify-center gap-2">
                 <Sparkles className="w-5 h-5 text-accent" />
                 <span>1-on-1 Support</span>
               </div>
