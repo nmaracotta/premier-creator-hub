@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 text-accent" />
             </a>
           </div>
         </div>
