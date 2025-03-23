@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Award, Heart, Star } from 'lucide-react';
+import { Award, Heart, Star, Shield, Lightbulb, Users, Target, HandShake } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 
 interface ValueItemProps {
@@ -41,6 +41,21 @@ const About: React.FC = () => {
       icon: <Award className="w-6 h-6" />,
       title: "Innovation",
       description: "We embrace innovation and continuously explore new technologies and creative approaches."
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Integrity",
+      description: "We operate with complete transparency and honesty in all our dealings with creators and brands."
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Results-Driven",
+      description: "We focus on delivering measurable outcomes that truly matter to our clients' success."
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Collaboration",
+      description: "We believe in the power of teamwork and partnership to achieve extraordinary results together."
     }
   ];
 
@@ -51,7 +66,7 @@ const About: React.FC = () => {
           <MotionWrapper animation="fade-in-up">
             <h3 className="h3 text-center mb-8">Our Core Values</h3>
           </MotionWrapper>
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((value, index) => (
               <ValueItem 
                 key={index} 
