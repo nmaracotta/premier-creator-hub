@@ -67,9 +67,9 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-12 md:py-20 relative overflow-hidden">
+    <section id="about" className="py-0 md:py-8 relative overflow-hidden">
       <div className="container-custom">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-10 py-10 border-y">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-6 py-6 border-y">
           {stats.map((stat, index) => (
             <StatItem 
               key={index} 

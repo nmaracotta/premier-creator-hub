@@ -10,10 +10,10 @@ const Hero: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent"></div>
       
-      <div className="container-custom relative z-10 py-16 md:py-32">
+      <div className="container-custom relative z-10 py-12 md:py-16">
         <div className="max-w-4xl mx-auto text-center">
           <MotionWrapper animation="fade-in-up" delay={300}>
             <p className="tag bg-accent/10 text-accent mb-4 md:mb-6">Premier Creator Agency</p>
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           <MotionWrapper animation="fade-in-up" delay={700}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
               <Button className="w-full sm:w-auto btn-hover" size="lg">
-                <Link to="/contact">Get Started Today</Link>
+                <Link to="/contact">Start Maximizing Your Creator Income</Link>
               </Button>
             </div>
           </MotionWrapper>

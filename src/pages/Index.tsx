@@ -44,7 +44,7 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       <Navbar />
-      <main>
+      <main className="space-y-0">
         <Suspense fallback={<LoadingFallback />}>
           <Hero />
         </Suspense>
