@@ -7,7 +7,6 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
   
   const navItems = [
-    { name: 'Work', path: '/work' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
