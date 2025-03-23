@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,11 @@ const Navbar: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { name: 'Services', path: '/services' },
@@ -49,7 +55,10 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="underline-animation text-sm font-medium hover:text-accent transition-colors"
+                  className={cn(
+                    "underline-animation text-sm font-medium transition-colors",
+                    location.pathname === item.path ? "text-accent" : "hover:text-accent"
+                  )}
                 >
                   {item.name}
                 </Link>
@@ -80,7 +89,7 @@ const Navbar: React.FC = () => {
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-12">
-            <Link to="/" className="text-xl font-bold tracking-tight">
+            <Link to="/" className="text-xl font-semibold tracking-tight">
               Premier<span className="text-accent">Creator</span>
             </Link>
             <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
@@ -93,7 +102,10 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-lg font-medium hover:text-accent transition-colors"
+                className={cn(
+                  "text-lg font-medium transition-colors",
+                  location.pathname === item.path ? "text-accent" : "hover:text-accent"
+                )}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
