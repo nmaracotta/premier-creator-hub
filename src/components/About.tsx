@@ -4,21 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Award, Heart, Star } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 
-interface StatItemProps {
-  value: string;
-  label: string;
-  delay: number;
-}
-
-const StatItem: React.FC<StatItemProps> = ({ value, label, delay }) => (
-  <MotionWrapper animation="fade-in-up" delay={delay}>
-    <div className="text-center">
-      <div className="text-3xl md:text-4xl font-bold mb-2 text-accent">{value}</div>
-      <p className="text-muted-foreground">{label}</p>
-    </div>
-  </MotionWrapper>
-);
-
 interface ValueItemProps {
   icon: React.ReactNode;
   title: string;
@@ -41,13 +26,6 @@ const ValueItem: React.FC<ValueItemProps> = ({ icon, title, description, delay }
 );
 
 const About: React.FC = () => {
-  const stats = [
-    { value: "100+", label: "Clients Worldwide" },
-    { value: "250+", label: "Projects Completed" },
-    { value: "15+", label: "Industry Awards" },
-    { value: "8+", label: "Years of Excellence" }
-  ];
-
   const values = [
     {
       icon: <Star className="w-6 h-6" />,
@@ -69,17 +47,6 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-0 md:py-8 relative overflow-hidden">
       <div className="container-custom">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 my-6 py-6 border-y">
-          {stats.map((stat, index) => (
-            <StatItem 
-              key={index} 
-              value={stat.value} 
-              label={stat.label} 
-              delay={index * 100}
-            />
-          ))}
-        </div>
-
         <div className="max-w-3xl mx-auto">
           <MotionWrapper animation="fade-in-up">
             <h3 className="h3 text-center mb-8">Our Core Values</h3>
