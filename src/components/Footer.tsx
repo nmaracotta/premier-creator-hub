@@ -7,7 +7,6 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
   
   const navItems = [
-    { name: 'Services', path: '/services' },
     { name: 'Work', path: '/work' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
@@ -83,7 +82,7 @@ const Footer: React.FC = () => {
               {serviceItems.map((item) => (
                 <li key={item}>
                   <Link 
-                    to="/services" 
+                    to="/contact" 
                     className="text-primary-foreground/80 hover:text-primary-foreground transition-colors underline-animation"
                   >
                     {item}

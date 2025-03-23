@@ -76,13 +76,6 @@ const Hero: React.FC = () => {
               <Button className="w-full sm:w-auto btn-hover" size="lg">
                 <Link to="/contact">Get Started Today</Link>
               </Button>
-              <Button 
-                variant="outline" 
-                className="w-full sm:w-auto btn-hover" 
-                size="lg"
-              >
-                <Link to="/services">Our Services</Link>
-              </Button>
             </div>
           </MotionWrapper>
         </div>
