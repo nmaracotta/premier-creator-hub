@@ -1,11 +1,20 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+
+// Lazy load components
+const Hero = lazy(() => import('@/components/Hero'));
+const Services = lazy(() => import('@/components/Services'));
+const About = lazy(() => import('@/components/About'));
+const Contact = lazy(() => import('@/components/Contact'));
+
+// Loading fallback
+const LoadingFallback = () => (
+  <div className="w-full h-screen flex items-center justify-center">
+    <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
+  </div>
+);
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -35,11 +44,19 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       <Navbar />
-      <main className="space-y-0">
-        <Hero />
-        <Services />
-        <About />
-        <Contact />
+      <main>
+        <Suspense fallback={<LoadingFallback />}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Services />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

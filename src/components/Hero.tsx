@@ -1,34 +1,13 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
+import { Sparkles, DollarSign, TrendingUp } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { Link } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero: React.FC = () => {
-  const scrollDownRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const scrollToServices = () => {
-      const servicesSection = document.getElementById('services');
-      if (servicesSection) {
-        servicesSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
-
-    const ref = scrollDownRef.current;
-    if (ref) {
-      ref.addEventListener('click', scrollToServices);
-    }
-
-    return () => {
-      if (ref) {
-        ref.removeEventListener('click', scrollToServices);
-      }
-    };
-  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -81,13 +60,6 @@ const Hero: React.FC = () => {
             </div>
           </MotionWrapper>
         </div>
-      </div>
-      
-      <div 
-        ref={scrollDownRef}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float"
-      >
-        <ChevronDown className="w-10 h-10 text-accent/70" />
       </div>
       
       <div className="absolute top-1/3 left-10 w-64 h-64 rounded-full bg-accent/5 blur-3xl"></div>
