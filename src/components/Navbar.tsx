@@ -63,6 +63,9 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+              <Button className="btn-hover" size="sm" variant="outline">
+                <Link to="/contact">Creator Portal</Link>
+              </Button>
             </nav>
 
             <Button className="hidden md:inline-flex btn-hover" size="sm">
@@ -113,7 +116,10 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="mt-auto">
+          <div className="mt-8 flex flex-col gap-4">
+            <Button className="w-full btn-hover" variant="outline" size="lg">
+              <Link to="/contact">Creator Portal</Link>
+            </Button>
             <Button className="w-full btn-hover" size="lg">
               <Link to="/contact">Get Started</Link>
             </Button>

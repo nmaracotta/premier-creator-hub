@@ -1,7 +1,9 @@
 
 import React from 'react';
-import { Camera, Film, MonitorPlay, Image, Globe, Mic } from 'lucide-react';
+import { Camera, Film, MonitorPlay, Image, Globe, Mic, DollarSign, TrendingUp, Shield, Users, MessageSquare, Award } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -17,7 +19,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
+      <p className="text-muted-foreground mb-4">{description}</p>
+      <Button className="w-full btn-hover" size="sm">
+        <Link to="/contact">Get Started</Link>
+      </Button>
     </div>
   </MotionWrapper>
 );
@@ -25,34 +30,34 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, del
 const Services: React.FC = () => {
   const services = [
     {
-      icon: <Camera className="w-8 h-8" />,
-      title: "Photography",
-      description: "Premium photography services capturing your brand's essence with stunning visuals that tell your unique story."
+      icon: <DollarSign className="w-8 h-8" />,
+      title: "Brand Deal Negotiation",
+      description: "We negotiate top-dollar contracts on your behalf, leveraging our industry relationships to secure the best possible terms."
     },
     {
-      icon: <Film className="w-8 h-8" />,
-      title: "Videography",
-      description: "Cinematic video production creating compelling narratives that engage and inspire your audience."
+      icon: <Shield className="w-8 h-8" />,
+      title: "Payment Protection",
+      description: "We ensure you get paid on time, every time, with contract structures and payment tracking systems that protect your interests."
     },
     {
-      icon: <MonitorPlay className="w-8 h-8" />,
-      title: "Content Production",
-      description: "End-to-end content creation from ideation to distribution, designed to maximize impact across platforms."
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "ROI Maximization",
+      description: "Strategic planning and optimization to maximize your return on investment across all brand partnerships and content creation."
     },
     {
-      icon: <Image className="w-8 h-8" />,
-      title: "Visual Design",
-      description: "Exceptional graphic and visual design that elevates your brand identity and creates lasting impressions."
+      icon: <Users className="w-8 h-8" />,
+      title: "1-on-1 Management",
+      description: "Personalized support from experienced managers who understand your niche and can help guide your career growth."
     },
     {
-      icon: <Globe className="w-8 h-8" />,
-      title: "Digital Strategy",
-      description: "Data-driven digital strategies that optimize your online presence and drive meaningful audience engagement."
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: "Brand Communication",
+      description: "Professional communication and relationship management with brands, handling all the back-and-forth so you can focus on creating."
     },
     {
-      icon: <Mic className="w-8 h-8" />,
-      title: "Audio Production",
-      description: "Professional audio services including podcasting, sound design, and music production for all your projects."
+      icon: <Award className="w-8 h-8" />,
+      title: "Content Strategy",
+      description: "Strategic content planning aligned with brand partnerships to optimize engagement, growth, and monetization opportunities."
     }
   ];
 
@@ -62,10 +67,13 @@ const Services: React.FC = () => {
         <MotionWrapper animation="fade-in-up">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="tag bg-secondary text-secondary-foreground mb-3">Our Services</p>
-            <h2 className="h2 mb-5">Elevating Your Digital Presence</h2>
-            <p className="text-muted-foreground text-lg">
-              We offer comprehensive creative services tailored to transform your vision into impactful digital experiences.
+            <h2 className="h2 mb-5">Creator Management & Monetization</h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              We help creators like you focus on what you do best - creating amazing content - while we handle the business side with brands.
             </p>
+            <Button className="btn-hover mb-8" size="lg">
+              <Link to="/contact">Get Started with Creator Management</Link>
+            </Button>
           </div>
         </MotionWrapper>
 
@@ -80,6 +88,14 @@ const Services: React.FC = () => {
             />
           ))}
         </div>
+
+        <MotionWrapper animation="fade-in-up" delay={900}>
+          <div className="text-center mt-16">
+            <Button className="btn-hover" size="lg">
+              <Link to="/contact">Start Maximizing Your Creator Income</Link>
+            </Button>
+          </div>
+        </MotionWrapper>
       </div>
       
       {/* Background element */}

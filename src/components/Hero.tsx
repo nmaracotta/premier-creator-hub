@@ -1,8 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Sparkles, DollarSign, TrendingUp } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const scrollDownRef = useRef<HTMLDivElement>(null);
@@ -39,27 +40,48 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={400}>
             <h1 className="h1 mb-6">
-              We Create Digital Experiences That Define Brands
+              We Help Creators Land Brand Deals & Maximize Revenue
             </h1>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={500}>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Transforming visionary ideas into exceptional digital realities through strategic creativity and flawless execution.
+              Negotiating top dollar, ensuring timely payments, and providing 1-on-1 support to maximize your ROI. Your success is our business.
             </p>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={600}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-8">
+              <div className="flex items-center gap-2 text-left">
+                <Sparkles className="w-5 h-5 text-accent" />
+                <span>Brand Deal Negotiation</span>
+              </div>
+              <div className="flex items-center gap-2 text-left">
+                <DollarSign className="w-5 h-5 text-accent" />
+                <span>Payment Protection</span>
+              </div>
+              <div className="flex items-center gap-2 text-left">
+                <TrendingUp className="w-5 h-5 text-accent" />
+                <span>ROI Maximization</span>
+              </div>
+              <div className="flex items-center gap-2 text-left">
+                <Sparkles className="w-5 h-5 text-accent" />
+                <span>1-on-1 Support</span>
+              </div>
+            </div>
+          </MotionWrapper>
+          
+          <MotionWrapper animation="fade-in-up" delay={700}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button className="w-full sm:w-auto btn-hover" size="lg">
-                Start Your Project
+                <Link to="/contact">Get Started Today</Link>
               </Button>
               <Button 
                 variant="outline" 
                 className="w-full sm:w-auto btn-hover" 
                 size="lg"
               >
-                Our Services
+                <Link to="/services">Our Services</Link>
               </Button>
             </div>
           </MotionWrapper>
