@@ -1,18 +1,31 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
+  
+  const navItems = [
+    { name: 'Services', path: '/services' },
+    { name: 'Work', path: '/work' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+  
+  const serviceItems = [
+    'Photography', 'Videography', 'Content Production', 
+    'Visual Design', 'Digital Strategy', 'Audio Production'
+  ];
   
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-6">
+            <Link to="/" className="text-2xl font-bold mb-6 block">
               Premier<span className="text-accent">Creator</span>
-            </h3>
+            </Link>
             <p className="mb-6 max-w-md text-primary-foreground/80">
               We create exceptional digital experiences that define brands and inspire audiences worldwide.
             </p>
@@ -51,14 +64,14 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {['Services', 'Work', 'About', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    to={item.path} 
                     className="text-primary-foreground/80 hover:text-primary-foreground transition-colors underline-animation"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,14 +80,14 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
-              {['Photography', 'Videography', 'Content Production', 'Visual Design', 'Digital Strategy', 'Audio Production'].map((item) => (
+              {serviceItems.map((item) => (
                 <li key={item}>
-                  <a 
-                    href="#services" 
+                  <Link 
+                    to="/services" 
                     className="text-primary-foreground/80 hover:text-primary-foreground transition-colors underline-animation"
                   >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,9 +99,9 @@ const Footer: React.FC = () => {
             &copy; {year} Premier Creator. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm text-primary-foreground/60">
-            <a href="#" className="hover:text-primary-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Cookies</a>
+            <Link to="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-primary-foreground transition-colors">Terms of Service</Link>
+            <Link to="/cookies" className="hover:text-primary-foreground transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,13 @@ const Navbar: React.FC = () => {
     };
   }, [scrolled]);
 
+  const navItems = [
+    { name: 'Services', path: '/services' },
+    { name: 'Work', path: '/work' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
   return (
     <>
       <header
@@ -32,24 +40,24 @@ const Navbar: React.FC = () => {
       >
         <div className="container-custom py-4 md:py-6">
           <div className="flex items-center justify-between">
-            <a href="#" className="text-xl md:text-2xl font-bold tracking-tight">
+            <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight">
               Premier<span className="text-accent">Creator</span>
-            </a>
+            </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
-              {['Services', 'Work', 'About', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
                   className="underline-animation text-sm font-medium hover:text-accent transition-colors"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
             </nav>
 
             <Button className="hidden md:inline-flex btn-hover" size="sm">
-              Get Started
+              <Link to="/contact">Get Started</Link>
             </Button>
 
             <button
@@ -72,30 +80,30 @@ const Navbar: React.FC = () => {
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-12">
-            <a href="#" className="text-xl font-bold tracking-tight">
+            <Link to="/" className="text-xl font-bold tracking-tight">
               Premier<span className="text-accent">Creator</span>
-            </a>
+            </Link>
             <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
               <X className="w-6 h-6" />
             </button>
           </div>
 
           <nav className="flex flex-col space-y-6 text-center">
-            {['Services', 'Work', 'About', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
                 className="text-lg font-medium hover:text-accent transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </nav>
 
           <div className="mt-auto">
             <Button className="w-full btn-hover" size="lg">
-              Get Started
+              <Link to="/contact">Get Started</Link>
             </Button>
           </div>
         </div>
