@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,12 +26,10 @@ const Navbar: React.FC = () => {
     };
   }, [scrolled]);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Empty navItems array since we're removing About and Contact
   const navItems = [];
 
   return (
@@ -47,11 +45,8 @@ const Navbar: React.FC = () => {
             "flex items-center", 
             isMobile ? "justify-center" : "justify-between"
           )}>
-            <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight">
-              Premier<span className="text-accent">Creator</span>
-            </Link>
+            <Logo textSize="text-xl md:text-2xl" />
 
-            {/* Empty nav section since we removed all items */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
@@ -73,7 +68,6 @@ const Navbar: React.FC = () => {
               </a>
             </Button>
 
-            {/* Only show mobile menu button if there's any content in the menu */}
             {navItems.length > 0 && (
               <button
                 className="md:hidden flex items-center"
@@ -87,7 +81,6 @@ const Navbar: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile menu */}
       {navItems.length > 0 && (
         <div
           className={cn(
@@ -97,9 +90,7 @@ const Navbar: React.FC = () => {
         >
           <div className="flex flex-col h-full p-6">
             <div className="flex justify-between items-center mb-12">
-              <Link to="/" className="text-xl font-semibold tracking-tight">
-                Premier<span className="text-accent">Creator</span>
-              </Link>
+              <Logo textSize="text-xl" />
               <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
                 <X className="w-6 h-6" />
               </button>
