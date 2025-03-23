@@ -1,0 +1,83 @@
+
+import React, { useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
+import MotionWrapper from './MotionWrapper';
+
+const Hero: React.FC = () => {
+  const scrollDownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollToServices = () => {
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    const ref = scrollDownRef.current;
+    if (ref) {
+      ref.addEventListener('click', scrollToServices);
+    }
+
+    return () => {
+      if (ref) {
+        ref.removeEventListener('click', scrollToServices);
+      }
+    };
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent"></div>
+      
+      <div className="container-custom relative z-10 py-20 md:py-32">
+        <div className="max-w-4xl mx-auto text-center">
+          <MotionWrapper animation="fade-in-up" delay={300}>
+            <p className="tag bg-accent/10 text-accent mb-6">Premier Creator Agency</p>
+          </MotionWrapper>
+          
+          <MotionWrapper animation="fade-in-up" delay={400}>
+            <h1 className="h1 mb-6">
+              We Create Digital Experiences That Define Brands
+            </h1>
+          </MotionWrapper>
+          
+          <MotionWrapper animation="fade-in-up" delay={500}>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Transforming visionary ideas into exceptional digital realities through strategic creativity and flawless execution.
+            </p>
+          </MotionWrapper>
+          
+          <MotionWrapper animation="fade-in-up" delay={600}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button className="w-full sm:w-auto btn-hover" size="lg">
+                Start Your Project
+              </Button>
+              <Button 
+                variant="outline" 
+                className="w-full sm:w-auto btn-hover" 
+                size="lg"
+              >
+                Our Services
+              </Button>
+            </div>
+          </MotionWrapper>
+        </div>
+      </div>
+      
+      <div 
+        ref={scrollDownRef}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float"
+      >
+        <ChevronDown className="w-10 h-10 text-accent/70" />
+      </div>
+      
+      {/* Abstract shapes for visual interest */}
+      <div className="absolute top-1/3 left-10 w-64 h-64 rounded-full bg-accent/5 blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-10 w-96 h-96 rounded-full bg-accent/10 blur-3xl"></div>
+    </section>
+  );
+};
+
+export default Hero;
