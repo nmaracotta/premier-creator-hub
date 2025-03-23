@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Award, Heart, Star, Shield, Lightbulb, Users, Target, HandShake } from 'lucide-react';
+import { Award, Heart, Star, Shield, Lightbulb, Users, Target } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 
 interface ValueItemProps {
@@ -80,7 +79,6 @@ const About: React.FC = () => {
         </div>
       </div>
 
-      {/* Background elements */}
       <div className="absolute top-32 right-0 w-96 h-96 rounded-full bg-accent/5 blur-3xl"></div>
     </section>
   );
