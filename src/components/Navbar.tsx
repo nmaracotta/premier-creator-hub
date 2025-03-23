@@ -67,8 +67,10 @@ const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            <Button className="hidden md:inline-flex btn-hover" size="sm">
-              <Link to="/contact">Get Started</Link>
+            <Button className="hidden md:inline-flex btn-hover" size="sm" asChild>
+              <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                Get Started
+              </a>
             </Button>
 
             {/* Only show mobile menu button if there's any content in the menu */}
@@ -120,8 +122,10 @@ const Navbar: React.FC = () => {
             </nav>
 
             <div className="mt-8 flex flex-col gap-4">
-              <Button className="w-full btn-hover" size="lg">
-                <Link to="/contact">Get Started</Link>
+              <Button className="w-full btn-hover" size="lg" asChild>
+                <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                  Get Started
+                </a>
               </Button>
             </div>
           </div>

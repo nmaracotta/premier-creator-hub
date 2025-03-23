@@ -3,7 +3,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, DollarSign, TrendingUp } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
-import { Link } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero: React.FC = () => {
@@ -54,8 +53,10 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={700}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
-              <Button className="w-full sm:w-auto btn-hover" size="lg">
-                <Link to="/contact">Start Maximizing Your Creator Income</Link>
+              <Button className="w-full sm:w-auto btn-hover" size="lg" asChild>
+                <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                  Start Maximizing Your Creator Income
+                </a>
               </Button>
             </div>
           </MotionWrapper>

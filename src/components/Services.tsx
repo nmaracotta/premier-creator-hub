@@ -3,7 +3,6 @@ import React from 'react';
 import { Camera, Film, MonitorPlay, Image, Globe, Mic, DollarSign, TrendingUp, Shield, Users, MessageSquare, Award } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -68,8 +67,10 @@ const Services: React.FC = () => {
             <p className="text-muted-foreground text-lg mb-8">
               We help creators like you focus on what you do best - creating amazing content - while we handle the business side with brands.
             </p>
-            <Button className="btn-hover mb-8" size="lg">
-              <Link to="/contact">Get Started with Creator Management</Link>
+            <Button className="btn-hover mb-8" size="lg" asChild>
+              <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                Get Started with Creator Management
+              </a>
             </Button>
           </div>
         </MotionWrapper>
@@ -88,8 +89,10 @@ const Services: React.FC = () => {
 
         <MotionWrapper animation="fade-in-up" delay={900}>
           <div className="text-center">
-            <Button className="btn-hover" size="lg">
-              <Link to="/contact">Start Maximizing Your Creator Income</Link>
+            <Button className="btn-hover" size="lg" asChild>
+              <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                Start Maximizing Your Creator Income
+              </a>
             </Button>
           </div>
         </MotionWrapper>

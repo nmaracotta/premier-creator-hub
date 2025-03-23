@@ -1,9 +1,9 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import MotionWrapper from '@/components/MotionWrapper';
+import { Button } from '@/components/ui/button';
 import { MapPin } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
@@ -38,15 +38,18 @@ const ContactPage: React.FC = () => {
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <p className="tag bg-secondary text-secondary-foreground mb-3">Contact Us</p>
                 <h1 className="h1 mb-5">Let's Start Creating</h1>
-                <p className="text-muted-foreground text-lg">
-                  Ready to bring your vision to life? Our team is here to help turn your ideas into reality.
+                <p className="text-muted-foreground text-lg mb-8">
+                  Ready to bring your vision to life? Schedule a call with our team to discuss your creator business.
                 </p>
+                <Button className="btn-hover" size="lg" asChild>
+                  <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                    Schedule a 30-Minute Call
+                  </a>
+                </Button>
               </div>
             </MotionWrapper>
           </div>
         </section>
-        
-        <Contact />
 
         <section className="py-20 md:py-32 relative overflow-hidden">
           <div className="container-custom">
@@ -79,6 +82,13 @@ const ContactPage: React.FC = () => {
                         {office.email}
                       </a>
                     </p>
+                    <div className="mt-6">
+                      <Button className="w-full btn-hover" asChild>
+                        <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
+                          Schedule a Call
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </MotionWrapper>
               ))}
