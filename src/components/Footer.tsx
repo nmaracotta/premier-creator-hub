@@ -7,14 +7,14 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
   
   return (
-    <footer className="bg-primary text-primary-foreground py-10">
+    <footer className="bg-primary text-primary-foreground py-8">
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-          <div className="mb-6 md:mb-0">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+          <div className="mb-4 md:mb-0">
             <Link to="/" className="text-2xl font-bold block mb-3">
               Premier<span className="text-accent">Creator</span>
             </Link>
-            <p className="text-primary-foreground/80 max-w-md mb-4">
+            <p className="text-primary-foreground/80 max-w-md mb-3">
               We create exceptional digital experiences that define brands and inspire audiences worldwide.
             </p>
             <div className="flex">
@@ -31,15 +31,13 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-primary-foreground/60 text-sm mb-4 md:mb-0">
+        <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-primary-foreground/60 text-sm">
             &copy; {year} Premier Creator. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm text-primary-foreground/60">
-            <Link to="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-primary-foreground transition-colors">Terms of Service</Link>
-            <Link to="/cookies" className="hover:text-primary-foreground transition-colors">Cookies</Link>
-          </div>
+          <p className="text-primary-foreground/60 text-sm mt-2 md:mt-0">
+            nick@premiercreator.com
+          </p>
         </div>
       </div>
     </footer>

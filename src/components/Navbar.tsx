@@ -4,11 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +43,10 @@ const Navbar: React.FC = () => {
         )}
       >
         <div className="container-custom py-4 md:py-6">
-          <div className="flex items-center justify-between">
+          <div className={cn(
+            "flex items-center", 
+            isMobile ? "justify-center" : "justify-between"
+          )}>
             <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight">
               Premier<span className="text-accent">Creator</span>
             </Link>
