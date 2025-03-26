@@ -18,7 +18,7 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
   const logoContent = (
     <div className={cn("font-bold tracking-tight", textSize, className)}>
-      PC<span className="text-accent">Hub</span>
+      Premier<span className="text-accent">Creator</span>
     </div>
   );
 
