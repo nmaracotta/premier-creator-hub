@@ -7,7 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/ContactForm';
 import { useToast } from '@/hooks/use-toast';
-import { ChevronRight, Mail, ArrowRight } from 'lucide-react';
+import { ChevronRight, Mail, ArrowRight, CalendarDays, MapPin, Clock } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const navigate = useNavigate();
@@ -48,10 +48,10 @@ const ContactPage: React.FC = () => {
                   <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5 rounded-full shadow-sm">Contact Us</p>
                 </div>
                 <h1 className="h1 mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-accent">
-                  Let's Start Creating <span className="text-accent font-bold">Together</span>
+                  Let's Transform Your <span className="text-accent font-bold">Creator Business</span>
                 </h1>
                 <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-                  Ready to transform your vision into reality? Schedule a consultation with our expert team to discuss your creator business goals and strategy.
+                  Ready to build a thriving creator community? Schedule a consultation with our expert team and discover how we can turn your vision into a profitable subscription business.
                 </p>
                 <Button 
                   className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white" 
@@ -88,16 +88,28 @@ const ContactPage: React.FC = () => {
                     <p className="text-accent font-medium text-sm uppercase tracking-wider">Get In Touch</p>
                   </div>
                   <h2 className="h2 mb-6 leading-tight">
-                    Let's Discuss Your <span className="text-accent">Project</span>
+                    Partner With <span className="text-accent">Experts</span> Who Understand Creators
                   </h2>
                   <p className="text-muted-foreground text-lg mb-8">
                     Fill out the form and our team will get back to you within 24 hours. 
-                    We're excited to hear about your project and help bring your vision to life.
+                    We specialize in helping creators like you build profitable subscription communities on Whop.
                   </p>
                   
-                  <div className="flex items-center mb-6 text-accent">
-                    <Mail className="w-5 h-5 mr-3 opacity-70" />
-                    <span className="font-medium">support@creatoragency.com</span>
+                  <div className="space-y-6 mt-10">
+                    <div className="flex items-center text-accent">
+                      <Mail className="w-5 h-5 mr-3 opacity-70" />
+                      <span className="font-medium">support@premiercreator.com</span>
+                    </div>
+                    
+                    <div className="flex items-center text-accent">
+                      <MapPin className="w-5 h-5 mr-3 opacity-70" />
+                      <span className="font-medium">Los Angeles, California</span>
+                    </div>
+                    
+                    <div className="flex items-center text-accent">
+                      <Clock className="w-5 h-5 mr-3 opacity-70" />
+                      <span className="font-medium">Mon-Fri: 9AM-5PM PST</span>
+                    </div>
                   </div>
                   
                   <div className="mt-10">
@@ -106,7 +118,8 @@ const ContactPage: React.FC = () => {
                       className="group border-accent/30 hover:bg-accent/5"
                       onClick={handleScheduleCall}
                     >
-                      <span>Prefer to talk? Schedule a call</span>
+                      <CalendarDays className="w-4 h-4 mr-2" />
+                      <span>Schedule a 30-minute strategy call</span>
                       <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </div>
