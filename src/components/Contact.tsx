@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -36,6 +37,7 @@ const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xP
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
@@ -108,10 +110,14 @@ const Contact: React.FC = () => {
       
       toast({
         title: "Success!",
-        description: "Thanks for reaching out! We'll contact you within 24 hours.",
+        description: "Thanks for reaching out! Please continue to schedule your call.",
       });
       
       form.reset();
+      
+      // Navigate to calendar page
+      navigate('/booking/calendar');
+      
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
@@ -122,6 +128,11 @@ const Contact: React.FC = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Direct call booking without form submission
+  const handleDirectBooking = () => {
+    navigate('/booking/calendar');
   };
 
   return (
@@ -278,6 +289,16 @@ const Contact: React.FC = () => {
                         </>
                       )}
                     </Button>
+                  </div>
+                  
+                  <div className="text-center pt-4">
+                    <button 
+                      type="button" 
+                      onClick={handleDirectBooking}
+                      className="text-accent underline-animation text-sm"
+                    >
+                      Skip form and book directly
+                    </button>
                   </div>
                 </form>
               </Form>

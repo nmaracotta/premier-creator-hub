@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Check, Calendar, Clock, ArrowUpRight, Video } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
@@ -16,7 +17,13 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
   onClose,
   callType = "strategy call" 
 }) => {
+  const navigate = useNavigate();
   console.log("SuccessDialog render - open state:", open);
+  
+  const handleViewCalendar = () => {
+    navigate('/booking/calendar');
+    onClose();
+  };
   
   // Use regular Dialog component with direct return
   if (!open) return null;
@@ -31,9 +38,9 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
             </div>
           </div>
           
-          <DialogTitle className="text-2xl font-bold tracking-tight">Booking Successful!</DialogTitle>
+          <DialogTitle className="text-2xl font-bold tracking-tight">Ready to Schedule?</DialogTitle>
           <DialogDescription className="text-lg mt-2">
-            We're excited to connect with you soon
+            Let's find a time for your {callType}
           </DialogDescription>
         </DialogHeader>
 
@@ -43,7 +50,7 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
             <div>
               <h4 className="font-medium">Next Steps</h4>
               <p className="text-muted-foreground mt-1">
-                Check your email for confirmation details about your {callType}. We've sent all the information you'll need.
+                Click the button below to access our booking calendar and select a time that works best for you.
               </p>
             </div>
           </div>
@@ -84,17 +91,17 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
 
         <div className="flex flex-col space-y-3 sm:space-x-3 sm:space-y-0 sm:flex-row sm:justify-center mt-3">
           <Button
-            onClick={onClose}
+            onClick={handleViewCalendar}
             className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/80 shadow-lg shadow-accent/20"
           >
-            Close
+            View Calendar
           </Button>
           <Button
             variant="outline"
-            onClick={() => window.open("https://cal.com/premiercreator/30min", "_blank")}
-            className="w-full sm:w-auto flex items-center justify-center gap-1"
+            onClick={onClose}
+            className="w-full sm:w-auto"
           >
-            View Calendar <ArrowUpRight className="h-4 w-4" />
+            Close
           </Button>
         </div>
       </DialogContent>
