@@ -20,29 +20,29 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={400}>
             <h1 className="h1 mb-4 md:mb-6 px-2 text-gradient-primary">
-              Transform Your Expertise Into a Thriving Digital Empire
+              Turn Your Audience Into Income
             </h1>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={500}>
             <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-              Stop leaving money on the table. Our proven system helps creators like you convert your audience into premium subscribers, unlocking consistent 5-figure monthly income without creating more content.
+              We work with creators to launch premium digital products and high-ticket offers that generate real revenue. Whether you're just getting started or scaling fast, we'll build the system around your brand — you just show up.
             </p>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={600}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-xl mx-auto mb-6 md:mb-8 px-4">
               <div className="flex items-center justify-center gap-2 bg-accent/10 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
-                <Users className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="font-medium">Engaged Community</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 bg-accent/10 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
                 <DollarSign className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="font-medium">Predictable Income</span>
+                <span className="font-medium">High-Ticket Monetization</span>
               </div>
               <div className="flex items-center justify-center gap-2 bg-accent/10 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
                 <Rocket className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="font-medium">Scalable Business</span>
+                <span className="font-medium">Done-For-You Setup</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 bg-accent/10 backdrop-blur-sm rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow">
+                <Users className="w-5 h-5 text-accent flex-shrink-0" />
+                <span className="font-medium">Built for Creators</span>
               </div>
             </div>
           </MotionWrapper>
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
                 asChild
               >
                 <a href="#contact" className="group">
-                  Get Your Custom Revenue Blueprint
+                  Start monetizing my audience
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
