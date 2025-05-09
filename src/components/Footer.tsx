@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
       <div className="absolute top-1/2 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/5 to-transparent opacity-20 rounded-full blur-3xl"></div>
       
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12 border-b border-border/50 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12 border-b border-border/50 pb-12">
           {/* Brand column */}
           <div className="md:col-span-2">
             <Logo className="mb-4 h-8 w-auto" />
@@ -60,6 +60,7 @@ const Footer: React.FC = () => {
               <li><Link to="/" className="text-muted-foreground hover:text-accent underline-animation">Home</Link></li>
               <li><Link to="/about" className="text-muted-foreground hover:text-accent underline-animation">About</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-accent underline-animation">Contact</Link></li>
+              <li><Link to="/booking/calendar" className="text-muted-foreground hover:text-accent underline-animation">Book a Call</Link></li>
             </ul>
           </div>
           
@@ -67,7 +68,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-1">
             <h3 className="font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-muted-foreground hover:text-accent underline-animation">Whop Setup</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-accent underline-animation">Digital Strategy</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-accent underline-animation">Community Building</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-accent underline-animation">Content Strategy</a></li>
               <li><a href="#" className="text-muted-foreground hover:text-accent underline-animation">Audience Growth</a></li>

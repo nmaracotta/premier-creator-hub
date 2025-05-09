@@ -85,14 +85,14 @@ const ContactPage: React.FC = () => {
                 <MotionWrapper animation="fade-in-up" delay={100}>
                   <div className="mb-8 inline-flex items-center">
                     <div className="h-px w-8 bg-accent/40 mr-3"></div>
-                    <p className="text-accent font-medium text-sm uppercase tracking-wider">Get In Touch</p>
+                    <p className="text-accent font-medium text-sm uppercase tracking-wider">GET IN TOUCH</p>
                   </div>
                   <h2 className="h2 mb-6 leading-tight">
                     Partner With <span className="text-accent">Experts</span> Who Understand Creators
                   </h2>
                   <p className="text-muted-foreground text-lg mb-8">
                     Fill out the form and our team will get back to you within 24 hours. 
-                    We specialize in helping creators like you build profitable subscription communities on Whop.
+                    We specialize in helping creators like you build profitable subscription communities.
                   </p>
                   
                   <div className="space-y-6 mt-10">
