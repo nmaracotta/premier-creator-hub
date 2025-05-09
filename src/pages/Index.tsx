@@ -5,8 +5,11 @@ import Footer from '@/components/Footer';
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/Hero'));
-const Services = lazy(() => import('@/components/Services'));
-const About = lazy(() => import('@/components/About'));
+const ClientNiches = lazy(() => import('@/components/ClientNiches'));
+const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
+const Deliverables = lazy(() => import('@/components/Deliverables'));
+const WhyUs = lazy(() => import('@/components/WhyUs'));
+const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
@@ -49,10 +52,19 @@ const Index: React.FC = () => {
           <Hero />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Services />
+          <ClientNiches />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <About />
+          <ProcessSteps />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Deliverables />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <WhyUs />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <FinalCTA />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <Contact />

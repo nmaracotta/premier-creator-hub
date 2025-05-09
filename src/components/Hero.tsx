@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Sparkles, DollarSign, TrendingUp } from 'lucide-react';
+import { ArrowRight, Users, DollarSign, Rocket } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -17,33 +17,29 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={400}>
             <h1 className="h1 mb-4 md:mb-6 px-2">
-              We Help Creators Land Brand Deals & Maximize Revenue
+              We Turn Creators into Full-Time Entrepreneurs.
             </h1>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={500}>
             <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-              Negotiating top dollar, ensuring timely payments, and providing 1-on-1 support to maximize your ROI. Your success is our business.
+              We build and scale your Whop community so you can earn recurring income while focusing on what you do best—creating.
             </p>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={600}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto mb-6 md:mb-8 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-xl mx-auto mb-6 md:mb-8 px-4">
               <div className="flex items-center justify-center gap-2 bg-accent/5 rounded-lg p-3">
-                <Sparkles className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Brand Deal Negotiation</span>
+                <Users className="w-5 h-5 text-accent flex-shrink-0" />
+                <span>Community Building</span>
               </div>
               <div className="flex items-center justify-center gap-2 bg-accent/5 rounded-lg p-3">
                 <DollarSign className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>Payment Protection</span>
+                <span>Recurring Revenue</span>
               </div>
               <div className="flex items-center justify-center gap-2 bg-accent/5 rounded-lg p-3">
-                <TrendingUp className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>ROI Maximization</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 bg-accent/5 rounded-lg p-3">
-                <Sparkles className="w-5 h-5 text-accent flex-shrink-0" />
-                <span>1-on-1 Support</span>
+                <Rocket className="w-5 h-5 text-accent flex-shrink-0" />
+                <span>Growth Strategy</span>
               </div>
             </div>
           </MotionWrapper>
@@ -51,8 +47,9 @@ const Hero: React.FC = () => {
           <MotionWrapper animation="fade-in-up" delay={700}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
               <Button className="w-full sm:w-auto btn-hover" size="lg" asChild>
-                <a href="https://cal.com/premiercreator/30min" target="_blank" rel="noopener noreferrer">
-                  Start Maximizing Your Creator Income
+                <a href="#contact" className="group">
+                  Book Your Free Strategy Call
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
             </div>
