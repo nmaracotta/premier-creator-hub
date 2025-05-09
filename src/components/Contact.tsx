@@ -146,12 +146,12 @@ const Contact: React.FC = () => {
           <div className="text-center mb-14">
             <p className="tag bg-accent/10 text-accent mb-4 inline-flex items-center">
               <Calendar className="mr-1 h-3 w-3" />
-              Schedule a Strategy Call
+              Unlock Your Revenue Potential
             </p>
-            <h2 className="h2 mb-4">Get Your Free Revenue Strategy</h2>
+            <h2 className="h2 mb-4">Get Your Custom Monetization Blueprint</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              In this 30-minute call, our experts will analyze your audience and create a 
-              custom plan to generate <span className="text-accent font-medium">$10K+ monthly recurring revenue</span> from your content.
+              Join our expert strategists for a complimentary 30-minute consultation where we'll analyze your unique audience and create a 
+              tailored plan to generate <span className="text-accent font-medium">$10K+ monthly recurring revenue</span> from your existing content and following.
             </p>
           </div>
         </MotionWrapper>
@@ -213,7 +213,7 @@ const Contact: React.FC = () => {
                         <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Users className="h-4 w-4 text-accent" />
-                            Instagram/TikTok/YouTube
+                            Your Social Platform
                           </FormLabel>
                           <FormControl>
                             <Input 
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                         <FormItem>
                           <FormLabel className="flex items-center gap-2">
                             <Users className="h-4 w-4 text-accent" />
-                            Audience Size
+                            Current Audience Size
                           </FormLabel>
                           <FormControl>
                             <Input 
@@ -255,11 +255,11 @@ const Contact: React.FC = () => {
                       <FormItem>
                         <FormLabel className="flex items-center gap-2">
                           <Calendar className="h-4 w-4 text-accent" />
-                          What's your biggest challenge with monetization right now?
+                          What's your biggest monetization challenge right now?
                         </FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="I'm struggling with..."
+                            placeholder="Tell us about your goals and challenges..."
                             className="min-h-[120px] bg-secondary/20" 
                             {...field} 
                           />
@@ -281,11 +281,11 @@ const Contact: React.FC = () => {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <>Processing...</>
+                        <>Processing your request...</>
                       ) : (
                         <>
                           <Calendar className="mr-2 h-4 w-4" />
-                          Book My Free Strategy Call
+                          Secure Your Free Strategy Session
                         </>
                       )}
                     </Button>
@@ -297,7 +297,7 @@ const Contact: React.FC = () => {
                       onClick={handleDirectBooking}
                       className="text-accent underline-animation text-sm"
                     >
-                      Skip form and book directly
+                      Skip form and schedule directly
                     </button>
                   </div>
                 </form>
@@ -308,8 +308,8 @@ const Contact: React.FC = () => {
         
         <MotionWrapper animation="fade-in-up" delay={600} className="mt-16 text-center">
           <p className="text-sm text-muted-foreground max-w-md mx-auto">
-            By scheduling a call, you agree to our <a href="#" className="text-accent underline-animation">Privacy Policy</a>. 
-            Your information is secure and will never be shared with third parties.
+            Your information is protected by our <a href="#" className="text-accent underline-animation">Privacy Policy</a>. 
+            We respect your data and never share it with third parties.
           </p>
         </MotionWrapper>
       </div>
