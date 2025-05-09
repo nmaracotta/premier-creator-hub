@@ -7,6 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/ContactForm';
 import { useToast } from '@/hooks/use-toast';
+import { ChevronRight } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const navigate = useNavigate();
@@ -33,23 +34,33 @@ const ContactPage: React.FC = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero section with call to action button */}
-        <section className="py-16 md:py-24 relative overflow-hidden">
-          <MotionWrapper animation="fade-in-up">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <p className="tag bg-secondary text-secondary-foreground mb-3">Contact Us</p>
-              <h1 className="h1 mb-5">Let's Start Creating</h1>
-              <p className="text-muted-foreground text-lg mb-8">
-                Ready to bring your vision to life? Schedule a call with our team to discuss your creator business.
-              </p>
-              <Button 
-                className="btn-hover" 
-                size="lg" 
-                onClick={handleScheduleCall}
-              >
-                Schedule a 30-Minute Call
-              </Button>
-            </div>
-          </MotionWrapper>
+        <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-secondary/5 to-background">
+          {/* Abstract geometric background elements */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+          <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-accent/5 to-transparent opacity-50"></div>
+          <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/5 to-transparent opacity-20 rounded-full blur-3xl"></div>
+          
+          <div className="container-custom relative z-10">
+            <MotionWrapper animation="fade-in-up">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <div className="mb-6 inline-flex items-center justify-center">
+                  <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5">Contact Us</p>
+                </div>
+                <h1 className="h1 mb-6 leading-tight">Let's Start Creating <span className="text-accent">Together</span></h1>
+                <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
+                  Ready to transform your vision into reality? Schedule a consultation with our expert team to discuss your creator business goals and strategy.
+                </p>
+                <Button 
+                  className="btn-hover shadow-lg shadow-accent/20" 
+                  size="lg"
+                  onClick={handleScheduleCall}
+                >
+                  Schedule a Strategy Consultation
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
+            </MotionWrapper>
+          </div>
         </section>
 
         {/* Contact Form Section */}
