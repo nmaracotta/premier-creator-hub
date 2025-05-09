@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -38,6 +37,7 @@ const ContactPage: React.FC = () => {
   const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
 
   const handleScheduleCall = () => {
+    console.log("Schedule call button clicked");
     // Show success dialog first
     setShowSuccessDialog(true);
     
@@ -45,6 +45,7 @@ const ContactPage: React.FC = () => {
     toast({
       title: "Booking Initiated",
       description: "Opening booking calendar in a new tab",
+      duration: 3000,
     });
     
     // Short delay before opening the calendar in a new tab
@@ -145,9 +146,22 @@ const ContactPage: React.FC = () => {
       {/* Success Dialog */}
       <SuccessDialog 
         open={showSuccessDialog} 
-        onClose={() => setShowSuccessDialog(false)}
+        onClose={() => {
+          console.log("Closing success dialog");
+          setShowSuccessDialog(false);
+        }}
         callType="strategy call"
       />
+      
+      {/* Simple Success Message for Testing */}
+      {showSuccessDialog && (
+        <div className="fixed inset-0 flex items-center justify-center z-[100] pointer-events-none">
+          <div className="bg-black/20 absolute inset-0"></div>
+          <p className="bg-white p-4 rounded-md shadow-lg">
+            Debug: Dialog should be visible (state: {showSuccessDialog ? 'true' : 'false'})
+          </p>
+        </div>
+      )}
     </div>
   );
 };
