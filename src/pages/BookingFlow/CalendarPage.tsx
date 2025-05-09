@@ -2,12 +2,23 @@
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MotionWrapper from '@/components/MotionWrapper';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import { useToast } from '@/hooks/use-toast';
+
+// Declare the Calendly types for TypeScript
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
 
 const CalendarPage: React.FC = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
   useEffect(() => {
     // Create and load the Calendly script
     const head = document.querySelector('head');
@@ -16,13 +27,50 @@ const CalendarPage: React.FC = () => {
     script.async = true;
     head?.appendChild(script);
     
+    // Set up Calendly event listener when the script loads
+    script.onload = () => {
+      // Make sure window.Calendly is available
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: 'https://calendly.com/premiercreator/30min',
+          parentElement: document.querySelector('.calendly-inline-widget'),
+          prefill: {},
+          utm: {}
+        });
+
+        // Listen for event when scheduling is completed
+        window.addEventListener('message', function(e) {
+          if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+            // When scheduling is completed
+            if (e.data.event === 'calendly.event_scheduled') {
+              console.log('Calendly booking completed!');
+              
+              // Show success toast
+              toast({
+                title: "Booking confirmed!",
+                description: "Your strategy call has been scheduled.",
+              });
+              
+              // Redirect to confirmation page
+              setTimeout(() => {
+                navigate('/booking/confirmation');
+              }, 1500);
+            }
+          }
+        });
+      }
+    };
+    
     // Clean up when component unmounts
     return () => {
       if (script && head?.contains(script)) {
         head.removeChild(script);
       }
+      
+      // Remove event listener
+      window.removeEventListener('message', () => {});
     };
-  }, []);
+  }, [navigate, toast]);
 
   return (
     <div className="min-h-screen flex flex-col">
