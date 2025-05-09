@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,6 +8,7 @@ import { MapPin } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import SuccessDialog from '@/components/SuccessDialog';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog } from '@/components/ui/dialog';
 
 const ContactPage: React.FC = () => {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
@@ -15,6 +17,49 @@ const ContactPage: React.FC = () => {
   // For debugging - log when dialog state changes
   useEffect(() => {
     console.log("Success dialog state changed:", showSuccessDialog);
+  }, [showSuccessDialog]);
+  
+  // Create a direct DOM success message for fallback
+  useEffect(() => {
+    if (showSuccessDialog) {
+      console.log("Creating fallback success message");
+      // Create and append a simple success message to the body if needed
+      const fallbackEl = document.createElement('div');
+      fallbackEl.id = 'fallback-success';
+      fallbackEl.style.position = 'fixed';
+      fallbackEl.style.top = '50%';
+      fallbackEl.style.left = '50%';
+      fallbackEl.style.transform = 'translate(-50%, -50%)';
+      fallbackEl.style.zIndex = '9999';
+      fallbackEl.style.background = 'white';
+      fallbackEl.style.padding = '20px';
+      fallbackEl.style.borderRadius = '8px';
+      fallbackEl.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+      fallbackEl.innerHTML = `
+        <h2 style="font-size: 24px; margin-bottom: 10px;">Success!</h2>
+        <p style="font-size: 16px;">Thanks for reaching out! We'll contact you within 24 hours.</p>
+        <button id="fallback-close" style="background: #3291F8; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-top: 10px; cursor: pointer;">Close</button>
+      `;
+      
+      // Only append if it doesn't exist yet
+      if (!document.getElementById('fallback-success')) {
+        document.body.appendChild(fallbackEl);
+        
+        // Add event listener to close button
+        document.getElementById('fallback-close')?.addEventListener('click', () => {
+          setShowSuccessDialog(false);
+          document.body.removeChild(fallbackEl);
+        });
+      }
+      
+      return () => {
+        // Clean up the fallback element when success dialog state changes
+        const element = document.getElementById('fallback-success');
+        if (element) {
+          document.body.removeChild(element);
+        }
+      };
+    }
   }, [showSuccessDialog]);
   
   const offices = [
@@ -44,14 +89,13 @@ const ContactPage: React.FC = () => {
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
     
-    // Show success dialog first
+    // Direct DOM manipulation for the fallback success message
     setShowSuccessDialog(true);
     
     // Provide feedback to user
     toast({
-      title: "Booking Initiated",
-      description: "Opening booking calendar in a new tab",
-      duration: 3000,
+      title: "Booking Success!",
+      description: "Thanks for reaching out! We'll contact you within 24 hours.",
     });
     
     // Short delay before opening the calendar in a new tab
@@ -151,7 +195,7 @@ const ContactPage: React.FC = () => {
       </main>
       <Footer />
       
-      {/* Success Dialog */}
+      {/* Success Dialog with direct rendering approach */}
       <SuccessDialog 
         open={showSuccessDialog} 
         onClose={() => {
@@ -161,15 +205,16 @@ const ContactPage: React.FC = () => {
         callType="strategy call"
       />
       
-      {/* Simple Success Message for Testing */}
-      {showSuccessDialog && (
-        <div className="fixed inset-0 flex items-center justify-center z-[100] pointer-events-none">
-          <div className="bg-black/20 absolute inset-0"></div>
-          <p className="bg-white p-4 rounded-md shadow-lg">
-            Debug: Dialog should be visible (state: {showSuccessDialog ? 'true' : 'false'})
-          </p>
+      {/* Using the direct Dialog API as a fallback */}
+      <Dialog open={showSuccessDialog} onOpenChange={() => setShowSuccessDialog(false)}>
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg max-w-md mx-auto">
+            <h2 className="text-2xl font-bold">Success!</h2>
+            <p className="my-4">Thanks for reaching out! We'll contact you within 24 hours.</p>
+            <Button onClick={() => setShowSuccessDialog(false)}>Close</Button>
+          </div>
         </div>
-      )}
+      </Dialog>
     </div>
   );
 };
