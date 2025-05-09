@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Check, Calendar, Clock, ArrowUpRight, Video } from 'lucide-react';
-import MotionWrapper from '@/components/MotionWrapper';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface SuccessDialogProps {
@@ -16,9 +15,6 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
   onClose,
   callType = "strategy call" 
 }) => {
-  console.log("SuccessDialog render - open state:", open);
-  
-  // Use regular Dialog component with direct return
   if (!open) return null;
   
   return (

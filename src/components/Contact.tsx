@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -36,6 +37,7 @@ const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xP
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
@@ -112,6 +114,7 @@ const Contact: React.FC = () => {
       });
       
       form.reset();
+      navigate('/booking/confirmation');
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
@@ -122,6 +125,10 @@ const Contact: React.FC = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleBookingButtonClick = () => {
+    navigate('/booking/confirmation');
   };
 
   return (
@@ -260,23 +267,17 @@ const Contact: React.FC = () => {
                   
                   <div className="pt-2">
                     <Button 
-                      type="submit" 
+                      type="button" 
                       size="lg" 
                       className={cn(
                         "w-full btn-hover font-medium tracking-wide",
                         "bg-gradient-to-r from-accent to-accent/90",
                         "shadow-lg shadow-accent/20"
                       )}
-                      disabled={isSubmitting}
+                      onClick={handleBookingButtonClick}
                     >
-                      {isSubmitting ? (
-                        <>Processing...</>
-                      ) : (
-                        <>
-                          <Calendar className="mr-2 h-4 w-4" />
-                          Book My Free Strategy Call
-                        </>
-                      )}
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Book My Free Strategy Call
                     </Button>
                   </div>
                 </form>
