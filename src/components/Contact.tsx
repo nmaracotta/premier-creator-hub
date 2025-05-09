@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Mail, MapPin, Phone, User, Users } from 'lucide-react';
+import { Calendar, Mail, User, Users } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
@@ -94,8 +93,8 @@ const Contact: React.FC = () => {
           </div>
         </MotionWrapper>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-          <Card className="lg:col-span-3 border-0 shadow-lg">
+        <div className="max-w-2xl mx-auto">
+          <Card className="border-0 shadow-lg">
             <CardContent className="p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -192,7 +191,7 @@ const Contact: React.FC = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex items-center gap-2">
-                          <Phone className="h-4 w-4 text-accent" />
+                          <Calendar className="h-4 w-4 text-accent" />
                           What's your biggest challenge with monetization right now?
                         </FormLabel>
                         <FormControl>
@@ -230,57 +229,6 @@ const Contact: React.FC = () => {
                   </div>
                 </form>
               </Form>
-            </CardContent>
-          </Card>
-          
-          <Card className="lg:col-span-2 bg-accent text-white border-0 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
-            
-            <CardContent className="p-8 relative z-10">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="h-5 w-5 text-white/80 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Our Office</h3>
-                    <p className="text-white/70">
-                      123 Creator Avenue<br />
-                      San Francisco, CA 94103
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <Phone className="h-5 w-5 text-white/80 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Contact</h3>
-                    <p className="text-white/70">
-                      <a href="tel:+1234567890" className="hover:text-white transition-colors">
-                        +1 (234) 567-8900
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <Mail className="h-5 w-5 text-white/80 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-white/70">
-                      <a href="mailto:hello@premiercreator.com" className="hover:text-white transition-colors">
-                        hello@premiercreator.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="pt-4 border-t border-white/20 mt-6">
-                  <h3 className="font-semibold text-lg mb-3">Limited Availability</h3>
-                  <p className="text-white/70">
-                    We only onboard 5 new creators each month to ensure quality and results.
-                  </p>
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
