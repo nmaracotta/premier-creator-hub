@@ -9,6 +9,7 @@ const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
 const Deliverables = lazy(() => import('@/components/Deliverables'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
+const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
 const LoadingFallback = () => (
@@ -63,6 +64,9 @@ const Index: React.FC = () => {
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <FinalCTA />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact />
         </Suspense>
       </main>
       <Footer />
