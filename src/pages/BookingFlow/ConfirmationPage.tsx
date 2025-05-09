@@ -29,15 +29,6 @@ const testimonials = [
   }
 ];
 
-// Platform logos
-const platforms = [
-  { name: "YouTube", icon: "youtube" },
-  { name: "Instagram", icon: "instagram" },
-  { name: "TikTok", icon: "tiktok" },
-  { name: "Teachable", icon: "teachable" },
-  { name: "Kajabi", icon: "kajabi" }
-];
-
 const ConfirmationPage: React.FC = () => {
   const addToGoogleCalendar = () => {
     window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Strategy Call with Premier Creator&details=Get ready for your personalized creator strategy call. We'll review your brand and prepare a customized monetization plan.&dates=20240510T160000Z/20240510T170000Z", "_blank");
@@ -137,21 +128,6 @@ const ConfirmationPage: React.FC = () => {
               </div>
             </div>
           </section>
-          
-          {/* Platform logos */}
-          <MotionWrapper animation="fade-in-up" className="max-w-3xl mx-auto text-center">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">PLATFORMS WE'VE HELPED CREATORS SUCCEED ON</p>
-            <div className="flex flex-wrap justify-center items-center gap-8">
-              {platforms.map((platform, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-2 mx-auto">
-                    <span className="text-lg font-semibold text-accent">{platform.name.charAt(0)}</span>
-                  </div>
-                  <p className="text-xs font-medium">{platform.name}</p>
-                </div>
-              ))}
-            </div>
-          </MotionWrapper>
         </div>
       </main>
       
