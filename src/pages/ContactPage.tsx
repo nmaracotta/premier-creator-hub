@@ -29,6 +29,7 @@ const ContactPage: React.FC = () => {
     }
   ];
 
+  // Discord webhook URL (hardcoded)
   const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
 
   return (

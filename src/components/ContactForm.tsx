@@ -86,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
         ]
       };
       
-      // Send to Discord webhook
+      // Send to Discord webhook using the provided URL
       const webhookResponse = await fetch(discordWebhookUrl, {
         method: 'POST',
         headers: {
