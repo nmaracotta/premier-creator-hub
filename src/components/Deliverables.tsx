@@ -10,28 +10,28 @@ type Deliverable = {
 
 const deliverables: Deliverable[] = [
   {
-    title: "Custom Whop Setup",
-    description: "Strategic low-ticket and high-ticket tiers designed for your specific audience and content."
+    title: "Tiered Membership Setup",
+    description: "Affordable entry-level offers and premium high-ticket options designed for your specific audience."
   },
   {
     title: "Automated Funnels & Onboarding",
-    description: "Seamless systems to convert followers into paying subscribers with minimal friction."
+    description: "Simple systems to turn followers into paying subscribers with minimal effort from you."
   },
   {
     title: "Content Plan + Sales Scripts",
-    description: "Strategic content calendar and converting sales messaging tailored to your niche."
+    description: "Easy-to-follow content calendar and persuasive messaging that feels natural to your style."
   },
   {
     title: "Community Design",
-    description: "Professional setup of Discord, Telegram, or other community platforms to foster engagement."
+    description: "Professional setup of discussion channels to keep members engaged and coming back for more."
   },
   {
     title: "Growth Playbook",
-    description: "Custom strategies to continuously grow your membership and increase monthly revenue."
+    description: "Step-by-step strategies to continuously grow your membership and increase monthly income."
   },
   {
-    title: "Rev-Share Model",
-    description: "Our success is tied to yours with a performance-aligned revenue share structure."
+    title: "Revenue Sharing",
+    description: "Our success is tied to yours—we only win when you're earning recurring income."
   }
 ];
 
@@ -42,7 +42,7 @@ const Deliverables: React.FC = () => {
         <MotionWrapper animation="fade-in-up" delay={300}>
           <h2 className="h2 text-center mb-6">What You Get</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            Our comprehensive solution includes everything you need to build and grow your membership community.
+            Our complete package includes everything you need to start earning monthly income from your audience.
           </p>
         </MotionWrapper>
 

@@ -17,10 +17,10 @@ const FinalCTA: React.FC = () => {
             "py-12 px-6 md:px-12 rounded-3xl",
             "bg-gradient-to-br from-accent to-accent/80 text-white"
           )}>
-            <h2 className="h2 mb-6">Want to Turn Followers into Subscribers?</h2>
+            <h2 className="h2 mb-6">Ready to Earn Monthly Income From Your Content?</h2>
             
             <p className="text-white/90 text-xl mb-8 max-w-2xl mx-auto">
-              Schedule a free strategy call today and we'll show you how to transform your audience into a profitable community.
+              Schedule a free strategy call today and we'll show you how to turn your knowledge and creativity into a reliable income stream.
             </p>
             
             <Button 

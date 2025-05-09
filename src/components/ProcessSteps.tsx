@@ -14,17 +14,17 @@ const steps: Step[] = [
   {
     icon: Code,
     title: "We Build It",
-    description: "We set up your Whop platform with the right pricing model, content structure, and community framework to match your brand."
+    description: "We create your membership platform with the right pricing tiers, content structure, and community framework to match your brand."
   },
   {
     icon: Rocket,
     title: "We Launch It",
-    description: "Using DM outreach, content marketing, funnels, and community spaces like Discord to attract your first members."
+    description: "We use personalized outreach, content marketing, sales funnels, and community spaces to attract your first members."
   },
   {
     icon: TrendingUp,
     title: "We Scale It",
-    description: "Implement retention strategies, upsells, and ongoing community management to grow your recurring revenue."
+    description: "We implement retention strategies, premium upsells, and ongoing community management to grow your recurring revenue."
   }
 ];
 

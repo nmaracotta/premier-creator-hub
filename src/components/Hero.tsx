@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={500}>
             <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-              We build and scale your Whop community so you can earn recurring income while focusing on what you do best—creating.
+              We help you transform your audience into paying subscribers with simple membership options they'll love to join.
             </p>
           </MotionWrapper>
           
