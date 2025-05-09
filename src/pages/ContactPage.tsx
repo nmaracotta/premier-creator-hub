@@ -7,7 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/ContactForm';
 import { useToast } from '@/hooks/use-toast';
-import { ChevronRight, Mail, ArrowRight, Phone, Clock, MapPin } from 'lucide-react';
+import { ChevronRight, Mail, ArrowRight } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const navigate = useNavigate();
@@ -95,26 +95,9 @@ const ContactPage: React.FC = () => {
                     We're excited to hear about your project and help bring your vision to life.
                   </p>
                   
-                  <div className="space-y-6 mt-8">
-                    <div className="flex items-center text-accent">
-                      <Mail className="w-5 h-5 mr-3 opacity-70" />
-                      <span className="font-medium">support@creatoragency.com</span>
-                    </div>
-                    
-                    <div className="flex items-center text-accent">
-                      <Phone className="w-5 h-5 mr-3 opacity-70" />
-                      <span className="font-medium">(555) 123-4567</span>
-                    </div>
-                    
-                    <div className="flex items-center text-accent">
-                      <MapPin className="w-5 h-5 mr-3 opacity-70" />
-                      <span className="font-medium">San Francisco, CA</span>
-                    </div>
-                    
-                    <div className="flex items-start text-accent">
-                      <Clock className="w-5 h-5 mr-3 mt-0.5 opacity-70" />
-                      <span className="font-medium">Mon-Fri: 9am - 5pm PST<br />Sat-Sun: Closed</span>
-                    </div>
+                  <div className="flex items-center mb-6 text-accent">
+                    <Mail className="w-5 h-5 mr-3 opacity-70" />
+                    <span className="font-medium">support@creatoragency.com</span>
                   </div>
                   
                   <div className="mt-10">
