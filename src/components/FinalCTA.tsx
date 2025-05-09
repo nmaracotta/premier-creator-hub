@@ -17,10 +17,10 @@ const FinalCTA: React.FC = () => {
             "py-12 px-6 md:px-12 rounded-3xl",
             "bg-gradient-to-br from-accent to-accent/80 text-white"
           )}>
-            <h2 className="h2 mb-6">Ready to Earn Monthly Income From Your Content?</h2>
+            <h2 className="h2 mb-6">Limited Spots Available This Month</h2>
             
             <p className="text-white/90 text-xl mb-8 max-w-2xl mx-auto">
-              Schedule a free strategy call today and we'll show you how to turn your knowledge and creativity into a reliable income stream.
+              We only work with 5 new creators each month to ensure results. Schedule your free revenue strategy call now before spots fill up.
             </p>
             
             <Button 
@@ -30,7 +30,7 @@ const FinalCTA: React.FC = () => {
               asChild
             >
               <a href="#contact">
-                Book a Free Call
+                Claim Your Free Strategy Call
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

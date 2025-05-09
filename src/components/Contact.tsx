@@ -19,9 +19,9 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20 bg-background">
       <div className="container-custom">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <h2 className="h2 text-center mb-6">Book Your Free Strategy Call</h2>
+          <h2 className="h2 text-center mb-6">Get Your Free Revenue Strategy</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            Schedule a no-obligation call to discuss how we can help you build and scale your subscription community.
+            In this 30-minute call, we'll analyze your audience and create a custom plan to generate $10K+ monthly recurring revenue from your content.
           </p>
         </MotionWrapper>
 
@@ -29,32 +29,32 @@ const Contact: React.FC = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Your Name</Label>
                 <Input id="name" name="name" placeholder="Your name" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Email Address</Label>
                 <Input id="email" name="email" type="email" placeholder="you@example.com" required />
               </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="website">Website/Social (optional)</Label>
-                <Input id="website" name="website" placeholder="instagram.com/yourusername" />
+                <Label htmlFor="website">Instagram/TikTok/YouTube</Label>
+                <Input id="website" name="website" placeholder="@yourusername" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="followers">Follower Count (optional)</Label>
-                <Input id="followers" name="followers" placeholder="e.g. 10k" />
+                <Label htmlFor="followers">Audience Size</Label>
+                <Input id="followers" name="followers" placeholder="e.g. 5K, 10K, 50K+" />
               </div>
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="message">Tell us about your content niche</Label>
+              <Label htmlFor="message">What's your biggest challenge with monetization right now?</Label>
               <Textarea 
                 id="message" 
                 name="message" 
-                placeholder="What type of content do you create and what are your goals?"
+                placeholder="I'm struggling with..."
                 className="min-h-[100px]" 
                 required 
               />
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
             <div className="flex justify-center">
               <Button type="submit" size="lg" className="btn-hover">
                 <Calendar className="mr-2 h-4 w-4" />
-                Schedule My Call
+                Book My Free Strategy Call
               </Button>
             </div>
           </form>

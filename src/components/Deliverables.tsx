@@ -10,28 +10,28 @@ type Deliverable = {
 
 const deliverables: Deliverable[] = [
   {
-    title: "Tiered Membership Setup",
-    description: "Affordable entry-level offers and premium high-ticket options designed for your specific audience."
+    title: "Irresistible Membership Tiers",
+    description: "$9-$997 pricing structure with proven value stacking that makes joining a no-brainer for your followers."
   },
   {
-    title: "Automated Funnels & Onboarding",
-    description: "Simple systems to turn followers into paying subscribers with minimal effort from you."
+    title: "Set-and-Forget Sales Funnels",
+    description: "Automated systems that sell while you sleep, converting your audience with minimal time investment from you."
   },
   {
-    title: "Content Plan + Sales Scripts",
-    description: "Easy-to-follow content calendar and persuasive messaging that feels natural to your style."
+    title: "High-Converting Content Strategy",
+    description: "Ready-to-use content templates and sales scripts that feel authentic while driving consistent conversions."
   },
   {
-    title: "Community Design",
-    description: "Professional setup of discussion channels to keep members engaged and coming back for more."
+    title: "Engagement-Focused Community",
+    description: "Custom-built spaces that keep members actively participating, reducing cancellations by up to 80%."
   },
   {
-    title: "Growth Playbook",
-    description: "Step-by-step strategies to continuously grow your membership and increase monthly income."
+    title: "Predictable Growth System",
+    description: "Monthly acquisition strategies guaranteed to bring in 10-30% of your current following as paying members."
   },
   {
-    title: "Revenue Sharing",
-    description: "Our success is tied to yours—we only win when you're earning recurring income."
+    title: "Risk-Free Partnership",
+    description: "We only make money when you do—our performance-based model means we're invested in your success from day one."
   }
 ];
 
@@ -40,9 +40,9 @@ const Deliverables: React.FC = () => {
     <section id="deliverables" className="py-20 bg-background">
       <div className="container-custom">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <h2 className="h2 text-center mb-6">What You Get</h2>
+          <h2 className="h2 text-center mb-6">Everything You Need For Reliable Income</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            Our complete package includes everything you need to start earning monthly income from your audience.
+            Stop trading time for money and start building real wealth with these proven membership assets.
           </p>
         </MotionWrapper>
 

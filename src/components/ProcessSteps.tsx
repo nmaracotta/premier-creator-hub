@@ -14,17 +14,17 @@ const steps: Step[] = [
   {
     icon: Code,
     title: "We Build It",
-    description: "We create your membership platform with the right pricing tiers, content structure, and community framework to match your brand."
+    description: "In just 14 days, we create your complete membership platform with perfectly tiered pricing that converts followers into paying customers."
   },
   {
     icon: Rocket,
     title: "We Launch It",
-    description: "We use personalized outreach, content marketing, sales funnels, and community spaces to attract your first members."
+    description: "Using our proven conversion systems, we'll get your first paying members within 30 days — often with 10-30% of your audience joining."
   },
   {
     icon: TrendingUp,
     title: "We Scale It",
-    description: "We implement retention strategies, premium upsells, and ongoing community management to grow your recurring revenue."
+    description: "Our retention experts ensure members stay and pay, while our growth strategies continuously bring in new subscribers month after month."
   }
 ];
 
@@ -33,9 +33,9 @@ const ProcessSteps: React.FC = () => {
     <section id="process" className="py-20 bg-accent/5">
       <div className="container-custom">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <h2 className="h2 text-center mb-6">How It Works</h2>
+          <h2 className="h2 text-center mb-6">Our Proven 30-Day Launch System</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            Our proven 3-step process to transform your audience into a thriving subscription community.
+            We've refined this process with dozens of creators, generating predictable monthly revenue without requiring you to work harder.
           </p>
         </MotionWrapper>
 
@@ -59,7 +59,7 @@ const ProcessSteps: React.FC = () => {
         <MotionWrapper animation="fade-in-up" delay={700}>
           <div className="text-center mt-10">
             <p className="text-muted-foreground italic">
-              "We handle the technical so you can focus on the creative."
+              "From zero to $12,480 in monthly recurring revenue in just 28 days with our system."
             </p>
           </div>
         </MotionWrapper>

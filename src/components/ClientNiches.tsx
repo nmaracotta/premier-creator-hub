@@ -22,9 +22,9 @@ const ClientNiches: React.FC = () => {
     <section id="niches" className="py-16 bg-background relative overflow-hidden">
       <div className="container-custom">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <h2 className="h2 text-center mb-6">Who We Work With</h2>
+          <h2 className="h2 text-center mb-6">Already Helping Creators Like You</h2>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-            We help creators across various niches turn their passion into recurring revenue through subscription communities.
+            No matter your niche, our proven system transforms your expertise into a profitable membership community that generates income while you sleep.
           </p>
         </MotionWrapper>
 
@@ -45,7 +45,7 @@ const ClientNiches: React.FC = () => {
         <MotionWrapper animation="fade-in-up" delay={600}>
           <div className="text-center">
             <p className="font-medium text-accent">
-              And many more creator niches!
+              Your niche belongs here too — let's make it profitable.
             </p>
           </div>
         </MotionWrapper>

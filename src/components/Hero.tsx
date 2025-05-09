@@ -17,13 +17,13 @@ const Hero: React.FC = () => {
           
           <MotionWrapper animation="fade-in-up" delay={400}>
             <h1 className="h1 mb-4 md:mb-6 px-2">
-              We Turn Creators into Full-Time Entrepreneurs.
+              From Creator to CEO: Your Content, Your Profits
             </h1>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={500}>
             <p className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-              We help you transform your audience into paying subscribers with simple membership options they'll love to join.
+              Turn what you already know into a thriving membership business. We build everything you need to transform your followers into loyal, paying subscribers.
             </p>
           </MotionWrapper>
           
@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
               <Button className="w-full sm:w-auto btn-hover" size="lg" asChild>
                 <a href="#contact" className="group">
-                  Book Your Free Strategy Call
+                  Get Your Free Revenue Plan
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
