@@ -39,19 +39,22 @@ const ContactPage: React.FC = () => {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
           <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-accent/5 to-transparent opacity-50"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/5 to-transparent opacity-20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-accent/10 to-transparent opacity-30 rounded-full blur-2xl"></div>
           
           <div className="container-custom relative z-10">
             <MotionWrapper animation="fade-in-up">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <div className="mb-6 inline-flex items-center justify-center">
-                  <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5">Contact Us</p>
+                  <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5 rounded-full shadow-sm">Contact Us</p>
                 </div>
-                <h1 className="h1 mb-6 leading-tight">Let's Start Creating <span className="text-accent">Together</span></h1>
-                <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
+                <h1 className="h1 mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-accent">
+                  Let's Start Creating <span className="text-accent font-bold">Together</span>
+                </h1>
+                <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
                   Ready to transform your vision into reality? Schedule a consultation with our expert team to discuss your creator business goals and strategy.
                 </p>
                 <Button 
-                  className="btn-hover shadow-lg shadow-accent/20" 
+                  className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white" 
                   size="lg"
                   onClick={handleScheduleCall}
                 >
