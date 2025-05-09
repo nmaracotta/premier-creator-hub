@@ -2,7 +2,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Check, Calendar } from 'lucide-react';
+import { Check, Calendar, Clock, ArrowRight, ArrowUpRight, Video } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
 
 interface SuccessDialogProps {
@@ -23,7 +23,7 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
         <DialogHeader className="text-center">
           <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
             <MotionWrapper animation="scale-in">
-              <div className="rounded-full bg-accent p-2">
+              <div className="rounded-full bg-gradient-to-r from-accent to-accent/80 p-2 shadow-lg shadow-accent/20">
                 <Check className="h-8 w-8 text-white" />
               </div>
             </MotionWrapper>
@@ -69,11 +69,38 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
               </ul>
             </div>
           </MotionWrapper>
+
+          <MotionWrapper animation="fade-in-up" delay={300}>
+            <div className="bg-accent/5 rounded-lg p-4 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="bg-accent/10 rounded-full p-2">
+                  <Clock className="h-5 w-5 text-accent" />
+                </div>
+                <div>
+                  <p className="font-medium">30 Minutes</p>
+                  <p className="text-sm text-muted-foreground">Strategy Session</p>
+                </div>
+              </div>
+              <div className="bg-accent/10 rounded-full p-2">
+                <Video className="h-5 w-5 text-accent" />
+              </div>
+            </div>
+          </MotionWrapper>
         </div>
 
         <div className="flex flex-col space-y-3 sm:space-x-3 sm:space-y-0 sm:flex-row sm:justify-center mt-3">
-          <Button onClick={onClose} className="btn-hover w-full sm:w-auto">
+          <Button
+            onClick={onClose}
+            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/80 shadow-lg shadow-accent/20"
+          >
             Close
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => window.open("https://cal.com/premiercreator/30min", "_blank")}
+            className="w-full sm:w-auto flex items-center justify-center gap-1"
+          >
+            View Calendar <ArrowUpRight className="h-4 w-4" />
           </Button>
         </div>
       </DialogContent>
