@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from '@/components/ui/button';
 import { Check, Calendar, Clock, ArrowUpRight, Video } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 
 interface SuccessDialogProps {
   open: boolean;
@@ -16,12 +17,13 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
   onClose,
   callType = "strategy call" 
 }) => {
-  console.log("SuccessDialog props:", { open, callType });
+  console.log("SuccessDialog rendered with open:", open);
   
+  // Using AlertDialog as an alternative to Dialog since it's more reliable in some cases
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md border-0 shadow-lg bg-gradient-to-b from-background to-secondary/5">
-        <DialogHeader className="text-center">
+    <AlertDialog open={open} onOpenChange={onClose}>
+      <AlertDialogContent className="sm:max-w-md border-0 shadow-lg bg-gradient-to-b from-background to-secondary/5">
+        <AlertDialogHeader className="text-center">
           <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
             <MotionWrapper animation="scale-in">
               <div className="rounded-full bg-gradient-to-r from-accent to-accent/80 p-2 shadow-lg shadow-accent/20">
@@ -31,12 +33,12 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
           </div>
           
           <MotionWrapper animation="fade-in-up">
-            <DialogTitle className="text-2xl font-bold tracking-tight">Booking Successful!</DialogTitle>
-            <DialogDescription className="text-lg mt-2">
+            <AlertDialogTitle className="text-2xl font-bold tracking-tight">Booking Successful!</AlertDialogTitle>
+            <AlertDialogDescription className="text-lg mt-2">
               We're excited to connect with you soon
-            </DialogDescription>
+            </AlertDialogDescription>
           </MotionWrapper>
-        </DialogHeader>
+        </AlertDialogHeader>
 
         <div className="p-6 space-y-5">
           <MotionWrapper animation="fade-in-up" delay={100}>
@@ -89,7 +91,7 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
           </MotionWrapper>
         </div>
 
-        <div className="flex flex-col space-y-3 sm:space-x-3 sm:space-y-0 sm:flex-row sm:justify-center mt-3">
+        <AlertDialogFooter className="flex flex-col space-y-3 sm:space-x-3 sm:space-y-0 sm:flex-row sm:justify-center mt-3">
           <Button
             onClick={onClose}
             className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/80 shadow-lg shadow-accent/20"
@@ -103,9 +105,9 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
           >
             View Calendar <ArrowUpRight className="h-4 w-4" />
           </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 

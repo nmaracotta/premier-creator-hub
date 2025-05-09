@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MotionWrapper from '@/components/MotionWrapper';
@@ -11,6 +11,11 @@ import { useToast } from '@/hooks/use-toast';
 const ContactPage: React.FC = () => {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const { toast } = useToast();
+  
+  // For debugging - log when dialog state changes
+  useEffect(() => {
+    console.log("Success dialog state changed:", showSuccessDialog);
+  }, [showSuccessDialog]);
   
   const offices = [
     {
@@ -38,6 +43,7 @@ const ContactPage: React.FC = () => {
 
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
+    
     // Show success dialog first
     setShowSuccessDialog(true);
     
@@ -58,6 +64,7 @@ const ContactPage: React.FC = () => {
     <div className="min-h-screen overflow-hidden">
       <Navbar />
       <main className="pt-24">
+        {/* Hero section with call to action button */}
         <section className="py-16 md:py-24 relative overflow-hidden">
           <div className="container-custom">
             <MotionWrapper animation="fade-in-up">
@@ -98,6 +105,7 @@ const ContactPage: React.FC = () => {
           </div>
         </section>
 
+        {/* Locations section */}
         <section className="py-20 md:py-32 relative overflow-hidden">
           <div className="container-custom">
             <MotionWrapper animation="fade-in-up">
