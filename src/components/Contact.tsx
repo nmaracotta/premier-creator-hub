@@ -26,6 +26,7 @@ const formSchema = z.object({
   socialMedia: z.string().optional(),
   audienceSize: z.string().optional(),
   message: z.string().min(5, { message: 'Please tell us about your challenges' }),
+  discordWebhook: z.string().url({ message: 'Please enter a valid Discord webhook URL' }).optional(),
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
@@ -42,6 +43,7 @@ const Contact: React.FC = () => {
       socialMedia: '',
       audienceSize: '',
       message: '',
+      discordWebhook: '',
     },
   });
 
@@ -49,11 +51,62 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // This would connect to a real form submission API in production
-      console.log('Form submitted', data);
+      const { discordWebhook, ...formData } = data;
+      console.log('Form submitted', formData);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Format message for Discord
+      const discordMessage = {
+        embeds: [
+          {
+            title: "New Strategy Call Request",
+            color: 0x3291F8, // Blue color (accent color)
+            fields: [
+              {
+                name: "Name",
+                value: formData.name,
+                inline: true
+              },
+              {
+                name: "Email",
+                value: formData.email,
+                inline: true
+              },
+              {
+                name: "Social Media",
+                value: formData.socialMedia || "Not provided",
+                inline: true
+              },
+              {
+                name: "Audience Size",
+                value: formData.audienceSize || "Not provided",
+                inline: true
+              },
+              {
+                name: "Challenge",
+                value: formData.message
+              }
+            ],
+            footer: {
+              text: `Submitted at ${new Date().toLocaleString()}`
+            }
+          }
+        ]
+      };
+      
+      // Send to Discord webhook if provided
+      if (discordWebhook) {
+        const webhookResponse = await fetch(discordWebhook, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(discordMessage),
+        });
+        
+        if (!webhookResponse.ok) {
+          throw new Error('Failed to send to Discord webhook');
+        }
+      }
       
       toast({
         title: "Success!",
@@ -62,6 +115,7 @@ const Contact: React.FC = () => {
       
       form.reset();
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Something went wrong",
         description: "Please try again later.",
@@ -198,6 +252,28 @@ const Contact: React.FC = () => {
                           <Textarea 
                             placeholder="I'm struggling with..."
                             className="min-h-[120px] bg-secondary/20" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="discordWebhook"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <Mail className="h-4 w-4 text-accent" />
+                          Discord Webhook URL (Admin only)
+                        </FormLabel>
+                        <FormControl>
+                          <Input 
+                            type="url"
+                            placeholder="https://discord.com/api/webhooks/..." 
+                            className="bg-secondary/20" 
                             {...field} 
                           />
                         </FormControl>
