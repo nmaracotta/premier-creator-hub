@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,22 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
 const CalendarPage: React.FC = () => {
+  useEffect(() => {
+    // Create and load the Calendly script
+    const head = document.querySelector('head');
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    head?.appendChild(script);
+    
+    // Clean up when component unmounts
+    return () => {
+      if (script && head?.contains(script)) {
+        head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -45,9 +61,6 @@ const CalendarPage: React.FC = () => {
       </main>
       
       <Footer />
-      
-      {/* Calendly Loading Script */}
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </div>
   );
 };
