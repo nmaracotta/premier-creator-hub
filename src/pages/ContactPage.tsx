@@ -36,12 +36,10 @@ const ContactPage: React.FC = () => {
   const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
 
   const handleScheduleCall = () => {
-    // Open the success dialog after small delay to simulate the booking process
-    setTimeout(() => {
-      setShowSuccessDialog(true);
-    }, 500);
+    // Show the success dialog immediately
+    setShowSuccessDialog(true);
     
-    // Still redirect to the actual booking site
+    // Open the actual booking site in a new tab
     window.open("https://cal.com/premiercreator/30min", "_blank");
   };
 
@@ -58,7 +56,11 @@ const ContactPage: React.FC = () => {
                 <p className="text-muted-foreground text-lg mb-8">
                   Ready to bring your vision to life? Schedule a call with our team to discuss your creator business.
                 </p>
-                <Button className="btn-hover" size="lg" onClick={handleScheduleCall}>
+                <Button 
+                  className="btn-hover" 
+                  size="lg" 
+                  onClick={handleScheduleCall}
+                >
                   Schedule a 30-Minute Call
                 </Button>
               </div>
@@ -130,7 +132,7 @@ const ContactPage: React.FC = () => {
       </main>
       <Footer />
       
-      {/* Success Dialog */}
+      {/* Success Dialog - Always mount it but visibility controlled by state */}
       <SuccessDialog 
         open={showSuccessDialog} 
         onClose={() => setShowSuccessDialog(false)}

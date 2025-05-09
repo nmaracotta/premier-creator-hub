@@ -16,6 +16,7 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({
   onClose,
   callType = "strategy call" 
 }) => {
+  // Force dialog to be open based on the open prop
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md border-0 shadow-lg bg-gradient-to-b from-background to-secondary/5">
