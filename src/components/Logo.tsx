@@ -1,36 +1,27 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface LogoProps {
-  className?: string;
   textSize?: string;
-  linkTo?: string;
-  asLink?: boolean;
+  className?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ 
-  className, 
-  textSize = "text-2xl",
-  linkTo = "/",
-  asLink = true
-}) => {
-  const logoContent = (
-    <div className={cn("font-bold tracking-tight", textSize, className)}>
-      Premier<span className="text-accent">Creator</span>
-    </div>
+const Logo: React.FC<LogoProps> = ({ textSize = "text-2xl", className }) => {
+  return (
+    <Link 
+      to="/" 
+      className={cn(
+        "font-bold tracking-tight flex items-center", 
+        textSize, 
+        className
+      )}
+    >
+      <span>Premier</span>
+      <span className="text-accent font-extrabold">Creator</span>
+    </Link>
   );
-
-  if (asLink) {
-    return (
-      <Link to={linkTo} className={cn("inline-block", className)}>
-        {logoContent}
-      </Link>
-    );
-  }
-
-  return logoContent;
 };
 
 export default Logo;

@@ -31,6 +31,18 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  // Prevent body scrolling when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const navItems = [
     { name: "How It Works", path: "#process" },
     { name: "What You Get", path: "#deliverables" },
@@ -108,7 +120,7 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-auto pt-8 flex flex-col gap-4">
             <Button className="w-full btn-hover" size="lg" asChild>
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
                 Book Your Free Call

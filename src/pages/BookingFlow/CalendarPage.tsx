@@ -7,6 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { useToast } from '@/hooks/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Declare the Calendly types for TypeScript
 declare global {
@@ -18,6 +19,7 @@ declare global {
 const CalendarPage: React.FC = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Create and load the Calendly script
@@ -100,7 +102,7 @@ const CalendarPage: React.FC = () => {
                 data-url="https://calendly.com/premiercreator/30min"
                 style={{ 
                   minWidth: '320px',
-                  height: '700px'
+                  height: isMobile ? '600px' : '700px'
                 }}
               ></div>
             </div>
