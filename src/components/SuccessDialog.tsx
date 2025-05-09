@@ -2,7 +2,7 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Check, Calendar, Clock, ArrowRight, ArrowUpRight, Video } from 'lucide-react';
+import { Check, Calendar, Clock, ArrowUpRight, Video } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
 
 interface SuccessDialogProps {

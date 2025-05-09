@@ -7,9 +7,11 @@ import { Button } from '@/components/ui/button';
 import { MapPin } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import SuccessDialog from '@/components/SuccessDialog';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactPage: React.FC = () => {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const { toast } = useToast();
   
   const offices = [
     {
@@ -36,11 +38,19 @@ const ContactPage: React.FC = () => {
   const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
 
   const handleScheduleCall = () => {
-    // Show the success dialog immediately
+    // Show success dialog first
     setShowSuccessDialog(true);
     
-    // Open the actual booking site in a new tab
-    window.open("https://cal.com/premiercreator/30min", "_blank");
+    // Provide feedback to user
+    toast({
+      title: "Booking Initiated",
+      description: "Opening booking calendar in a new tab",
+    });
+    
+    // Short delay before opening the calendar in a new tab
+    setTimeout(() => {
+      window.open("https://cal.com/premiercreator/30min", "_blank");
+    }, 500);
   };
 
   return (
@@ -132,7 +142,7 @@ const ContactPage: React.FC = () => {
       </main>
       <Footer />
       
-      {/* Success Dialog - Always mount it but visibility controlled by state */}
+      {/* Success Dialog */}
       <SuccessDialog 
         open={showSuccessDialog} 
         onClose={() => setShowSuccessDialog(false)}
