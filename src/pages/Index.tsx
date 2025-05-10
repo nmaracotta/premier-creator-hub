@@ -1,3 +1,4 @@
+
 import React, { useEffect, lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,9 +45,9 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen overflow-hidden flex flex-col w-full">
       <Navbar />
-      <main className="space-y-0">
+      <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>
           <Hero />
         </Suspense>
