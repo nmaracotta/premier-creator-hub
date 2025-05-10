@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,6 +20,7 @@ const CalendarPage: React.FC = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const isMobile = useIsMobile();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Create and load the Calendly script
@@ -31,6 +32,8 @@ const CalendarPage: React.FC = () => {
     
     // Set up Calendly event listener when the script loads
     script.onload = () => {
+      setIsLoading(false);
+      
       // Make sure window.Calendly is available
       if (window.Calendly) {
         window.Calendly.initInlineWidget({
@@ -78,31 +81,39 @@ const CalendarPage: React.FC = () => {
     <div className="min-h-screen flex flex-col w-full">
       <Navbar />
       
-      <main className="flex-grow pt-24 md:pt-32 pb-16 md:pb-20">
+      <main className="flex-grow pt-16 md:pt-24 pb-12 md:pb-16">
         <div className="container-custom">
-          <Link to="/contact" className="inline-flex items-center text-muted-foreground hover:text-accent mb-8 md:mb-10 text-base md:text-lg">
+          <Link to="/contact" className="inline-flex items-center text-muted-foreground hover:text-accent mb-6 md:mb-8 text-base">
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to contact
           </Link>
           
           <MotionWrapper animation="fade-in-up">
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
-              <h1 className="h1 mb-4 md:mb-6 text-4xl md:text-5xl lg:text-5xl">Lock In Your Strategy Call</h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 md:mb-10">
+            <div className="text-center max-w-4xl mx-auto mb-6 md:mb-8">
+              <h1 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">Lock In Your Strategy Call</h1>
+              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
                 Pick a time that works best for you. We'll come prepared with a personalized monetization plan based on your answers.
               </p>
             </div>
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={200} className="max-w-5xl mx-auto">
-            <div className="bg-card border rounded-xl shadow-lg p-4 md:p-0 overflow-hidden">
+            <div className="bg-card border rounded-xl shadow-lg overflow-hidden">
+              {isLoading && (
+                <div className="flex items-center justify-center p-8" style={{ height: isMobile ? '500px' : '650px' }}>
+                  <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
+                </div>
+              )}
+              
               {/* Calendly inline widget */}
               <div 
                 className="calendly-inline-widget" 
                 data-url="https://calendly.com/premiercreator/30min"
                 style={{ 
                   minWidth: '320px',
-                  height: isMobile ? '650px' : '750px'
+                  height: isMobile ? '600px' : '700px',
+                  opacity: isLoading ? 0 : 1,
+                  transition: 'opacity 0.3s ease'
                 }}
               ></div>
             </div>
