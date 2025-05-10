@@ -39,8 +39,17 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleAnchorClick);
     
-    // Check if we need to scroll to top after navigation
-    if (sessionStorage.getItem('needsScrollReset') === 'true') {
+    // Handle scroll position restoration from session storage
+    const savedPosition = sessionStorage.getItem('scrollPositionBeforeBooking');
+    if (savedPosition) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedPosition));
+        sessionStorage.removeItem('scrollPositionBeforeBooking');
+      }, 100);
+    }
+    // Check for the general scroll reset flag as fallback
+    else if (sessionStorage.getItem('needsScrollReset') === 'true') {
       window.scrollTo(0, 0);
       sessionStorage.removeItem('needsScrollReset');
     }

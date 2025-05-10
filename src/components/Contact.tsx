@@ -113,14 +113,12 @@ const Contact: React.FC = () => {
       
       form.reset();
       
-      // Set a session storage flag to indicate scroll to top is needed
-      sessionStorage.setItem('needsScrollReset', 'true');
+      // Save current scroll position instead of resetting it
+      const scrollPosition = window.scrollY;
+      sessionStorage.setItem('scrollPositionBeforeBooking', String(scrollPosition));
       
-      // Simple direct scroll with no params that could cause zoom
-      window.scrollTo(0, 0);
-      
-      // Navigate without delay
-      navigate('/booking/calendar');
+      // Navigate without delay and without scrolling to top
+      navigate('/booking/calendar', { preventScrollReset: true });
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -136,14 +134,12 @@ const Contact: React.FC = () => {
 
   // Direct call booking without form submission
   const handleDirectBooking = () => {
-    // Set a session storage flag to indicate scroll to top is needed
-    sessionStorage.setItem('needsScrollReset', 'true');
+    // Save current scroll position instead of resetting it
+    const scrollPosition = window.scrollY;
+    sessionStorage.setItem('scrollPositionBeforeBooking', String(scrollPosition));
     
-    // Simple direct scroll with no params that could cause zoom
-    window.scrollTo(0, 0);
-    
-    // Navigate without delay
-    navigate('/booking/calendar');
+    // Navigate without delay and without scrolling to top
+    navigate('/booking/calendar', { preventScrollReset: true });
   };
 
   return (
