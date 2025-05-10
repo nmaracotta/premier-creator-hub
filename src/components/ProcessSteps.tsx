@@ -32,24 +32,24 @@ const steps: Step[] = [
 
 const ProcessSteps: React.FC = () => {
   return (
-    <section id="process" className="py-32 md:py-40 bg-gradient-to-b from-accent/5 to-background relative overflow-hidden">
+    <section id="process" className="py-24 md:py-32 bg-gradient-to-b from-accent/5 to-background relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
       
       <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20 mb-6 px-4 py-1.5 text-base">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20 mb-4 px-3 py-1 text-sm">
               Our Process
             </Badge>
-            <h2 className="h2 mb-8 text-4xl md:text-5xl lg:text-6xl">Our Proven 30-Day Launch System</h2>
-            <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
+            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">Our Proven 30-Day Launch System</h2>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
               We've refined this process with dozens of creators, generating predictable monthly revenue without requiring you to work harder.
             </p>
           </div>
         </MotionWrapper>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
           {steps.map((step, index) => (
             <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 100)}>
               <Card className={cn(
@@ -60,13 +60,13 @@ const ProcessSteps: React.FC = () => {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50"></div>
                 <div className="absolute top-0 right-0 w-20 h-20 -mt-10 -mr-10 bg-accent/5 rounded-full blur-2xl"></div>
                 
-                <CardContent className="p-10">
+                <CardContent className="p-6 md:p-8">
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mb-8 group-hover:bg-accent/20 transition-colors">
-                      <step.icon className="h-10 w-10 text-accent" />
+                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                      <step.icon className="h-8 w-8 text-accent" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-5">{step.title}</h3>
-                    <p className="text-muted-foreground text-base md:text-lg">{step.description}</p>
+                    <h3 className="text-xl md:text-2xl font-bold mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm md:text-base">{step.description}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -76,8 +76,8 @@ const ProcessSteps: React.FC = () => {
 
         <MotionWrapper animation="fade-in-up" delay={700}>
           <div className="text-center">
-            <div className="inline-flex items-center bg-accent/5 px-8 py-4 rounded-full border border-accent/20">
-              <p className="text-accent italic font-medium text-lg md:text-xl">
+            <div className="inline-flex items-center bg-accent/5 px-6 py-3 rounded-full border border-accent/20">
+              <p className="text-accent italic font-medium text-sm md:text-base">
                 "From zero to $12,480 in monthly recurring revenue in just 28 days with our system."
               </p>
             </div>

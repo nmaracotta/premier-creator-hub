@@ -58,17 +58,17 @@ const Navbar: React.FC = () => {
           scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm dark:bg-black/80' : 'bg-transparent'
         )}
       >
-        <div className="container-custom py-5 md:py-7">
+        <div className="container-custom py-4 md:py-5">
           <div className="flex items-center justify-between">
-            <Logo textSize="text-2xl md:text-3xl" />
+            <Logo textSize="text-xl md:text-2xl" />
 
-            <nav className="hidden md:flex items-center space-x-10">
+            <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.path}
                   className={cn(
-                    "underline-animation text-base md:text-lg font-medium transition-colors hover:text-accent"
+                    "underline-animation text-sm md:text-base font-medium transition-colors hover:text-accent"
                   )}
                 >
                   {item.name}
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            <Button className="hidden md:inline-flex btn-hover text-base py-6 px-8" size="lg" asChild>
+            <Button className="hidden md:inline-flex btn-hover text-sm py-5 px-6" size="default" asChild>
               <a href="#contact">
                 Get Started
               </a>
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
               onClick={() => setIsMenuOpen(true)}
               aria-label="Open menu"
             >
-              <Menu className="w-7 h-7" />
+              <Menu className="w-6 h-6" />
             </button>
           </div>
         </div>
@@ -99,20 +99,20 @@ const Navbar: React.FC = () => {
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <div className="flex flex-col h-full p-8">
-          <div className="flex justify-between items-center mb-12">
-            <Logo textSize="text-2xl" />
+        <div className="flex flex-col h-full p-6">
+          <div className="flex justify-between items-center mb-10">
+            <Logo textSize="text-xl" />
             <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-              <X className="w-7 h-7" />
+              <X className="w-6 h-6" />
             </button>
           </div>
 
-          <nav className="flex flex-col space-y-8 text-center">
+          <nav className="flex flex-col space-y-6 text-center">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.path}
-                className="text-xl font-medium transition-colors hover:text-accent"
+                className="text-lg font-medium transition-colors hover:text-accent"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -120,8 +120,8 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="mt-auto pt-10 flex flex-col gap-6">
-            <Button className="w-full btn-hover py-6 text-lg" size="lg" asChild>
+          <div className="mt-auto pt-8 flex flex-col gap-4">
+            <Button className="w-full btn-hover py-5 text-base" size="default" asChild>
               <a href="#contact" onClick={() => setIsMenuOpen(false)}>
                 Book Your Free Call
               </a>
