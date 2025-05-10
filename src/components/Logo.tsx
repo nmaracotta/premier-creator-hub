@@ -8,7 +8,7 @@ interface LogoProps {
   className?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ textSize = "text-2xl", className }) => {
+const Logo: React.FC<LogoProps> = ({ textSize = "text-2xl md:text-3xl", className }) => {
   return (
     <Link 
       to="/" 

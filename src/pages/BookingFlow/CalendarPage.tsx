@@ -78,31 +78,31 @@ const CalendarPage: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow pt-28 md:pt-36 pb-20">
         <div className="container-custom">
-          <Link to="/contact" className="inline-flex items-center text-muted-foreground hover:text-accent mb-8">
-            <ArrowLeft className="h-4 w-4 mr-2" />
+          <Link to="/contact" className="inline-flex items-center text-muted-foreground hover:text-accent mb-10 text-lg">
+            <ArrowLeft className="h-5 w-5 mr-2" />
             Back to contact
           </Link>
           
           <MotionWrapper animation="fade-in-up">
-            <div className="text-center max-w-3xl mx-auto mb-8">
-              <h1 className="h1 mb-4">Lock In Your Strategy Call</h1>
-              <p className="text-lg text-muted-foreground mb-8">
+            <div className="text-center max-w-4xl mx-auto mb-10">
+              <h1 className="h1 mb-6 text-4xl md:text-5xl lg:text-6xl">Lock In Your Strategy Call</h1>
+              <p className="text-xl text-muted-foreground mb-10">
                 Pick a time that works best for you. We'll come prepared with a personalized monetization plan based on your answers.
               </p>
             </div>
           </MotionWrapper>
           
-          <MotionWrapper animation="fade-in-up" delay={200} className="max-w-4xl mx-auto">
-            <div className="bg-card border rounded-xl shadow-lg p-4 md:p-0 overflow-hidden">
+          <MotionWrapper animation="fade-in-up" delay={200} className="max-w-5xl mx-auto">
+            <div className="bg-card border rounded-xl shadow-lg p-6 md:p-0 overflow-hidden">
               {/* Calendly inline widget */}
               <div 
                 className="calendly-inline-widget" 
                 data-url="https://calendly.com/premiercreator/30min"
                 style={{ 
                   minWidth: '320px',
-                  height: isMobile ? '600px' : '700px'
+                  height: isMobile ? '650px' : '750px'
                 }}
               ></div>
             </div>
