@@ -110,12 +110,12 @@ const Contact: React.FC = () => {
       
       toast({
         title: "Success!",
-        description: "Thanks for reaching out! Please continue to schedule your call.",
+        description: "Thanks for reaching out! Redirecting to booking calendar...",
       });
       
       form.reset();
       
-      // Navigate to calendar page
+      // Immediately redirect to calendar page without requiring scrolling
       navigate('/booking/calendar');
       
     } catch (error) {
@@ -318,3 +318,4 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
