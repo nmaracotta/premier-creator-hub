@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      console.log('Form submitted', data);
+      console.log('Form submitted from home page Contact component', data);
       
       // Format message for Discord
       const discordMessage = {
@@ -114,10 +114,17 @@ const Contact: React.FC = () => {
       form.reset();
       
       // Set a session storage flag to indicate scroll to top is needed
+      // IMPORTANT: This ensures CalendarPage will scroll to top
       sessionStorage.setItem('needsScrollReset', 'true');
       
-      // Navigate to calendar page
-      navigate('/booking/calendar');
+      // Force scroll to top before navigation - critical addition
+      window.scrollTo(0, 0);
+      
+      // Add a small delay before navigation to ensure scroll takes effect
+      setTimeout(() => {
+        // Navigate to calendar page
+        navigate('/booking/calendar');
+      }, 100);
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -136,8 +143,14 @@ const Contact: React.FC = () => {
     // Set a session storage flag to indicate scroll to top is needed
     sessionStorage.setItem('needsScrollReset', 'true');
     
-    // Navigate to calendar page
-    navigate('/booking/calendar');
+    // Force scroll to top before navigation - critical addition
+    window.scrollTo(0, 0);
+    
+    // Add a small delay before navigation to ensure scroll takes effect
+    setTimeout(() => {
+      // Navigate to calendar page
+      navigate('/booking/calendar');
+    }, 100);
   };
 
   return (
