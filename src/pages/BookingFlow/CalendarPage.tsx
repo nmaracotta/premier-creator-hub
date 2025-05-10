@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -23,12 +22,8 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Ensure page is at the top when component loads
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
-    });
+    // First thing: Force scroll to top with immediate effect, before any other code runs
+    window.scrollTo(0, 0);
     
     // Create and load the Calendly script
     const head = document.querySelector('head');
@@ -64,11 +59,7 @@ const CalendarPage: React.FC = () => {
               });
               
               // Force scroll to top before redirection
-              window.scrollTo({
-                top: 0,
-                left: 0, 
-                behavior: 'auto'
-              });
+              window.scrollTo(0, 0);
               
               // Redirect to confirmation page after a brief delay
               setTimeout(() => {

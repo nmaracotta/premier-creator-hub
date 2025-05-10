@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -19,40 +18,26 @@ const ContactPage: React.FC = () => {
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
     
-    // Force scroll to top with immediate effect
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
-    });
-    
-    // Short timeout to ensure scroll completes before navigation
-    setTimeout(() => {
-      navigate('/booking/calendar');
-    }, 10);
+    // Critical fix: Force immediate scroll to top before navigation
+    window.scrollTo(0, 0);
     
     // Provide feedback to user
     toast({
       title: "Redirecting to booking calendar",
       description: "Choose a time that works for your strategy call.",
     });
+    
+    // Navigate immediately after scrolling
+    navigate('/booking/calendar');
   };
 
   // Handle form submission and immediate redirection
   const handleFormSubmit = () => {
     console.log("Form submitted, redirecting to calendar");
     
-    // Force scroll to top with immediate effect
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
-    });
-    
-    // Small timeout to ensure scroll completes before navigation
-    setTimeout(() => {
-      navigate('/booking/calendar');
-    }, 10);
+    // No delay needed since we've already scrolled to top in the ContactForm component
+    // Just navigate directly
+    navigate('/booking/calendar');
   };
 
   return (

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -117,18 +116,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
       // Reset form
       form.reset();
       
-      // First scroll to top and then call the onFormSubmit callback if provided
+      // Critical: Ensure scroll to top immediately before any navigation
       if (onFormSubmit) {
-        // Force scroll to top before any navigation happens
-        window.scrollTo({
-          top: 0,
-          behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
-        });
+        // Force immediate scroll to top of the page
+        window.scrollTo(0, 0);
         
-        // Short timeout to ensure scroll happens before navigation
-        setTimeout(() => {
-          onFormSubmit(data);
-        }, 10);
+        // Then call the onFormSubmit callback
+        onFormSubmit(data);
       }
       
     } catch (error) {
