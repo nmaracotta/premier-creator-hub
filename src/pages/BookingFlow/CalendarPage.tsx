@@ -23,10 +23,11 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if we need to scroll to top (coming from another page)
+    // Force immediate scroll to top on component mount - most reliable approach
+    window.scrollTo(0, 0);
+    
+    // Also check for the flag (backup approach)
     if (sessionStorage.getItem('needsScrollReset') === 'true') {
-      // Force scroll to top with immediate effect
-      window.scrollTo(0, 0);
       // Clear the flag
       sessionStorage.removeItem('needsScrollReset');
     }

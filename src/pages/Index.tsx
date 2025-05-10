@@ -39,6 +39,12 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleAnchorClick);
     
+    // Check if we need to scroll to top after navigation
+    if (sessionStorage.getItem('needsScrollReset') === 'true') {
+      window.scrollTo(0, 0);
+      sessionStorage.removeItem('needsScrollReset');
+    }
+    
     return () => {
       document.removeEventListener('click', handleAnchorClick);
     };
