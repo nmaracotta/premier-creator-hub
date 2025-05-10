@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -95,18 +94,17 @@ const Contact: React.FC = () => {
         ]
       };
       
-      // Send to Discord webhook using the hardcoded URL
-      const webhookResponse = await fetch(DISCORD_WEBHOOK, {
+      // Send to Discord webhook asynchronously but don't wait for it
+      fetch(DISCORD_WEBHOOK, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(discordMessage),
+      }).catch(err => {
+        console.error('Discord webhook error:', err);
+        // Continue with redirect even if webhook fails
       });
-      
-      if (!webhookResponse.ok) {
-        throw new Error('Failed to send to Discord webhook');
-      }
       
       toast({
         title: "Success!",
@@ -115,7 +113,9 @@ const Contact: React.FC = () => {
       
       form.reset();
       
-      // Immediately redirect to calendar page without requiring scrolling
+      // Immediately redirect to calendar page without waiting for Discord
+      // First scroll to top to avoid being stuck at bottom
+      window.scrollTo(0, 0);
       navigate('/booking/calendar');
       
     } catch (error) {
@@ -132,6 +132,8 @@ const Contact: React.FC = () => {
 
   // Direct call booking without form submission
   const handleDirectBooking = () => {
+    // Ensure we're at the top before navigation
+    window.scrollTo(0, 0);
     navigate('/booking/calendar');
   };
 
@@ -318,4 +320,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-

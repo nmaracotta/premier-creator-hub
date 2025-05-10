@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Mail, User, MessageCircle } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
 import { 
   Form,
   FormField,
@@ -18,6 +15,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
+import { Calendar, Mail, User, Users } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),
@@ -28,11 +26,15 @@ const formSchema = z.object({
 
 type ContactFormValues = z.infer<typeof formSchema>;
 
-type ContactFormProps = {
+interface ContactFormProps {
   discordWebhookUrl: string;
-};
+  onFormSubmit?: (data: ContactFormValues) => void;
+}
 
-const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ 
+  discordWebhookUrl,
+  onFormSubmit
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   
@@ -46,7 +48,17 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
     },
   });
 
-  const onSubmit = async (data: ContactFormValues) => {
+  const handleSubmit = async (data: ContactFormValues) => {
+    if (!discordWebhookUrl) {
+      console.error('No Discord webhook URL provided');
+      toast({
+        title: "Configuration error",
+        description: "Please contact the administrator.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
@@ -56,7 +68,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
       const discordMessage = {
         embeds: [
           {
-            title: "New Contact Form Submission",
+            title: `New Contact Form Submission: ${data.subject}`,
             color: 0x3291F8, // Blue color (accent color)
             fields: [
               {
@@ -71,8 +83,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
               },
               {
                 name: "Subject",
-                value: data.subject,
-                inline: false
+                value: data.subject
               },
               {
                 name: "Message",
@@ -86,7 +97,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
         ]
       };
       
-      // Send to Discord webhook using the provided URL
+      // Send to Discord webhook
       const webhookResponse = await fetch(discordWebhookUrl, {
         method: 'POST',
         headers: {
@@ -99,12 +110,22 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
         throw new Error('Failed to send to Discord webhook');
       }
       
+      // Show success message
       toast({
         title: "Message sent!",
-        description: "Thanks for reaching out! We'll contact you shortly.",
+        description: "We'll get back to you soon.",
       });
-      
+
+      // Reset form
       form.reset();
+      
+      // Call the onFormSubmit callback if provided
+      if (onFormSubmit) {
+        // Ensure we're at the top before navigation
+        window.scrollTo(0, 0);
+        onFormSubmit(data);
+      }
+      
     } catch (error) {
       console.error('Form submission error:', error);
       toast({
@@ -118,69 +139,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
   };
 
   return (
-    <Card className="border-0 shadow-lg">
-      <CardContent className="p-8">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="flex items-center gap-2">
-                      <User className="h-4 w-4 text-accent" />
-                      Your Name
-                    </FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="John Smith" 
-                        className="bg-secondary/20" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="flex items-center gap-2">
-                      <Mail className="h-4 w-4 text-accent" />
-                      Email Address
-                    </FormLabel>
-                    <FormControl>
-                      <Input 
-                        type="email"
-                        placeholder="you@example.com" 
-                        className="bg-secondary/20" 
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            
+    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/40 p-6 md:p-8 shadow-lg">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <FormField
               control={form.control}
-              name="subject"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-accent" />
-                    Subject
+                    <User className="h-4 w-4 text-accent" />
+                    Your Name
                   </FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="What's this about?" 
-                      className="bg-secondary/20" 
-                      {...field} 
-                    />
+                    <Input placeholder="John Smith" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -189,50 +162,68 @@ const ContactForm: React.FC<ContactFormProps> = ({ discordWebhookUrl }) => {
             
             <FormField
               control={form.control}
-              name="message"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-accent" />
-                    Your Message
+                    <Mail className="h-4 w-4 text-accent" />
+                    Email Address
                   </FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Tell us about your project or inquiry..."
-                      className="min-h-[120px] bg-secondary/20" 
-                      {...field} 
-                    />
+                    <Input type="email" placeholder="you@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
-            <div className="pt-2">
-              <Button 
-                type="submit" 
-                size="lg" 
-                className={cn(
-                  "w-full btn-hover font-medium tracking-wide",
-                  "bg-gradient-to-r from-accent to-accent/90",
-                  "shadow-lg shadow-accent/20"
-                )}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>Processing...</>
-                ) : (
-                  <>
-                    <Mail className="mr-2 h-4 w-4" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </div>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+          </div>
+          
+          <FormField
+            control={form.control}
+            name="subject"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Subject</FormLabel>
+                <FormControl>
+                  <Input placeholder="How can we help you?" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-accent" />
+                  Your Message
+                </FormLabel>
+                <FormControl>
+                  <Textarea 
+                    placeholder="Tell us more details about your project or question..." 
+                    className="min-h-[150px]" 
+                    {...field} 
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <Button 
+            type="submit"
+            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-sm"
+            size="lg"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 

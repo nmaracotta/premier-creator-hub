@@ -19,7 +19,8 @@ const ContactPage: React.FC = () => {
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
     
-    // Navigate to the calendar booking page
+    // Navigate to the calendar booking page without any scrolling
+    window.scrollTo(0, 0); // Ensure we're at the top of the page
     navigate('/booking/calendar');
     
     // Provide feedback to user
@@ -27,6 +28,14 @@ const ContactPage: React.FC = () => {
       title: "Redirecting to booking calendar",
       description: "Choose a time that works for your strategy call.",
     });
+  };
+
+  // Handle form submission and immediate redirection
+  const handleFormSubmit = (data: any) => {
+    console.log("Form submitted, redirecting to calendar");
+    // Explicitly scroll to top before navigation
+    window.scrollTo(0, 0);
+    navigate('/booking/calendar');
   };
 
   return (
@@ -128,7 +137,7 @@ const ContactPage: React.FC = () => {
               
               <div className="lg:col-span-3">
                 <MotionWrapper animation="fade-in-up" delay={300}>
-                  <ContactForm discordWebhookUrl={DISCORD_WEBHOOK} />
+                  <ContactForm discordWebhookUrl={DISCORD_WEBHOOK} onFormSubmit={handleFormSubmit} />
                 </MotionWrapper>
               </div>
             </div>
