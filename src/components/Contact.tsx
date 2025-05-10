@@ -113,17 +113,11 @@ const Contact: React.FC = () => {
       
       form.reset();
       
-      // First force scroll to top with immediate effect
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'auto'  // Use 'auto' instead of 'smooth' for immediate effect
-      });
+      // Set a session storage flag to indicate scroll to top is needed
+      sessionStorage.setItem('needsScrollReset', 'true');
       
-      // Then use a short timeout before navigation to ensure scroll is complete
-      setTimeout(() => {
-        navigate('/booking/calendar');
-      }, 10);
+      // Navigate to calendar page
+      navigate('/booking/calendar');
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -139,17 +133,11 @@ const Contact: React.FC = () => {
 
   // Direct call booking without form submission
   const handleDirectBooking = () => {
-    // Force scroll to top with immediate effect
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
-    });
+    // Set a session storage flag to indicate scroll to top is needed
+    sessionStorage.setItem('needsScrollReset', 'true');
     
-    // Short timeout to ensure scroll completes before navigation
-    setTimeout(() => {
-      navigate('/booking/calendar');
-    }, 10);
+    // Navigate to calendar page
+    navigate('/booking/calendar');
   };
 
   return (

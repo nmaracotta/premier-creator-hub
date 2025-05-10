@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -22,8 +23,13 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // First thing: Force scroll to top with immediate effect, before any other code runs
-    window.scrollTo(0, 0);
+    // Check if we need to scroll to top (coming from another page)
+    if (sessionStorage.getItem('needsScrollReset') === 'true') {
+      // Force scroll to top with immediate effect
+      window.scrollTo(0, 0);
+      // Clear the flag
+      sessionStorage.removeItem('needsScrollReset');
+    }
     
     // Create and load the Calendly script
     const head = document.querySelector('head');
@@ -58,8 +64,8 @@ const CalendarPage: React.FC = () => {
                 description: "Your strategy call has been scheduled.",
               });
               
-              // Force scroll to top before redirection
-              window.scrollTo(0, 0);
+              // Set flag for next page navigation
+              sessionStorage.setItem('needsScrollReset', 'true');
               
               // Redirect to confirmation page after a brief delay
               setTimeout(() => {

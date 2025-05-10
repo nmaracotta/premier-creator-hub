@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -116,12 +117,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
       // Reset form
       form.reset();
       
-      // Critical: Ensure scroll to top immediately before any navigation
+      // Set flag for navigation
       if (onFormSubmit) {
-        // Force immediate scroll to top of the page
-        window.scrollTo(0, 0);
+        // Set a session storage flag to indicate scroll to top is needed
+        sessionStorage.setItem('needsScrollReset', 'true');
         
-        // Then call the onFormSubmit callback
+        // Call the onFormSubmit callback
         onFormSubmit(data);
       }
       
