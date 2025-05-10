@@ -22,17 +22,11 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Only scroll to top if not coming from the home page form
-    if (!sessionStorage.getItem('scrollPositionBeforeBooking')) {
-      window.scrollTo(0, 0);
-      console.log('CalendarPage: Scrolled to top');
-    } else {
-      console.log('CalendarPage: Preserving scroll position from form');
-      // Clear the flag since we've handled it
-      sessionStorage.removeItem('scrollPositionBeforeBooking');
-    }
+    // Always scroll to top when calendar page loads
+    window.scrollTo(0, 0);
+    console.log('CalendarPage: Scrolled to top');
     
-    // Check for the general scroll reset flag too
+    // Check for the flag and clear it
     if (sessionStorage.getItem('needsScrollReset') === 'true') {
       sessionStorage.removeItem('needsScrollReset');
       console.log('CalendarPage: Cleared needsScrollReset flag');
@@ -71,8 +65,11 @@ const CalendarPage: React.FC = () => {
                 description: "Your strategy call has been scheduled.",
               });
               
-              // Navigate to confirmation page without scroll reset
-              navigate('/booking/confirmation', { preventScrollReset: true });
+              // Set flag for next page navigation
+              sessionStorage.setItem('needsScrollReset', 'true');
+              
+              // Navigate to confirmation page
+              navigate('/booking/confirmation');
             }
           }
         });
