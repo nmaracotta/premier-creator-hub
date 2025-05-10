@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -23,23 +22,16 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Using requestAnimationFrame for more reliable scrolling
-    requestAnimationFrame(() => {
-      // Force immediate scroll to top on component mount - most reliable approach
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
-      });
-      
-      console.log('CalendarPage: Forced scroll to top');
-    });
+    // Simple direct scroll approach - no animations that could cause zoom
+    window.scrollTo(0, 0);
     
-    // Also check for the flag (backup approach)
+    console.log('CalendarPage: Scrolled to top');
+    
+    // Check for the flag
     if (sessionStorage.getItem('needsScrollReset') === 'true') {
       // Clear the flag
       sessionStorage.removeItem('needsScrollReset');
-      console.log('CalendarPage: Detected and cleared needsScrollReset flag');
+      console.log('CalendarPage: Cleared needsScrollReset flag');
     }
     
     // Create and load the Calendly script

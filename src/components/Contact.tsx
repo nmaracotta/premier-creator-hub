@@ -114,17 +114,13 @@ const Contact: React.FC = () => {
       form.reset();
       
       // Set a session storage flag to indicate scroll to top is needed
-      // IMPORTANT: This ensures CalendarPage will scroll to top
       sessionStorage.setItem('needsScrollReset', 'true');
       
-      // Force scroll to top before navigation - critical addition
+      // Simple direct scroll with no params that could cause zoom
       window.scrollTo(0, 0);
       
-      // Add a small delay before navigation to ensure scroll takes effect
-      setTimeout(() => {
-        // Navigate to calendar page
-        navigate('/booking/calendar');
-      }, 100);
+      // Navigate without delay
+      navigate('/booking/calendar');
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -143,14 +139,11 @@ const Contact: React.FC = () => {
     // Set a session storage flag to indicate scroll to top is needed
     sessionStorage.setItem('needsScrollReset', 'true');
     
-    // Force scroll to top before navigation - critical addition
+    // Simple direct scroll with no params that could cause zoom
     window.scrollTo(0, 0);
     
-    // Add a small delay before navigation to ensure scroll takes effect
-    setTimeout(() => {
-      // Navigate to calendar page
-      navigate('/booking/calendar');
-    }, 100);
+    // Navigate without delay
+    navigate('/booking/calendar');
   };
 
   return (
