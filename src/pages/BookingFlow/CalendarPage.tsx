@@ -23,6 +23,13 @@ const CalendarPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Ensure page is at the top when component loads
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+    
     // Create and load the Calendly script
     const head = document.querySelector('head');
     const script = document.createElement('script');
@@ -56,10 +63,17 @@ const CalendarPage: React.FC = () => {
                 description: "Your strategy call has been scheduled.",
               });
               
-              // Redirect to confirmation page
+              // Force scroll to top before redirection
+              window.scrollTo({
+                top: 0,
+                left: 0, 
+                behavior: 'auto'
+              });
+              
+              // Redirect to confirmation page after a brief delay
               setTimeout(() => {
                 navigate('/booking/confirmation');
-              }, 1500);
+              }, 10);
             }
           }
         });

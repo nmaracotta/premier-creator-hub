@@ -113,10 +113,17 @@ const Contact: React.FC = () => {
       
       form.reset();
       
-      // Immediately redirect to calendar page without waiting for Discord
-      // First scroll to top to avoid being stuck at bottom
-      window.scrollTo(0, 0);
-      navigate('/booking/calendar');
+      // First force scroll to top with immediate effect
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto'  // Use 'auto' instead of 'smooth' for immediate effect
+      });
+      
+      // Then use a short timeout before navigation to ensure scroll is complete
+      setTimeout(() => {
+        navigate('/booking/calendar');
+      }, 10);
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -132,9 +139,17 @@ const Contact: React.FC = () => {
 
   // Direct call booking without form submission
   const handleDirectBooking = () => {
-    // Ensure we're at the top before navigation
-    window.scrollTo(0, 0);
-    navigate('/booking/calendar');
+    // Force scroll to top with immediate effect
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+    
+    // Short timeout to ensure scroll completes before navigation
+    setTimeout(() => {
+      navigate('/booking/calendar');
+    }, 10);
   };
 
   return (

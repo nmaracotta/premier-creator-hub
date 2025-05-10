@@ -19,9 +19,17 @@ const ContactPage: React.FC = () => {
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
     
-    // Navigate to the calendar booking page without any scrolling
-    window.scrollTo(0, 0); // Ensure we're at the top of the page
-    navigate('/booking/calendar');
+    // Force scroll to top with immediate effect
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
+    });
+    
+    // Short timeout to ensure scroll completes before navigation
+    setTimeout(() => {
+      navigate('/booking/calendar');
+    }, 10);
     
     // Provide feedback to user
     toast({
@@ -31,11 +39,20 @@ const ContactPage: React.FC = () => {
   };
 
   // Handle form submission and immediate redirection
-  const handleFormSubmit = (data: any) => {
+  const handleFormSubmit = () => {
     console.log("Form submitted, redirecting to calendar");
-    // Explicitly scroll to top before navigation
-    window.scrollTo(0, 0);
-    navigate('/booking/calendar');
+    
+    // Force scroll to top with immediate effect
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
+    });
+    
+    // Small timeout to ensure scroll completes before navigation
+    setTimeout(() => {
+      navigate('/booking/calendar');
+    }, 10);
   };
 
   return (

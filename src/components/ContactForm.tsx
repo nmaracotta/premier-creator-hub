@@ -97,18 +97,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
         ]
       };
       
-      // Send to Discord webhook
-      const webhookResponse = await fetch(discordWebhookUrl, {
+      // Make the Discord webhook call async without waiting for it
+      fetch(discordWebhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(discordMessage),
+      }).catch(error => {
+        console.error('Failed to send to Discord webhook:', error);
       });
-      
-      if (!webhookResponse.ok) {
-        throw new Error('Failed to send to Discord webhook');
-      }
       
       // Show success message
       toast({
@@ -119,11 +117,18 @@ const ContactForm: React.FC<ContactFormProps> = ({
       // Reset form
       form.reset();
       
-      // Call the onFormSubmit callback if provided
+      // First scroll to top and then call the onFormSubmit callback if provided
       if (onFormSubmit) {
-        // Ensure we're at the top before navigation
-        window.scrollTo(0, 0);
-        onFormSubmit(data);
+        // Force scroll to top before any navigation happens
+        window.scrollTo({
+          top: 0,
+          behavior: 'auto' // Use 'auto' instead of 'smooth' for immediate effect
+        });
+        
+        // Short timeout to ensure scroll happens before navigation
+        setTimeout(() => {
+          onFormSubmit(data);
+        }, 10);
       }
       
     } catch (error) {
