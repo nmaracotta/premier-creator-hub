@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
-import { Calendar, Mail, User, Users } from 'lucide-react';
+import { Calendar, Mail, User, Send } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),
@@ -119,7 +119,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       
       // Set flag for navigation
       if (onFormSubmit) {
-        // Set a session storage flag to indicate scroll to top is needed
+        // Set a session storage flag to indicate scroll reset is needed
         sessionStorage.setItem('needsScrollReset', 'true');
         
         // Call the onFormSubmit callback
@@ -139,23 +139,27 @@ const ContactForm: React.FC<ContactFormProps> = ({
   };
 
   return (
-    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/40 p-6 md:p-8 shadow-lg">
+    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/40 p-4 md:p-8 shadow-lg">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2">
+                  <FormLabel className="flex items-center gap-2 text-base md:text-sm">
                     <User className="h-4 w-4 text-accent" />
                     Your Name
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="John Smith" {...field} />
+                    <Input 
+                      placeholder="John Smith" 
+                      className="h-12 md:h-10 text-base md:text-sm rounded-lg" 
+                      {...field} 
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-sm" />
                 </FormItem>
               )}
             />
@@ -165,14 +169,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2">
+                  <FormLabel className="flex items-center gap-2 text-base md:text-sm">
                     <Mail className="h-4 w-4 text-accent" />
                     Email Address
                   </FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="you@example.com" {...field} />
+                    <Input 
+                      type="email" 
+                      placeholder="you@example.com" 
+                      className="h-12 md:h-10 text-base md:text-sm rounded-lg" 
+                      {...field} 
+                    />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-sm" />
                 </FormItem>
               )}
             />
@@ -183,11 +192,18 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Subject</FormLabel>
+                <FormLabel className="flex items-center gap-2 text-base md:text-sm">
+                  <Calendar className="h-4 w-4 text-accent" />
+                  Subject
+                </FormLabel>
                 <FormControl>
-                  <Input placeholder="How can we help you?" {...field} />
+                  <Input 
+                    placeholder="How can we help you?" 
+                    className="h-12 md:h-10 text-base md:text-sm rounded-lg" 
+                    {...field} 
+                  />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-sm" />
               </FormItem>
             )}
           />
@@ -197,29 +213,33 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2">
+                <FormLabel className="flex items-center gap-2 text-base md:text-sm">
                   <Calendar className="h-4 w-4 text-accent" />
                   Your Message
                 </FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Tell us more details about your project or question..." 
-                    className="min-h-[150px]" 
+                    className="min-h-[120px] md:min-h-[150px] text-base md:text-sm p-4 rounded-lg resize-none" 
                     {...field} 
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-sm" />
               </FormItem>
             )}
           />
           
           <Button 
             type="submit"
-            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-sm"
-            size="lg"
+            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-sm h-12 md:h-10 text-base md:text-sm px-6 md:px-8 rounded-lg"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'Sending...' : (
+              <>
+                <Send className="mr-2 h-4 w-4" />
+                Send Message
+              </>
+            )}
           </Button>
         </form>
       </Form>
