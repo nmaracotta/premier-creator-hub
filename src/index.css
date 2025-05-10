@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -119,18 +120,6 @@
   * {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-  }
-  
-  /* Improve input touch targets on mobile */
-  @media (max-width: 640px) {
-    input, textarea, select, button {
-      font-size: 16px !important; /* Prevents iOS zoom on focus */
-    }
-    
-    .form-label {
-      margin-bottom: 0.5rem;
-      display: block;
-    }
   }
 }
 
@@ -345,25 +334,6 @@
   
   .mobile-padding {
     @apply px-4 py-6 !important;
-  }
-  
-  /* Enhanced form styling for mobile */
-  input, textarea, select {
-    @apply py-3 px-4 !important;
-  }
-  
-  .form-control {
-    @apply mb-4 !important;
-  }
-  
-  /* Improve tap targets */
-  button, a {
-    @apply min-h-12 min-w-12 !important;
-  }
-  
-  /* Fix spacing on mobile */
-  .space-y-4 > * + * {
-    @apply mt-5 !important;
   }
 }
 
