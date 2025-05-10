@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isMobile = useIsMobile();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +51,18 @@ const Navbar: React.FC = () => {
     { name: "Contact", path: "#contact" },
   ];
 
+  // Handle navigation based on current page
+  const handleNavigation = (path: string) => {
+    if (isHomePage) {
+      // If on home page, use anchor navigation
+      window.location.href = path;
+    } else {
+      // If on another page, navigate to home with anchor
+      window.location.href = '/' + path;
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <header
@@ -64,22 +77,20 @@ const Navbar: React.FC = () => {
 
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.path}
+                  onClick={() => handleNavigation(item.path)}
                   className={cn(
-                    "underline-animation text-sm md:text-base font-medium transition-colors hover:text-accent"
+                    "underline-animation text-sm md:text-base font-medium transition-colors hover:text-accent bg-transparent border-none cursor-pointer"
                   )}
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </nav>
 
-            <Button className="hidden md:inline-flex btn-hover text-sm py-5 px-6" size="default" asChild>
-              <a href="#contact">
-                Get Started
-              </a>
+            <Button className="hidden md:inline-flex btn-hover text-sm py-5 px-6" size="default" onClick={() => handleNavigation("#contact")}>
+              Get Started
             </Button>
 
             <button
@@ -109,22 +120,19 @@ const Navbar: React.FC = () => {
 
           <nav className="flex flex-col space-y-6 text-center">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.path}
-                className="text-lg font-medium transition-colors hover:text-accent"
-                onClick={() => setIsMenuOpen(false)}
+                className="text-lg font-medium transition-colors hover:text-accent bg-transparent border-none cursor-pointer"
+                onClick={() => handleNavigation(item.path)}
               >
                 {item.name}
-              </a>
+              </button>
             ))}
           </nav>
 
           <div className="mt-auto pt-8 flex flex-col gap-4">
-            <Button className="w-full btn-hover py-5 text-base" size="default" asChild>
-              <a href="#contact" onClick={() => setIsMenuOpen(false)}>
-                Book Your Free Call
-              </a>
+            <Button className="w-full btn-hover py-5 text-base" size="default" onClick={() => handleNavigation("#contact")}>
+              Book Your Free Call
             </Button>
           </div>
         </div>
