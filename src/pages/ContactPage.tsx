@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -122,12 +123,12 @@ const ContactPage: React.FC = () => {
                     
                     <div className="flex items-center text-accent">
                       <MapPin className="w-5 h-5 mr-3 opacity-70" />
-                      <span className="font-medium">Los Angeles, California</span>
+                      <span className="font-medium">Minneapolis, Minnesota</span>
                     </div>
                     
                     <div className="flex items-center text-accent">
                       <Clock className="w-5 h-5 mr-3 opacity-70" />
-                      <span className="font-medium">Mon-Fri: 9AM-5PM PST</span>
+                      <span className="font-medium">Mon-Fri: 9AM-5PM CST</span>
                     </div>
                   </div>
                   

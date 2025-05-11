@@ -151,12 +151,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <User className="h-4 w-4 text-accent" />
+                  <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
+                    <User className="h-5 w-5 text-accent" />
                     Your Name
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="John Smith" {...field} />
+                    <Input 
+                      placeholder="John Smith" 
+                      className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                      {...field} 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -168,12 +172,17 @@ const ContactForm: React.FC<ContactFormProps> = ({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-accent" />
+                  <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
+                    <Mail className="h-5 w-5 text-accent" />
                     Email Address
                   </FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="you@example.com" {...field} />
+                    <Input 
+                      type="email" 
+                      placeholder="you@example.com" 
+                      className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                      {...field} 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -186,9 +195,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Subject</FormLabel>
+                <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
+                  <Users className="h-5 w-5 text-accent" />
+                  Subject
+                </FormLabel>
                 <FormControl>
-                  <Input placeholder="How can we help you?" {...field} />
+                  <Input 
+                    placeholder="How can we help you?" 
+                    className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                    {...field} 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -200,14 +216,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-accent" />
+                <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
+                  <Calendar className="h-5 w-5 text-accent" />
                   Your Message
                 </FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Tell us more details about your project or question..." 
-                    className="min-h-[150px]" 
+                    className="min-h-[150px] bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent text-base" 
                     {...field} 
                   />
                 </FormControl>
@@ -218,7 +234,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           
           <Button 
             type="submit"
-            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-sm"
+            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-sm text-lg h-12 px-6"
             size="lg"
             disabled={isSubmitting}
           >
