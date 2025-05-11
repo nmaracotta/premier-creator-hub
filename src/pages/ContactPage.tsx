@@ -74,7 +74,7 @@ const ContactPage: React.FC = () => {
                   Ready to build a thriving creator community? Schedule a consultation with our expert team and discover how we can turn your vision into a profitable subscription business.
                 </p>
                 <Button 
-                  className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white" 
+                  className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white font-medium rounded-md hover:translate-y-[-2px] transition-all duration-300" 
                   size="lg"
                   onClick={handleScheduleCall}
                 >
@@ -116,26 +116,26 @@ const ContactPage: React.FC = () => {
                   </p>
                   
                   <div className="space-y-6 mt-10">
-                    <div className="flex items-center text-accent">
-                      <Mail className="w-5 h-5 mr-3 opacity-70" />
+                    <div className="flex items-center group hover:text-accent transition-colors">
+                      <Mail className="w-5 h-5 mr-3 text-accent" />
                       <span className="font-medium">support@premiercreator.com</span>
                     </div>
                     
-                    <div className="flex items-center text-accent">
-                      <MapPin className="w-5 h-5 mr-3 opacity-70" />
+                    <div className="flex items-center group hover:text-accent transition-colors">
+                      <MapPin className="w-5 h-5 mr-3 text-accent" />
                       <span className="font-medium">Minneapolis, Minnesota</span>
                     </div>
                     
-                    <div className="flex items-center text-accent">
-                      <Clock className="w-5 h-5 mr-3 opacity-70" />
+                    <div className="flex items-center group hover:text-accent transition-colors">
+                      <Clock className="w-5 h-5 mr-3 text-accent" />
                       <span className="font-medium">Mon-Fri: 9AM-5PM CST</span>
                     </div>
                   </div>
                   
-                  <div className="mt-10">
+                  <div className="mt-12">
                     <Button 
                       variant="outline"
-                      className="group border-accent/30 hover:bg-accent/5"
+                      className="group border-accent/30 hover:bg-accent hover:text-white transition-all duration-300"
                       onClick={handleScheduleCall}
                     >
                       <CalendarDays className="w-4 h-4 mr-2" />

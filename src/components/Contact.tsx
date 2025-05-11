@@ -156,11 +156,11 @@ const Contact: React.FC = () => {
       <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
           <div className="text-center mb-14">
-            <p className="tag bg-accent/10 text-accent mb-4 inline-flex items-center">
-              <Calendar className="mr-1 h-3 w-3" />
+            <p className="tag bg-accent/10 text-accent mb-4 inline-flex items-center px-4 py-1.5 rounded-full">
+              <Calendar className="mr-2 h-4 w-4" />
               Unlock Your Revenue Potential
             </p>
-            <h2 className="h2 mb-4">Get Your Custom Monetization Blueprint</h2>
+            <h2 className="h2 mb-5">Get Your Custom Monetization Blueprint</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Join our expert strategists for a complimentary 30-minute consultation where we'll analyze your unique audience and create a 
               tailored plan to generate <span className="text-accent font-medium">$10K+ monthly recurring revenue</span> from your existing content and following.
@@ -169,8 +169,8 @@ const Contact: React.FC = () => {
         </MotionWrapper>
 
         <div className="max-w-2xl mx-auto">
-          <Card className="border shadow-lg bg-white/70 backdrop-blur-sm dark:bg-black/20">
-            <CardContent className="p-8">
+          <Card className="border shadow-lg bg-white/70 backdrop-blur-sm dark:bg-black/20 overflow-hidden rounded-xl">
+            <CardContent className="p-7 md:p-9">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -179,18 +179,18 @@ const Contact: React.FC = () => {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
-                            <User className="h-5 w-5 text-accent" />
+                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
+                            <User className="h-4 w-4 text-accent" />
                             Your Name
                           </FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="John Smith" 
-                              className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="mt-2" />
                         </FormItem>
                       )}
                     />
@@ -199,19 +199,19 @@ const Contact: React.FC = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
-                            <Mail className="h-5 w-5 text-accent" />
+                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
+                            <Mail className="h-4 w-4 text-accent" />
                             Email Address
                           </FormLabel>
                           <FormControl>
                             <Input 
                               type="email"
                               placeholder="you@example.com" 
-                              className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="mt-2" />
                         </FormItem>
                       )}
                     />
@@ -223,18 +223,18 @@ const Contact: React.FC = () => {
                       name="socialMedia"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
-                            <Users className="h-5 w-5 text-accent" />
+                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
+                            <Users className="h-4 w-4 text-accent" />
                             Your Social Platform
                           </FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="@yourusername" 
-                              className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="mt-2" />
                         </FormItem>
                       )}
                     />
@@ -243,18 +243,18 @@ const Contact: React.FC = () => {
                       name="audienceSize"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
-                            <Users className="h-5 w-5 text-accent" />
+                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
+                            <Users className="h-4 w-4 text-accent" />
                             Current Audience Size
                           </FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="e.g. 5K, 10K, 50K+" 
-                              className="bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent h-12 text-base" 
+                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="mt-2" />
                         </FormItem>
                       )}
                     />
@@ -265,30 +265,30 @@ const Contact: React.FC = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium">
-                          <Calendar className="h-5 w-5 text-accent" />
+                        <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
+                          <Calendar className="h-4 w-4 text-accent" />
                           What's your biggest monetization challenge right now?
                         </FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Tell us about your goals and challenges..."
-                            className="min-h-[120px] bg-white bg-opacity-80 backdrop-blur-sm border-secondary-foreground/10 shadow-sm focus:border-accent text-base" 
+                            className="min-h-[160px] bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent text-base resize-none shadow-sm rounded-md transition-all p-4" 
                             {...field} 
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="mt-2" />
                       </FormItem>
                     )}
                   />
                   
-                  <div className="pt-2">
+                  <div className="pt-3">
                     <Button 
                       type="submit" 
                       size="lg" 
                       className={cn(
-                        "w-full btn-hover font-medium tracking-wide text-lg h-14",
+                        "w-full btn-hover font-medium tracking-wide text-lg h-14 px-10",
                         "bg-gradient-to-r from-accent to-accent/90",
-                        "shadow-lg shadow-accent/20"
+                        "shadow-lg shadow-accent/20 rounded-md hover:translate-y-[-2px] transition-all duration-300"
                       )}
                       disabled={isSubmitting}
                     >
@@ -303,11 +303,11 @@ const Contact: React.FC = () => {
                     </Button>
                   </div>
                   
-                  <div className="text-center pt-4">
+                  <div className="text-center pt-3">
                     <button 
                       type="button" 
                       onClick={handleDirectBooking}
-                      className="text-accent underline-animation text-sm"
+                      className="text-muted-foreground/70 hover:text-accent transition-colors text-sm mt-2"
                     >
                       Skip form and schedule directly
                     </button>
