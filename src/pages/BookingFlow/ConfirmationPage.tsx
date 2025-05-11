@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar, Check, Star } from 'lucide-react';
@@ -129,21 +130,7 @@ const ConfirmationPage: React.FC = () => {
             </div>
           </MotionWrapper>
           
-          {/* Video section */}
-          <MotionWrapper animation="fade-in-up" delay={200} className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <Card className="overflow-hidden border-0 shadow-lg">
-              <div className="aspect-w-16 aspect-h-9 bg-accent/10 flex items-center justify-center p-6 md:p-8 text-center">
-                <div>
-                  <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">Welcome Message from Our Team</h3>
-                  <p className="text-sm md:text-base text-muted-foreground">
-                    A personalized welcome video would appear here, explaining what to expect in your upcoming strategy call.
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </MotionWrapper>
-          
-          {/* Testimonials */}
+          {/* Testimonials section - removed the welcome message video section */}
           <section className="py-10 md:py-16 bg-gradient-to-b from-background to-secondary/5 rounded-2xl mb-8 md:mb-12">
             <div className="container-custom">
               <MotionWrapper animation="fade-in-up">
