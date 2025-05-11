@@ -122,6 +122,9 @@ const ContactForm: React.FC<ContactFormProps> = ({
         // Set a session storage flag to indicate scroll to top is needed
         sessionStorage.setItem('needsScrollReset', 'true');
         
+        // Set a flag to indicate we should auto-scroll to the calendar
+        sessionStorage.setItem('scrollToCalendar', 'true');
+        
         // Call the onFormSubmit callback
         onFormSubmit(data);
       }

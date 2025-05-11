@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -22,6 +21,9 @@ const ContactPage: React.FC = () => {
     // Set a session storage flag to indicate scroll to top is needed
     sessionStorage.setItem('needsScrollReset', 'true');
     
+    // Set a flag to indicate we should auto-scroll to the calendar
+    sessionStorage.setItem('scrollToCalendar', 'true');
+    
     // Provide feedback to user
     toast({
       title: "Redirecting to booking calendar",
@@ -38,6 +40,9 @@ const ContactPage: React.FC = () => {
     
     // Set a session storage flag to indicate scroll to top is needed
     sessionStorage.setItem('needsScrollReset', 'true');
+    
+    // Set a flag to indicate we should auto-scroll to the calendar
+    sessionStorage.setItem('scrollToCalendar', 'true');
     
     // Navigate to calendar page
     navigate('/booking/calendar');

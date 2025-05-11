@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -20,10 +21,14 @@ const CalendarPage: React.FC = () => {
   const { toast } = useToast();
   const isMobile = useIsMobile();
   const [isLoading, setIsLoading] = useState(true);
+  const calendarRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Always scroll to top when calendar page loads
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     console.log('CalendarPage: Scrolled to top');
     
     // Check for the flag and clear it
@@ -31,7 +36,7 @@ const CalendarPage: React.FC = () => {
       sessionStorage.removeItem('needsScrollReset');
       console.log('CalendarPage: Cleared needsScrollReset flag');
     }
-    
+
     // Create and load the Calendly script
     const head = document.querySelector('head');
     const script = document.createElement('script');
@@ -73,6 +78,22 @@ const CalendarPage: React.FC = () => {
             }
           }
         });
+
+        // Check if we need to scroll to the calendar widget
+        if (sessionStorage.getItem('scrollToCalendar') === 'true') {
+          // Give a small delay to ensure calendar is loaded
+          setTimeout(() => {
+            if (calendarRef.current) {
+              calendarRef.current.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+              console.log('CalendarPage: Scrolled to calendar widget');
+            }
+            // Clear the flag
+            sessionStorage.removeItem('scrollToCalendar');
+          }, 500);
+        }
       }
     };
     
@@ -84,6 +105,9 @@ const CalendarPage: React.FC = () => {
       
       // Remove event listener
       window.removeEventListener('message', () => {});
+      
+      // Clear the flag if we navigate away
+      sessionStorage.removeItem('scrollToCalendar');
     };
   }, [navigate, toast]);
 
@@ -108,7 +132,10 @@ const CalendarPage: React.FC = () => {
           </MotionWrapper>
           
           <MotionWrapper animation="fade-in-up" delay={200} className="max-w-5xl mx-auto">
-            <div className="bg-card border rounded-xl shadow-lg overflow-hidden">
+            <div 
+              ref={calendarRef} 
+              className="bg-card border rounded-xl shadow-lg overflow-hidden scroll-mt-24"
+            >
               {isLoading && (
                 <div className="flex items-center justify-center p-8" style={{ height: isMobile ? '500px' : '650px' }}>
                   <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
