@@ -10,6 +10,9 @@ import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import CalendarPage from "./pages/BookingFlow/CalendarPage";
 import ConfirmationPage from "./pages/BookingFlow/ConfirmationPage";
+import PrivacyPolicyPage from "./pages/PolicyPages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/PolicyPages/TermsOfServicePage";
+import CookiePolicyPage from "./pages/PolicyPages/CookiePolicyPage";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/booking/calendar" element={<CalendarPage />} />
           <Route path="/booking/confirmation" element={<ConfirmationPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

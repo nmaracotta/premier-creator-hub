@@ -96,9 +96,9 @@ const Footer: React.FC = () => {
             <span>{year} Premier Creator. All rights reserved.</span>
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-accent">Privacy Policy</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-accent">Terms of Service</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-accent">Cookie Policy</a>
+            <Link to="/privacy-policy" className="text-sm text-muted-foreground hover:text-accent">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-sm text-muted-foreground hover:text-accent">Terms of Service</Link>
+            <Link to="/cookie-policy" className="text-sm text-muted-foreground hover:text-accent">Cookie Policy</Link>
           </div>
         </div>
       </div>
