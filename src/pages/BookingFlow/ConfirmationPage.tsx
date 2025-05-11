@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar, Check, Star } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
@@ -32,6 +31,37 @@ const testimonials = [
 
 const ConfirmationPage: React.FC = () => {
   const isMobile = useIsMobile();
+  const contentRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Scroll to top when confirmation page loads
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    console.log('ConfirmationPage: Scrolled to top');
+    
+    // Check for the confirmation scroll flag
+    if (sessionStorage.getItem('confirmationScrollTop') === 'true') {
+      // Give a small delay to ensure the content is rendered
+      setTimeout(() => {
+        if (contentRef.current) {
+          contentRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          console.log('ConfirmationPage: Scrolled to content section');
+        }
+        // Clear the flag
+        sessionStorage.removeItem('confirmationScrollTop');
+      }, 300);
+    }
+    
+    return () => {
+      // Clean up by removing any potential flags when leaving
+      sessionStorage.removeItem('confirmationScrollTop');
+    };
+  }, []);
   
   const addToGoogleCalendar = () => {
     window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Strategy Call with Premier Creator&details=Get ready for your personalized creator strategy call. We'll review your brand and prepare a customized monetization plan.&dates=20240510T160000Z/20240510T170000Z", "_blank");
@@ -52,7 +82,7 @@ const ConfirmationPage: React.FC = () => {
       <main className="flex-grow pt-16 md:pt-24 pb-12 md:pb-16">
         <div className="container-custom">
           <MotionWrapper animation="fade-in-up">
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12">
+            <div ref={contentRef} className="text-center max-w-4xl mx-auto mb-8 md:mb-12 scroll-mt-24">
               <div className="mx-auto mb-4 md:mb-6 flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-accent/10">
                 <div className="rounded-full bg-gradient-to-r from-accent to-accent/80 p-2 shadow-lg shadow-accent/20">
                   <Check className="h-6 w-6 md:h-8 md:w-8 text-white" />

@@ -70,8 +70,8 @@ const CalendarPage: React.FC = () => {
                 description: "Your strategy call has been scheduled.",
               });
               
-              // Set flag for next page navigation
-              sessionStorage.setItem('needsScrollReset', 'true');
+              // Set flag for scroll to top on confirmation page
+              sessionStorage.setItem('confirmationScrollTop', 'true');
               
               // Navigate to confirmation page
               navigate('/booking/confirmation');
