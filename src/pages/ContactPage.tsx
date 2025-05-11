@@ -7,7 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/ContactForm';
 import { useToast } from '@/hooks/use-toast';
-import { ChevronRight, Mail, ArrowRight, CalendarDays, MapPin, Clock } from 'lucide-react';
+import { ChevronRight, Mail, ArrowRight, CalendarDays, MapPin, Clock, Sparkles } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const ContactPage: React.FC = () => {
       <Navbar />
       <main className="pt-24">
         {/* Hero section with call to action button */}
-        <section className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-b from-background via-secondary/5 to-background">
+        <section className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-b from-background via-secondary/5 to-background">
           {/* Abstract geometric background elements */}
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
           <div className="absolute top-0 w-full h-1/2 bg-gradient-to-b from-accent/5 to-transparent opacity-50"></div>
@@ -65,21 +65,24 @@ const ContactPage: React.FC = () => {
             <MotionWrapper animation="fade-in-up">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <div className="mb-6 inline-flex items-center justify-center">
-                  <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5 rounded-full shadow-sm">Contact Us</p>
+                  <p className="tag bg-accent/10 text-accent font-medium px-4 py-1.5 rounded-full shadow-sm">
+                    <Sparkles className="mr-1.5 h-4 w-4 stroke-[1.5px]" /> 
+                    Contact Us
+                  </p>
                 </div>
                 <h1 className="h1 mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-accent">
                   Let's Transform Your <span className="text-accent font-bold">Creator Business</span>
                 </h1>
-                <p className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+                <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-2xl mx-auto">
                   Ready to build a thriving creator community? Schedule a consultation with our expert team and discover how we can turn your vision into a profitable subscription business.
                 </p>
                 <Button 
-                  className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white font-medium rounded-md hover:translate-y-[-2px] transition-all duration-300" 
+                  className="btn-hover shadow-xl shadow-accent/20 bg-gradient-to-r from-accent to-accent/80 text-white font-medium text-lg px-8 py-6 rounded-xl hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-accent/30 transition-all duration-300 transform hover:scale-[1.02]" 
                   size="lg"
                   onClick={handleScheduleCall}
                 >
                   Schedule a Strategy Consultation
-                  <ChevronRight className="w-4 h-4 ml-1" />
+                  <ChevronRight className="w-5 h-5 ml-1 stroke-[1.5px]" />
                 </Button>
               </div>
             </MotionWrapper>
@@ -87,9 +90,9 @@ const ContactPage: React.FC = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 md:py-32 relative overflow-hidden">
+        <section className="py-24 md:py-32 relative overflow-hidden">
           {/* Enhanced background elements */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-50/10 to-background"></div>
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-accent/5 to-transparent opacity-40"></div>
           <div className="absolute bottom-0 right-0 w-2/3 h-1/2 bg-gradient-to-tl from-accent/5 to-transparent opacity-30 rounded-full blur-3xl"></div>
           <div className="absolute top-1/3 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/10 to-transparent opacity-20 rounded-full blur-2xl"></div>
@@ -110,37 +113,37 @@ const ContactPage: React.FC = () => {
                   <h2 className="h2 mb-6 leading-tight">
                     Partner With <span className="text-accent">Experts</span> Who Understand Creators
                   </h2>
-                  <p className="text-muted-foreground text-lg mb-8">
+                  <p className="text-muted-foreground text-lg md:text-xl mb-10">
                     Fill out the form and our team will get back to you within 24 hours. 
                     We specialize in helping creators like you build profitable subscription communities.
                   </p>
                   
-                  <div className="space-y-6 mt-10">
+                  <div className="space-y-8 mt-12 px-6 py-8 bg-white/30 backdrop-blur-sm rounded-xl border border-accent/5 shadow-sm">
                     <div className="flex items-center group hover:text-accent transition-colors">
-                      <Mail className="w-5 h-5 mr-3 text-accent" />
-                      <span className="font-medium">support@premiercreator.com</span>
+                      <Mail className="w-6 h-6 mr-4 text-accent stroke-[1.5px]" />
+                      <span className="font-medium text-lg">support@premiercreator.com</span>
                     </div>
                     
                     <div className="flex items-center group hover:text-accent transition-colors">
-                      <MapPin className="w-5 h-5 mr-3 text-accent" />
-                      <span className="font-medium">Minneapolis, Minnesota</span>
+                      <MapPin className="w-6 h-6 mr-4 text-accent stroke-[1.5px]" />
+                      <span className="font-medium text-lg">Minneapolis, Minnesota</span>
                     </div>
                     
                     <div className="flex items-center group hover:text-accent transition-colors">
-                      <Clock className="w-5 h-5 mr-3 text-accent" />
-                      <span className="font-medium">Mon-Fri: 9AM-5PM CST</span>
+                      <Clock className="w-6 h-6 mr-4 text-accent stroke-[1.5px]" />
+                      <span className="font-medium text-lg">Mon-Fri: 9AM-5PM CST</span>
                     </div>
                   </div>
                   
                   <div className="mt-12">
                     <Button 
                       variant="outline"
-                      className="group border-accent/30 hover:bg-accent hover:text-white transition-all duration-300"
+                      className="group border-accent/30 hover:bg-accent hover:text-white transition-all duration-300 px-6 py-6 text-base rounded-xl"
                       onClick={handleScheduleCall}
                     >
-                      <CalendarDays className="w-4 h-4 mr-2" />
+                      <CalendarDays className="w-5 h-5 mr-2 stroke-[1.5px]" />
                       <span>Schedule a 30-minute strategy call</span>
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 stroke-[1.5px]" />
                     </Button>
                   </div>
                 </MotionWrapper>

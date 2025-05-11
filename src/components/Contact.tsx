@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Mail, User, Users } from 'lucide-react';
+import { Calendar, Mail, User, Users, MessageSquare, Sparkles } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
@@ -148,172 +148,182 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-background to-secondary/5 relative overflow-hidden">
+    <section id="contact" className="py-28 bg-gradient-to-b from-background via-blue-50/10 to-accent/5 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-accent/5 to-transparent opacity-50"></div>
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
       
       <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
-          <div className="text-center mb-14">
-            <p className="tag bg-accent/10 text-accent mb-4 inline-flex items-center px-4 py-1.5 rounded-full">
-              <Calendar className="mr-2 h-4 w-4" />
+          <div className="text-center mb-16">
+            <p className="tag bg-accent/10 text-accent mb-5 inline-flex items-center px-4 py-2 rounded-full">
+              <Sparkles className="mr-2 h-4 w-4 stroke-[1.5px]" />
               Unlock Your Revenue Potential
             </p>
-            <h2 className="h2 mb-5">Get Your Custom Monetization Blueprint</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            <h2 className="h2 mb-6 leading-tight">Get Your Custom Monetization Blueprint</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl">
               Join our expert strategists for a complimentary 30-minute consultation where we'll analyze your unique audience and create a 
               tailored plan to generate <span className="text-accent font-medium">$10K+ monthly recurring revenue</span> from your existing content and following.
             </p>
           </div>
         </MotionWrapper>
 
-        <div className="max-w-2xl mx-auto">
-          <Card className="border shadow-lg bg-white/70 backdrop-blur-sm dark:bg-black/20 overflow-hidden rounded-xl">
-            <CardContent className="p-7 md:p-9">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-3xl mx-auto">
+          <Card className="border-0 shadow-xl bg-gradient-to-br from-white via-blue-50/30 to-accent/5 backdrop-blur-sm dark:bg-black/20 overflow-hidden rounded-2xl">
+            <CardContent className="p-0">
+              {/* Progress indicator header */}
+              <div className="bg-accent/10 backdrop-blur-sm p-6 border-b border-accent/10">
+                <h3 className="text-xl md:text-2xl font-semibold text-foreground/90 flex items-center">
+                  <Calendar className="mr-3 h-5 w-5 text-accent stroke-[1.5px]" />
+                  Step 1: Tell Us About Your Business
+                </h3>
+              </div>
+            
+              <div className="p-8 md:p-10">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                              <User className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
+                              Your Name
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="John Smith" 
+                                className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage className="mt-2.5 ml-1" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                              <Mail className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
+                              Email Address
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                type="email"
+                                placeholder="you@example.com" 
+                                className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage className="mt-2.5 ml-1" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      <FormField
+                        control={form.control}
+                        name="socialMedia"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                              <Users className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
+                              Your Social Platform
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="@yourusername" 
+                                className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage className="mt-2.5 ml-1" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="audienceSize"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                              <Users className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
+                              Current Audience Size
+                            </FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="e.g. 5K, 10K, 50K+" 
+                                className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage className="mt-2.5 ml-1" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
                     <FormField
                       control={form.control}
-                      name="name"
+                      name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                            <User className="h-4 w-4 text-accent" />
-                            Your Name
+                          <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                            <MessageSquare className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
+                            What's your biggest monetization challenge right now?
                           </FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="John Smith" 
-                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
+                            <Textarea 
+                              placeholder="Tell us about your goals and challenges..."
+                              className="min-h-[180px] bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent text-base md:text-lg resize-none shadow-sm rounded-xl transition-all p-5" 
                               {...field} 
                             />
                           </FormControl>
-                          <FormMessage className="mt-2" />
+                          <FormMessage className="mt-2.5 ml-1" />
                         </FormItem>
                       )}
                     />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                            <Mail className="h-4 w-4 text-accent" />
-                            Email Address
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="email"
-                              placeholder="you@example.com" 
-                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage className="mt-2" />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="socialMedia"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                            <Users className="h-4 w-4 text-accent" />
-                            Your Social Platform
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="@yourusername" 
-                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage className="mt-2" />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="audienceSize"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                            <Users className="h-4 w-4 text-accent" />
-                            Current Audience Size
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="e.g. 5K, 10K, 50K+" 
-                              className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage className="mt-2" />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                          <Calendar className="h-4 w-4 text-accent" />
-                          What's your biggest monetization challenge right now?
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell us about your goals and challenges..."
-                            className="min-h-[160px] bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent text-base resize-none shadow-sm rounded-md transition-all p-4" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage className="mt-2" />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <div className="pt-3">
-                    <Button 
-                      type="submit" 
-                      size="lg" 
-                      className={cn(
-                        "w-full btn-hover font-medium tracking-wide text-lg h-14 px-10",
-                        "bg-gradient-to-r from-accent to-accent/90",
-                        "shadow-lg shadow-accent/20 rounded-md hover:translate-y-[-2px] transition-all duration-300"
-                      )}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>Processing your request...</>
-                      ) : (
-                        <>
-                          <Calendar className="mr-2 h-5 w-5" />
-                          Secure Your Free Strategy Session
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                  
-                  <div className="text-center pt-3">
-                    <button 
-                      type="button" 
-                      onClick={handleDirectBooking}
-                      className="text-muted-foreground/70 hover:text-accent transition-colors text-sm mt-2"
-                    >
-                      Skip form and schedule directly
-                    </button>
-                  </div>
-                </form>
-              </Form>
+                    
+                    <div className="pt-4">
+                      <Button 
+                        type="submit" 
+                        size="lg" 
+                        className={cn(
+                          "w-full btn-hover font-medium tracking-wide text-lg h-14 px-10",
+                          "bg-gradient-to-r from-accent to-accent/90",
+                          "shadow-lg shadow-accent/20 rounded-xl hover:translate-y-[-2px] hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 transform hover:scale-[1.02]"
+                        )}
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>Processing your request...</>
+                        ) : (
+                          <>
+                            <Calendar className="mr-2 h-5 w-5 stroke-[1.5px]" />
+                            Secure Your Free Strategy Session
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    
+                    <div className="text-center pt-2">
+                      <button 
+                        type="button" 
+                        onClick={handleDirectBooking}
+                        className="text-accent/70 hover:text-accent transition-colors text-sm mt-4 underline-animation"
+                      >
+                        Skip form and schedule directly
+                      </button>
+                    </div>
+                  </form>
+                </Form>
+              </div>
             </CardContent>
           </Card>
         </div>

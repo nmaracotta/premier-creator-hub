@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
-import { Calendar, Mail, User, Users } from 'lucide-react';
+import { Calendar, Mail, User, Users, MessageSquare } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),
@@ -142,27 +142,32 @@ const ContactForm: React.FC<ContactFormProps> = ({
   };
 
   return (
-    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/40 p-7 md:p-9 shadow-lg">
+    <div className="bg-gradient-to-br from-white via-blue-50/30 to-accent/5 backdrop-blur-sm rounded-2xl border border-white/60 p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+      <div className="mb-8 pb-6 border-b border-accent/10">
+        <h3 className="text-xl md:text-2xl font-semibold text-foreground/90 mb-2">Step 1: Tell us about you</h3>
+        <p className="text-muted-foreground text-base">We're excited to learn more about your project</p>
+      </div>
+      
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                    <User className="h-4 w-4 text-accent" />
+                  <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                    <User className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
                     Your Name
                   </FormLabel>
                   <FormControl>
                     <Input 
                       placeholder="John Smith" 
-                      className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
+                      className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
                       {...field} 
                     />
                   </FormControl>
-                  <FormMessage className="mt-2" />
+                  <FormMessage className="mt-2.5 ml-1" />
                 </FormItem>
               )}
             />
@@ -172,19 +177,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                    <Mail className="h-4 w-4 text-accent" />
+                  <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                    <Mail className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
                     Email Address
                   </FormLabel>
                   <FormControl>
                     <Input 
                       type="email" 
                       placeholder="you@example.com" 
-                      className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
+                      className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
                       {...field} 
                     />
                   </FormControl>
-                  <FormMessage className="mt-2" />
+                  <FormMessage className="mt-2.5 ml-1" />
                 </FormItem>
               )}
             />
@@ -195,18 +200,18 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                  <Users className="h-4 w-4 text-accent" />
+                <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                  <Users className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
                   Subject
                 </FormLabel>
                 <FormControl>
                   <Input 
                     placeholder="How can we help you?" 
-                    className="bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent h-12 text-base shadow-sm rounded-md transition-all" 
+                    className="bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent h-14 text-base md:text-lg shadow-sm rounded-xl transition-all px-5" 
                     {...field} 
                   />
                 </FormControl>
-                <FormMessage className="mt-2" />
+                <FormMessage className="mt-2.5 ml-1" />
               </FormItem>
             )}
           />
@@ -216,30 +221,32 @@ const ContactForm: React.FC<ContactFormProps> = ({
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2 text-foreground/90 font-medium mb-2">
-                  <Calendar className="h-4 w-4 text-accent" />
+                <FormLabel className="flex items-center gap-2.5 text-foreground/80 font-medium mb-2.5 text-[15px]">
+                  <MessageSquare className="h-[18px] w-[18px] text-accent stroke-[1.5px]" />
                   Your Message
                 </FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Tell us more details about your project or question..." 
-                    className="min-h-[160px] bg-white bg-opacity-90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-0 focus-visible:border-accent text-base resize-none shadow-sm rounded-md transition-all p-4" 
+                    className="min-h-[180px] bg-white/90 backdrop-blur-sm border-secondary-foreground/10 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:border-accent text-base md:text-lg resize-none shadow-sm rounded-xl transition-all p-5" 
                     {...field} 
                   />
                 </FormControl>
-                <FormMessage className="mt-2" />
+                <FormMessage className="mt-2.5 ml-1" />
               </FormItem>
             )}
           />
           
-          <Button 
-            type="submit"
-            className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-lg shadow-accent/20 text-white font-medium text-lg h-14 px-8 rounded-md hover:translate-y-[-2px] transition-all duration-300"
-            size="lg"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </Button>
+          <div className="pt-4">
+            <Button 
+              type="submit"
+              className="w-full sm:w-auto bg-gradient-to-r from-accent to-accent/90 shadow-lg shadow-accent/20 text-white font-medium text-lg h-14 px-8 rounded-xl hover:translate-y-[-2px] hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 transform hover:scale-[1.02]"
+              size="lg"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
