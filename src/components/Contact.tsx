@@ -20,6 +20,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),
@@ -38,6 +39,7 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
@@ -295,7 +297,7 @@ const Contact: React.FC = () => {
                         type="submit" 
                         size="lg" 
                         className={cn(
-                          "w-full btn-hover font-medium tracking-wide text-lg h-14 px-10",
+                          "w-full btn-hover font-medium tracking-wide text-lg h-14 px-8",
                           "bg-gradient-to-r from-accent to-accent/90",
                           "shadow-lg shadow-accent/20 rounded-xl hover:translate-y-[-2px] hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 transform hover:scale-[1.02]"
                         )}
@@ -306,7 +308,7 @@ const Contact: React.FC = () => {
                         ) : (
                           <>
                             <Calendar className="mr-2 h-5 w-5 stroke-[1.5px]" />
-                            Secure Your Free Strategy Session
+                            {isMobile ? "Book Strategy Session" : "Secure Your Free Strategy Session"}
                           </>
                         )}
                       </Button>
