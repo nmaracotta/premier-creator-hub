@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle, Award, Rocket, Funnel, FilePen, Users, TrendingUp, ShieldCheck } from 'lucide-react';
+import { CheckCircle, Award, Rocket, Fuel, FilePen, Users, TrendingUp, ShieldCheck } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -20,7 +20,7 @@ const deliverables: Deliverable[] = [
     description: "We help craft irresistible, high-ticket and low-ticket offers your audience actually wants — no guesswork, just proven frameworks that sell."
   },
   {
-    icon: Funnel,
+    icon: Fuel,
     title: "Fully Automated Sales Funnel",
     description: "Set it up once and let it run. Your audience gets guided through a proven path to purchase, even while you sleep."
   },
