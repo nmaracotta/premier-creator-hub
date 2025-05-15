@@ -1,8 +1,9 @@
-
 import React from 'react';
-import { CheckCircle, Award } from 'lucide-react';
+import { CheckCircle, Award, Badge } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
+import { Card, CardContent, CardHeader } from './ui/card';
+import { Button } from './ui/button';
 
 type Deliverable = {
   title: string;
@@ -50,8 +51,66 @@ const Deliverables: React.FC = () => {
           </div>
         </MotionWrapper>
 
+        {/* Featured Deliverable - Membership Tiers */}
+        <MotionWrapper animation="fade-in-up" delay={350} className="mb-12">
+          <Card className="overflow-hidden border border-accent/20 bg-gradient-to-r from-card to-card/80 shadow-lg hover:shadow-xl transition-all">
+            <div className="grid md:grid-cols-5 gap-6">
+              <div className="md:col-span-2 bg-accent/10 p-6 md:p-8 flex flex-col justify-center">
+                <div className="p-3 bg-accent/20 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                  <Badge className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">Irresistible Membership Tiers</h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Transform your following into sustainable revenue with our proven pricing structure
+                </p>
+                <Button className="w-full md:w-auto mt-auto" size="lg">
+                  See Pricing Examples
+                </Button>
+              </div>
+              
+              <div className="md:col-span-3 p-6 md:p-8">
+                <CardHeader className="pb-1 px-0 pt-0">
+                  <h4 className="font-semibold text-lg flex items-center gap-2">
+                    <span className="inline-block p-1 rounded-full bg-accent/10">
+                      <CheckCircle className="h-4 w-4 text-accent" />
+                    </span>
+                    Perfect Price Points
+                  </h4>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div className="border border-border rounded-lg p-4 bg-card hover:bg-card/90 hover:border-accent/30 transition-all">
+                      <div className="text-sm text-muted-foreground mb-2">Entry Tier</div>
+                      <div className="text-2xl font-bold">$9-$49</div>
+                      <div className="text-sm mt-2">Low barrier to entry</div>
+                    </div>
+                    
+                    <div className="border border-accent/30 rounded-lg p-4 bg-card shadow-sm relative hover:shadow-md transition-all">
+                      <div className="absolute -top-3 right-3 px-2 py-0.5 bg-accent text-white text-xs rounded-full">POPULAR</div>
+                      <div className="text-sm text-muted-foreground mb-2">Core Tier</div>
+                      <div className="text-2xl font-bold">$99-$199</div>
+                      <div className="text-sm mt-2">Best value for most creators</div>
+                    </div>
+                    
+                    <div className="border border-border rounded-lg p-4 bg-card hover:bg-card/90 hover:border-accent/30 transition-all">
+                      <div className="text-sm text-muted-foreground mb-2">Premium Tier</div>
+                      <div className="text-2xl font-bold">$499-$997</div>
+                      <div className="text-sm mt-2">For dedicated followers</div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-sm">
+                    Our tiered pricing strategy creates a natural upgrade path, with an 80% conversion rate from free content to paid memberships.
+                  </p>
+                </CardContent>
+              </div>
+            </div>
+          </Card>
+        </MotionWrapper>
+
+        {/* Other Deliverables */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {deliverables.map((item, index) => (
+          {deliverables.slice(1).map((item, index) => (
             <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 50)}>
               <div className={cn(
                 "p-6 md:p-8 rounded-xl border border-border",
