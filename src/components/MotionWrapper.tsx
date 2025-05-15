@@ -8,6 +8,7 @@ interface MotionWrapperProps {
   duration?: number;
   threshold?: number;
   className?: string;
+  once?: boolean;
 }
 
 const MotionWrapper: React.FC<MotionWrapperProps> = ({
@@ -16,7 +17,8 @@ const MotionWrapper: React.FC<MotionWrapperProps> = ({
   delay = 0,
   duration = 700,
   threshold = 0.1,
-  className = ''
+  className = '',
+  once = true
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -27,13 +29,21 @@ const MotionWrapper: React.FC<MotionWrapperProps> = ({
           if (entry.isIntersecting) {
             const element = entry.target as HTMLElement;
             element.style.opacity = '0';
-            element.style.animation = `${animation} ${duration}ms ease-out forwards`;
+            element.style.animation = `${animation} ${duration}ms cubic-bezier(0.22, 1, 0.36, 1) forwards`;
             element.style.animationDelay = `${delay}ms`;
-            observer.unobserve(element);
+            
+            if (once) {
+              observer.unobserve(element);
+            }
+          } else if (!once) {
+            // If not using "once", reset the animation when out of view
+            const element = entry.target as HTMLElement;
+            element.style.opacity = '0';
+            element.style.animation = 'none';
           }
         });
       },
-      { threshold }
+      { threshold, rootMargin: '10px' }
     );
 
     if (ref.current) {
@@ -45,7 +55,7 @@ const MotionWrapper: React.FC<MotionWrapperProps> = ({
         observer.unobserve(ref.current);
       }
     };
-  }, [animation, delay, duration, threshold]);
+  }, [animation, delay, duration, threshold, once]);
 
   return (
     <div ref={ref} style={{ opacity: 0 }} className={className}>

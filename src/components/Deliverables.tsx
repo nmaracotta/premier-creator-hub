@@ -1,83 +1,122 @@
 
 import React from 'react';
-import { CheckCircle, Award } from 'lucide-react';
+import { CheckCircle, Award, Rocket, Funnel, FilePen, Users, TrendingUp, ShieldCheck } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 type Deliverable = {
+  icon: React.ElementType;
   title: string;
   description: string;
 };
 
 const deliverables: Deliverable[] = [
   {
-    title: "Irresistible Membership Tiers",
-    description: "$9-$997 pricing structure with proven value stacking that makes joining a no-brainer for your followers."
+    icon: Rocket,
+    title: "Launch-Worthy Offers, Built for You",
+    description: "We help craft irresistible, high-ticket and low-ticket offers your audience actually wants — no guesswork, just proven frameworks that sell."
   },
   {
-    title: "Set-and-Forget Sales Funnels",
-    description: "Automated systems that sell while you sleep, converting your audience with minimal time investment from you."
+    icon: Funnel,
+    title: "Fully Automated Sales Funnel",
+    description: "Set it up once and let it run. Your audience gets guided through a proven path to purchase, even while you sleep."
   },
   {
-    title: "High-Converting Content Strategy",
-    description: "Ready-to-use content templates and sales scripts that feel authentic while driving consistent conversions."
+    icon: FilePen,
+    title: "Plug-and-Play Content Templates",
+    description: "Never stress about what to post. You'll get ready-made scripts, prompts, and swipe files built to convert."
   },
   {
-    title: "Engagement-Focused Community",
-    description: "Custom-built spaces that keep members actively participating, reducing cancellations by up to 80%."
+    icon: Users,
+    title: "High-Retention Community Design",
+    description: "We create a custom space that keeps your members active, supported, and coming back — cutting churn by up to 80%."
   },
   {
-    title: "Predictable Growth System",
-    description: "Monthly acquisition strategies guaranteed to bring in 10-30% of your current following as paying members."
+    icon: TrendingUp,
+    title: "Consistent Member Growth Engine",
+    description: "Monthly strategies that turn 10–30% of your audience into paying members — backed by real data and testing."
   },
   {
-    title: "Risk-Free Partnership",
-    description: "We only make money when you do—our performance-based model means we're invested in your success from day one."
+    icon: ShieldCheck,
+    title: "Zero-Risk Revenue Share Model",
+    description: "We only win when you do. You keep full control, and we only earn when your community grows."
   }
 ];
 
 const Deliverables: React.FC = () => {
   return (
-    <section id="deliverables" className="py-24 md:py-32 bg-background">
-      <div className="container-custom">
+    <section id="deliverables" className="py-24 md:py-32 bg-background relative">
+      {/* Top divider */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-16 text-background fill-current rotate-180">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
+        </svg>
+      </div>
+      
+      <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 mb-4 rounded-full bg-accent/10 text-accent text-base font-medium">What You Get</span>
-            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">Everything You Need For Reliable Income</h2>
-            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-              Stop trading time for money and start building real wealth with these proven membership assets.
+            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">Build Scalable Income Without Burnout</h2>
+            <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto">
+              Ditch one-off deals and start earning reliable, recurring revenue with our proven membership growth system.
             </p>
           </div>
         </MotionWrapper>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {deliverables.map((item, index) => (
-            <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 50)}>
-              <div className={cn(
-                "p-6 md:p-8 rounded-xl border border-border",
-                "bg-card hover:border-accent/50 transition-all duration-300",
-                "flex flex-col h-full shadow-sm hover:shadow-md"
+            <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 70)}>
+              <Card className={cn(
+                "h-full p-6 lg:p-8 border border-border/50 rounded-xl",
+                "bg-card hover:border-accent/30 transition-all duration-300",
+                "hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1",
+                "flex flex-col"
               )}>
                 <div className="flex items-center mb-5">
-                  <div className="p-2 rounded-lg bg-accent/10 mr-3">
-                    <CheckCircle className="h-5 w-5 text-accent" />
+                  <div className="p-3 rounded-xl bg-accent/10 mr-4">
+                    <item.icon className="h-6 w-6 text-accent" strokeWidth={2} />
                   </div>
-                  <h3 className="font-bold text-xl">{item.title}</h3>
+                  <h3 className="font-bold text-lg md:text-xl">{item.title}</h3>
                 </div>
-                <p className="text-muted-foreground text-base">{item.description}</p>
-              </div>
+                <p className="text-muted-foreground text-base mt-2">{item.description}</p>
+              </Card>
             </MotionWrapper>
           ))}
         </div>
 
-        <MotionWrapper animation="fade-in-up" delay={700}>
-          <div className="text-center mt-16">
-            <p className="inline-flex items-center text-accent font-medium text-base">
-              <Award className="h-5 w-5 mr-2" />
-              Each element is customized to your unique brand and audience
+        <MotionWrapper animation="fade-in-up" delay={800}>
+          <div className="mt-16 lg:mt-20 p-6 lg:p-8 rounded-xl bg-accent/5 border border-accent/10">
+            <p className="flex items-center justify-center text-base md:text-lg font-medium text-center">
+              <Award className="h-6 w-6 text-accent mr-3" />
+              Every piece is tailored to your unique brand, voice, and audience — nothing cookie-cutter.
             </p>
           </div>
         </MotionWrapper>
+        
+        <MotionWrapper animation="fade-in-up" delay={900}>
+          <div className="flex justify-center mt-12 lg:mt-16">
+            <Button 
+              size="lg" 
+              className="text-base px-6 py-6 h-auto shadow-md hover:shadow-lg transition-all duration-300 group"
+              asChild
+            >
+              <a href="#contact">
+                Book Your Free Strategy Call
+              </a>
+            </Button>
+          </div>
+        </MotionWrapper>
+      </div>
+      
+      {/* Bottom divider */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-16 text-background fill-current">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"></path>
+        </svg>
       </div>
     </section>
   );
