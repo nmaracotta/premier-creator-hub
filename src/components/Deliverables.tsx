@@ -3,7 +3,6 @@ import React from 'react';
 import { CheckCircle, Award, Rocket, Fuel, FilePen, Users, TrendingUp, ShieldCheck } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
@@ -94,20 +93,6 @@ const Deliverables: React.FC = () => {
               <Award className="h-6 w-6 text-accent mr-3" />
               Every piece is tailored to your unique brand, voice, and audience — nothing cookie-cutter.
             </p>
-          </div>
-        </MotionWrapper>
-        
-        <MotionWrapper animation="fade-in-up" delay={900}>
-          <div className="flex justify-center mt-12 lg:mt-16">
-            <Button 
-              size="lg" 
-              className="text-base px-6 py-6 h-auto shadow-md hover:shadow-lg transition-all duration-300 group"
-              asChild
-            >
-              <a href="#contact">
-                Book Your Free Strategy Call
-              </a>
-            </Button>
           </div>
         </MotionWrapper>
       </div>
