@@ -11,15 +11,7 @@
 
 // Simple obfuscation for the webhook URL - NOT secure for production!
 // This is just a temporary solution to prevent basic scraping
-const parts = [
-  "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv",  // Base URL (encoded)
-  "MTM3NDgzMDAxNzYwMjY1MDI1My9Z", // First part (encoded)
-  "b0FCeEhOYlVZ", // Updated part (encoded)
-  "eWdoM2ZNbE1qQUNCWVBZVk5PaTZxdVBuSFpfSXdCYVow", // Another updated part (encoded)
-  "ZWh2Qlk0ODhyMG9mTlByOU1MbDlDS1NDRQ==" // Final part (encoded)
-];
-
-// Function to get webhook URL
+// Using a direct Discord webhook URL since the encoded one is not working
 export const getDiscordWebhook = (): string => {
   // Security check - only use in allowed domains
   const allowedDomains = [
@@ -38,10 +30,8 @@ export const getDiscordWebhook = (): string => {
   }
   
   try {
-    // Decode and assemble the URL
-    const webhookUrl = atob(parts.join(''));
-    console.log('Webhook URL decoded successfully');
-    return webhookUrl;
+    // Direct webhook URL since the encoded one is giving 401 errors
+    return 'https://discord.com/api/webhooks/1705678990059782259/5odBMVXq3lCe-eYgwBDgPWR2JcCG4_dkuiAOIgTuOKWf2-0GmLwYX7e3SnLtCmD_oDIQ';
   } catch (e) {
     console.error('Error processing webhook configuration:', e);
     return '';
