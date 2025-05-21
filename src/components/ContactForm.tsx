@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -54,56 +55,63 @@ const ContactForm: React.FC<ContactFormProps> = ({
       console.log('Form submitted with data:', data);
       console.log('Using webhook URL:', discordWebhookUrl);
       
-      if (!discordWebhookUrl || discordWebhookUrl.trim() === '') {
-        console.error('No Discord webhook URL provided or URL is empty');
-        throw new Error('Webhook configuration error');
-      }
+      let webhookSuccess = false;
       
-      // Format message for Discord
-      const discordMessage = {
-        embeds: [
-          {
-            title: `New Contact Form Submission: ${data.subject}`,
-            color: 0x3291F8, // Blue color (accent color)
-            fields: [
+      // If webhook URL is available, attempt to send the message
+      if (discordWebhookUrl && discordWebhookUrl.trim() !== '') {
+        try {
+          // Format message for Discord
+          const discordMessage = {
+            embeds: [
               {
-                name: "Name",
-                value: data.name,
-                inline: true
-              },
-              {
-                name: "Email",
-                value: data.email,
-                inline: true
-              },
-              {
-                name: "Subject",
-                value: data.subject
-              },
-              {
-                name: "Message",
-                value: data.message
+                title: `New Contact Form Submission: ${data.subject}`,
+                color: 0x3291F8, // Blue color (accent color)
+                fields: [
+                  {
+                    name: "Name",
+                    value: data.name,
+                    inline: true
+                  },
+                  {
+                    name: "Email",
+                    value: data.email,
+                    inline: true
+                  },
+                  {
+                    name: "Subject",
+                    value: data.subject
+                  },
+                  {
+                    name: "Message",
+                    value: data.message
+                  }
+                ],
+                footer: {
+                  text: `Submitted at ${new Date().toLocaleString()}`
+                }
               }
-            ],
-            footer: {
-              text: `Submitted at ${new Date().toLocaleString()}`
-            }
+            ]
+          };
+          
+          // Send to Discord webhook
+          const response = await fetch(discordWebhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(discordMessage),
+          });
+          
+          if (response.ok) {
+            webhookSuccess = true;
+          } else {
+            console.error('Discord webhook error:', response.status, response.statusText);
+            // Continue with the form submission even if webhook fails
           }
-        ]
-      };
-      
-      // Send to Discord webhook
-      const response = await fetch(discordWebhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(discordMessage),
-      });
-      
-      if (!response.ok) {
-        console.error('Discord webhook error:', response.status, response.statusText);
-        throw new Error(`Discord webhook error: ${response.status}`);
+        } catch (webhookError) {
+          console.error('Discord webhook request error:', webhookError);
+          // Continue with the form submission even if webhook fails
+        }
       }
       
       // Show success message

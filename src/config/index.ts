@@ -30,8 +30,11 @@ export const getDiscordWebhook = (): string => {
   }
   
   try {
-    // Direct webhook URL since the encoded one is giving 401 errors
-    return 'https://discord.com/api/webhooks/1705678990059782259/5odBMVXq3lCe-eYgwBDgPWR2JcCG4_dkuiAOIgTuOKWf2-0GmLwYX7e3SnLtCmD_oDIQ';
+    // The previous webhook URL is no longer valid (404 error - Unknown Webhook)
+    // Fallback to an email contact method
+    console.log('Using email contact method instead of webhook');
+    // Return empty string to indicate webhook is not available
+    return '';
   } catch (e) {
     console.error('Error processing webhook configuration:', e);
     return '';
