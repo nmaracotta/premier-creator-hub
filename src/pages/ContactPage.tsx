@@ -13,9 +13,7 @@ const ContactPage: React.FC = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  // Discord webhook URL (hardcoded)
-  const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
-
+  // Remove hardcoded webhook - always use the config
   const handleScheduleCall = () => {
     console.log("Schedule call button clicked");
     

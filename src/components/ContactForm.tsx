@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -49,31 +48,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
   });
 
   const handleSubmit = async (data: ContactFormValues) => {
-    if (!discordWebhookUrl) {
-      console.error('No Discord webhook URL provided');
-      
-      // Show success toast anyway and proceed with form submission callback
-      // This prevents the form from appearing broken if the webhook is unavailable
-      toast({
-        title: "Message received!",
-        description: "We'll get back to you soon.",
-      });
-      
-      // Reset form
-      form.reset();
-      
-      // Call the onFormSubmit callback if provided
-      if (onFormSubmit) {
-        onFormSubmit(data);
-      }
-      
-      return;
-    }
-
     setIsSubmitting(true);
     
     try {
-      console.log('Form submitted', data);
+      console.log('Form submitted with data:', data);
+      console.log('Using webhook URL:', discordWebhookUrl);
+      
+      if (!discordWebhookUrl || discordWebhookUrl.trim() === '') {
+        console.error('No Discord webhook URL provided or URL is empty');
+        throw new Error('Webhook configuration error');
+      }
       
       // Format message for Discord
       const discordMessage = {
@@ -108,16 +92,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
         ]
       };
       
-      // Make the Discord webhook call async without waiting for it
-      fetch(discordWebhookUrl, {
+      // Send to Discord webhook
+      const response = await fetch(discordWebhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(discordMessage),
-      }).catch(error => {
-        console.error('Failed to send to Discord webhook:', error);
       });
+      
+      if (!response.ok) {
+        console.error('Discord webhook error:', response.status, response.statusText);
+        throw new Error(`Discord webhook error: ${response.status}`);
+      }
       
       // Show success message
       toast({

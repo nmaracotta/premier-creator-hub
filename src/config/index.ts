@@ -32,9 +32,11 @@ export const getDiscordWebhook = (): string => {
   
   try {
     // Decode and assemble the URL
-    return atob(parts.join(''));
+    const webhookUrl = atob(parts.join(''));
+    console.log('Webhook URL decoded successfully');
+    return webhookUrl;
   } catch (e) {
-    console.error('Error processing webhook configuration');
+    console.error('Error processing webhook configuration:', e);
     return '';
   }
 };

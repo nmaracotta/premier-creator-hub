@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -58,7 +57,10 @@ const Contact: React.FC = () => {
       
       // Get the webhook URL from config
       const webhookUrl = config.discordWebhook.url;
-      if (!webhookUrl) {
+      console.log('Home page form using webhook URL:', webhookUrl);
+      
+      if (!webhookUrl || webhookUrl.trim() === '') {
+        console.error('No webhook URL available or URL is empty');
         throw new Error('Webhook configuration error');
       }
       
@@ -101,17 +103,19 @@ const Contact: React.FC = () => {
         ]
       };
       
-      // Send to Discord webhook asynchronously but don't wait for it
-      fetch(webhookUrl, {
+      // Send to Discord webhook - using await to catch errors properly
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(discordMessage),
-      }).catch(err => {
-        console.error('Discord webhook error:', err);
-        // Continue with redirect even if webhook fails
       });
+      
+      if (!response.ok) {
+        console.error('Discord webhook error:', response.status, response.statusText);
+        throw new Error(`Discord webhook error: ${response.status}`);
+      }
       
       toast({
         title: "Success!",
