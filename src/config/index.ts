@@ -14,8 +14,8 @@
 const parts = [
   "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv",  // Base URL (encoded)
   "MTM3NDgzMDAxNzYwMjY1MDI1My9Z", // First part (encoded)
-  "b0FCeEhOYlVZeWdoM2ZNbE1q", // Middle part (encoded)
-  "QUNCS1BZVU5PaTZxdVBuSFpfSXdCYVow", // Another part (encoded)
+  "b0FCeEhOYlVZ", // Updated part (encoded)
+  "eWdoM2ZNbE1qQUNCWVBZVk5PaTZxdVBuSFpfSXdCYVow", // Another updated part (encoded)
   "ZWh2Qlk0ODhyMG9mTlByOU1MbDlDS1NDRQ==" // Final part (encoded)
 ];
 
