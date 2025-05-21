@@ -13,10 +13,10 @@
 // This is just a temporary solution to prevent basic scraping
 const parts = [
   "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv",  // Base URL (encoded)
-  "MTM3MDQ5NzYzMzQ3NDMxODQyNy94", // First part (encoded)
-  "UHpPczZRQ3FTQm12U0xu", // Middle part (encoded)
-  "ckVKM2dWRDR1aklaTG93V3RReUc1SmJ2elhrdkg", // Another part (encoded)
-  "ajZ0YThDUjctZExoV0dCVzhlNHhCT1M=" // Final part (encoded)
+  "MTM3NDgzMDAxNzYwMjY1MDI1My9Z", // First part (encoded)
+  "b0FCeEhOYlVZeWdoM2ZNbE1q", // Middle part (encoded)
+  "QUNCS1BZVU5PaTZxdVBuSFpfSXdCYVow", // Another part (encoded)
+  "ZWh2Qlk0ODhyMG9mTlByOU1MbDlDS1NDRQ==" // Final part (encoded)
 ];
 
 // Function to get webhook URL
