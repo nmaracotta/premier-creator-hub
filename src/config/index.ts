@@ -22,7 +22,14 @@ const parts = [
 // Function to get webhook URL
 export const getDiscordWebhook = (): string => {
   // Security check - only use in allowed domains
-  const allowedDomains = ['premiercreator.com', 'localhost', '127.0.0.1'];
+  const allowedDomains = [
+    'premiercreator.com', 
+    'localhost', 
+    '127.0.0.1',
+    'lovableproject.com', // Adding Lovable domain
+    'lovable.app', // Adding Lovable domain
+    'lovable.dev' // Adding Lovable domain
+  ];
   const currentDomain = window.location.hostname;
   
   if (!allowedDomains.some(domain => currentDomain === domain || currentDomain.endsWith('.' + domain))) {
