@@ -21,6 +21,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
 import { useIsMobile } from '@/hooks/use-mobile';
+import config from '@/config';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Please enter your name' }),
@@ -31,9 +32,6 @@ const formSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof formSchema>;
-
-// Discord webhook URL (hardcoded)
-const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1370497633474318427/xPzOs6QCqSAmvSLnrEJ3gVD4UjIZLowWtQyG5JbvzXkLHj6ta8CR7-dLhWGBW8e4xBOS";
 
 const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,6 +55,12 @@ const Contact: React.FC = () => {
     
     try {
       console.log('Form submitted from home page Contact component', data);
+      
+      // Get the webhook URL from config
+      const webhookUrl = config.discordWebhook.url;
+      if (!webhookUrl) {
+        throw new Error('Webhook configuration error');
+      }
       
       // Format message for Discord
       const discordMessage = {
@@ -98,7 +102,7 @@ const Contact: React.FC = () => {
       };
       
       // Send to Discord webhook asynchronously but don't wait for it
-      fetch(DISCORD_WEBHOOK, {
+      fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

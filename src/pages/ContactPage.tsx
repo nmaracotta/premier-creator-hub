@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -8,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import ContactForm from '@/components/ContactForm';
 import { useToast } from '@/hooks/use-toast';
 import { ChevronRight, Mail, ArrowRight, CalendarDays, MapPin, Clock, Sparkles } from 'lucide-react';
+import config from '@/config';
 
 const ContactPage: React.FC = () => {
   const navigate = useNavigate();
@@ -151,7 +151,7 @@ const ContactPage: React.FC = () => {
               
               <div className="lg:col-span-3">
                 <MotionWrapper animation="fade-in-up" delay={300}>
-                  <ContactForm discordWebhookUrl={DISCORD_WEBHOOK} onFormSubmit={handleFormSubmit} />
+                  <ContactForm discordWebhookUrl={config.discordWebhook.url} onFormSubmit={handleFormSubmit} />
                 </MotionWrapper>
               </div>
             </div>
