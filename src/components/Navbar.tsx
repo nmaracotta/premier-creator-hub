@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,28 +17,19 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(isScrolled);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scrolling when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
@@ -46,18 +37,15 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { name: "How It Works", path: "#process" },
-    { name: "What You Get", path: "#deliverables" },
+    { name: "What You Get", path: "#features" },
     { name: "Why Us", path: "#why-us" },
     { name: "Contact", path: "#contact" },
   ];
 
-  // Handle navigation based on current page
   const handleNavigation = (path: string) => {
     if (isHomePage) {
-      // If on home page, use anchor navigation
       window.location.href = path;
     } else {
-      // If on another page, navigate to home with anchor
       window.location.href = '/' + path;
     }
     setIsMenuOpen(false);
@@ -68,10 +56,12 @@ const Navbar: React.FC = () => {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
-          scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm dark:bg-black/80' : 'bg-transparent'
+          scrolled 
+            ? 'bg-white/90 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-border/50' 
+            : 'bg-transparent'
         )}
       >
-        <div className="container-custom py-4 md:py-5">
+        <div className="container-custom py-4">
           <div className="flex items-center justify-between">
             <Logo textSize="text-xl md:text-2xl" />
 
@@ -80,17 +70,18 @@ const Navbar: React.FC = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavigation(item.path)}
-                  className={cn(
-                    "underline-animation text-sm md:text-base font-medium transition-colors hover:text-accent bg-transparent border-none cursor-pointer"
-                  )}
+                  className="text-sm font-medium transition-colors hover:text-accent bg-transparent border-none cursor-pointer"
                 >
                   {item.name}
                 </button>
               ))}
             </nav>
 
-            <Button className="hidden md:inline-flex btn-hover text-sm py-5 px-6" size="default" onClick={() => handleNavigation("#contact")}>
-              Get Started
+            <Button 
+              className="hidden md:inline-flex btn-primary py-3 px-6 text-base" 
+              onClick={() => handleNavigation("#contact")}
+            >
+              Book Call
             </Button>
 
             <button
@@ -104,9 +95,10 @@ const Navbar: React.FC = () => {
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <div
         className={cn(
-          'fixed inset-0 z-50 bg-white dark:bg-black transition-transform duration-300 ease-in-out md:hidden',
+          'fixed inset-0 z-50 bg-white transition-transform duration-300 ease-in-out md:hidden',
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -130,9 +122,12 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          <div className="mt-auto pt-8 flex flex-col gap-4">
-            <Button className="w-full btn-hover py-5 text-base" size="default" onClick={() => handleNavigation("#contact")}>
-              Book Your Free Call
+          <div className="mt-auto pt-8">
+            <Button 
+              className="w-full btn-primary py-4 text-lg" 
+              onClick={() => handleNavigation("#contact")}
+            >
+              Book Strategy Call
             </Button>
           </div>
         </div>

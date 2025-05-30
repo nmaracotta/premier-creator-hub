@@ -5,9 +5,10 @@ import Footer from '@/components/Footer';
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/Hero'));
-const ClientNiches = lazy(() => import('@/components/ClientNiches'));
+const ProofBar = lazy(() => import('@/components/ProofBar'));
 const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
-const Deliverables = lazy(() => import('@/components/Deliverables'));
+const FeatureGrid = lazy(() => import('@/components/FeatureGrid'));
+const SystemDemo = lazy(() => import('@/components/SystemDemo'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
@@ -31,7 +32,6 @@ const Index: React.FC = () => {
         const targetElement = document.querySelector(anchor.hash);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
-          // Update URL without page jump
           history.pushState(null, '', anchor.hash);
         }
       }
@@ -39,14 +39,27 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleAnchorClick);
     
-    // Check if we need to scroll to top after navigation
-    if (sessionStorage.getItem('needsScrollReset') === 'true') {
-      window.scrollTo(0, 0);
-      sessionStorage.removeItem('needsScrollReset');
-    }
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with reveal class
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => observer.observe(el));
     
     return () => {
       document.removeEventListener('click', handleAnchorClick);
+      revealElements.forEach((el) => observer.unobserve(el));
     };
   }, []);
 
@@ -58,13 +71,16 @@ const Index: React.FC = () => {
           <Hero />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <ClientNiches />
+          <ProofBar />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <ProcessSteps />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Deliverables />
+          <FeatureGrid />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <SystemDemo />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <WhyUs />
