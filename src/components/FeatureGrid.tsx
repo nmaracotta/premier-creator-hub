@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   TrendingUp, 
@@ -61,14 +60,14 @@ const FeatureGrid: React.FC = () => {
     {
       icon: Zap,
       title: "Partner Revenue Engine",
-      description: "Built-in affiliate system that turns customers into revenue-generating partners",
+      description: "Built-in affiliate system that turns customers into revenue-generating partners.",
       badge: "Proven",
       depth: "floating"
     },
     {
       icon: Shield,
       title: "Enterprise Security",
-      description: "Bank-level security with GDPR compliance for creator businesses at scale",
+      description: "Bank-level security with GDPR compliance for creator businesses at scale.",
       badge: "Secure",
       depth: "base"
     },
