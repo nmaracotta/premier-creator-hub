@@ -8,14 +8,16 @@ const Hero = lazy(() => import('@/components/Hero'));
 const SocialProof = lazy(() => import('@/components/SocialProof'));
 const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
 const BenefitsGrid = lazy(() => import('@/components/BenefitsGrid'));
+const Results = lazy(() => import('@/components/Results'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
+const FAQ = lazy(() => import('@/components/FAQ'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
 const LoadingFallback = () => (
-  <div className="w-full h-64 flex items-center justify-center">
-    <div className="animate-spin h-8 w-8 border-2 border-slate-300 border-t-slate-900 rounded-full"></div>
+  <div className="w-full h-32 flex items-center justify-center">
+    <div className="animate-spin h-8 w-8 border-2 border-slate-300 border-t-blue-600 rounded-full"></div>
   </div>
 );
 
@@ -31,7 +33,6 @@ const Index: React.FC = () => {
         const targetElement = document.querySelector(anchor.hash);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
-          // Update URL without page jump
           history.pushState(null, '', anchor.hash);
         }
       }
@@ -67,7 +68,13 @@ const Index: React.FC = () => {
           <BenefitsGrid />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
+          <Results />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
           <WhyUs />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <FAQ />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <FinalCTA />

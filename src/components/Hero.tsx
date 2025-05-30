@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Calendar, ArrowRight, Sparkles, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { Calendar, ArrowDown, CheckCircle, TrendingUp, Users } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 
 const Hero: React.FC = () => {
@@ -11,7 +11,6 @@ const Hero: React.FC = () => {
     avgTime: 0
   });
 
-  // Animated counters
   useEffect(() => {
     const timer = setTimeout(() => {
       const duration = 2000;
@@ -24,17 +23,17 @@ const Hero: React.FC = () => {
         const progress = step / steps;
         
         setCounters({
-          revenue: Math.floor(2300000 * progress),
-          creators: Math.floor(500 * progress),
-          avgTime: Math.floor(28 * progress)
+          revenue: Math.floor(2400000 * progress),
+          creators: Math.floor(347 * progress),
+          avgTime: Math.floor(21 * progress)
         });
         
         if (step >= steps) {
           clearInterval(interval);
-          setCounters({ revenue: 2300000, creators: 500, avgTime: 28 });
+          setCounters({ revenue: 2400000, creators: 347, avgTime: 21 });
         }
       }, stepDuration);
-    }, 1000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -46,105 +45,103 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Premium animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-        
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-purple-600/20 rounded-full mix-blend-multiply filter blur-xl float"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-gradient-to-r from-purple-400/20 to-pink-600/20 rounded-full mix-blend-multiply filter blur-xl float-delayed"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-cyan-600/20 rounded-full mix-blend-multiply filter blur-xl float-delayed-2"></div>
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:48px_48px]"></div>
       
-      <div className="container-custom relative z-10 py-20 md:py-32">
-        <div className="max-w-6xl mx-auto text-center">
+      <div className="container-section relative z-10 py-20 lg:py-32">
+        <div className="max-w-5xl mx-auto text-center">
           
-          {/* Premium status badge */}
+          {/* Trust Signal */}
           <MotionWrapper animation="fade-in-up" delay={200}>
-            <div className="inline-flex items-center gap-3 glass rounded-full px-6 py-3 mb-8 border border-blue-200/50 bg-gradient-to-r from-blue-50/80 to-purple-50/80 backdrop-blur-xl">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <Sparkles className="w-4 h-4 text-blue-600" />
-              </div>
-              <span className="text-sm font-semibold text-slate-700">
-                #1 Creator Monetization Agency • Trusted by 500+ Creators
-              </span>
+            <div className="status-badge mb-8">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span>Trusted by 347+ creators • $2.4M+ generated</span>
             </div>
           </MotionWrapper>
           
+          {/* Main Headline */}
           <MotionWrapper animation="fade-in-up" delay={300}>
-            <div className="text-reveal mb-8">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.9] text-slate-900">
-                <span>We Build Your</span>
-                <br />
-                <span className="gradient-text">Monetization</span>
-                <br />
-                <span className="gradient-text">Engine</span>
-              </h1>
-            </div>
+            <h1 className="heading-1 text-slate-900 mb-8">
+              We Build Your
+              <br />
+              <span className="gradient-text">Monetization Engine</span>
+            </h1>
           </MotionWrapper>
           
+          {/* Value Proposition */}
           <MotionWrapper animation="fade-in-up" delay={400}>
-            <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
-              The premium done-for-you agency that transforms creators into 
+            <p className="body-large text-slate-600 mb-8 max-w-3xl mx-auto">
+              The done-for-you agency that transforms creators into 
               <span className="font-bold text-slate-900"> 6-figure businesses</span>. 
-              We handle the tech, you focus on creating.
+              Complete system build, launch, and optimization in 21 days.
             </p>
           </MotionWrapper>
           
-          {/* Premium CTA buttons */}
+          {/* Key Benefits */}
           <MotionWrapper animation="fade-in-up" delay={500}>
+            <div className="flex flex-wrap items-center justify-center gap-6 mb-12">
+              {[
+                "Full funnel build & launch",
+                "Payment processing setup", 
+                "Automated customer onboarding",
+                "Ongoing optimization"
+              ].map((benefit, index) => (
+                <div key={index} className="flex items-center gap-2 text-slate-700">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span className="font-medium">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </MotionWrapper>
+          
+          {/* Primary CTA */}
+          <MotionWrapper animation="fade-in-up" delay={600}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-              <Button 
-                className="btn-premium text-white w-full sm:w-auto min-w-[280px] h-16" 
-                asChild
-              >
-                <a href="#contact" className="group relative z-10">
+              <Button className="btn-cta" asChild>
+                <a href="#contact">
                   Book Strategy Call
-                  <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                  <Calendar className="w-5 h-5" />
                 </a>
               </Button>
               
               <div className="text-center sm:text-left">
-                <div className="text-sm text-slate-500 font-medium">Free consultation</div>
-                <div className="text-sm text-slate-500">No commitment required</div>
+                <div className="text-sm text-slate-500 font-medium">Free 30-minute consultation</div>
+                <div className="text-sm text-slate-500">No pitch • Just strategy</div>
               </div>
             </div>
           </MotionWrapper>
           
-          {/* Live stats counters */}
-          <MotionWrapper animation="fade-in-up" delay={600}>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="premium-card p-8 text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <DollarSign className="w-6 h-6 text-green-600 mr-2" />
-                  <div className="text-3xl md:text-4xl font-black text-slate-900">
-                    {formatRevenue(counters.revenue)}+
-                  </div>
+          {/* Live Metrics */}
+          <MotionWrapper animation="fade-in-up" delay={700}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+              <div className="agency-card p-8 text-center">
+                <div className="metric-display mb-2 gradient-text">
+                  {formatRevenue(counters.revenue)}+
                 </div>
                 <div className="text-slate-600 font-semibold">Revenue Generated</div>
               </div>
               
-              <div className="premium-card p-8 text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <Users className="w-6 h-6 text-blue-600 mr-2" />
-                  <div className="text-3xl md:text-4xl font-black text-slate-900">
-                    {counters.creators}+
-                  </div>
+              <div className="agency-card p-8 text-center">
+                <div className="metric-display mb-2 gradient-text">
+                  {counters.creators}+
                 </div>
                 <div className="text-slate-600 font-semibold">Creators Scaled</div>
               </div>
               
-              <div className="premium-card p-8 text-center">
-                <div className="flex items-center justify-center mb-3">
-                  <TrendingUp className="w-6 h-6 text-purple-600 mr-2" />
-                  <div className="text-3xl md:text-4xl font-black text-slate-900">
-                    {counters.avgTime}
-                  </div>
+              <div className="metric-display-card p-8 text-center">
+                <div className="metric-display mb-2 gradient-text">
+                  {counters.avgTime}
                 </div>
-                <div className="text-slate-600 font-semibold">Days to $10K+</div>
+                <div className="text-slate-600 font-semibold">Days to Launch</div>
               </div>
+            </div>
+          </MotionWrapper>
+          
+          {/* Scroll Indicator */}
+          <MotionWrapper animation="fade-in" delay={800}>
+            <div className="animate-bounce">
+              <ArrowDown className="w-6 h-6 text-slate-400 mx-auto" />
             </div>
           </MotionWrapper>
         </div>
