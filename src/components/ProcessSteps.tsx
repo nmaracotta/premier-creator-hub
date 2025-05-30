@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Code, Rocket, TrendingUp } from 'lucide-react';
+import { Wrench, Zap, TrendingUp } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -10,23 +10,31 @@ type Step = {
   icon: React.ElementType;
   title: string;
   description: string;
+  stepNumber: string;
+  stepTitle: string;
 };
 
 const steps: Step[] = [
   {
-    icon: Code,
-    title: "We Build It",
-    description: "In just 14 days, we create your complete membership platform with perfectly tiered pricing that converts followers into paying customers."
+    icon: Wrench,
+    title: "We Build Everything",
+    description: "Complete monetization system with funnels, payment processing, and member areas built in 14 days.",
+    stepNumber: "STEP 1",
+    stepTitle: "We Build Everything"
   },
   {
-    icon: Rocket,
-    title: "We Launch It",
-    description: "Using our proven conversion systems, we'll get your first paying members within 30 days — often with 10-30% of your audience joining."
+    icon: Zap,
+    title: "You Focus on Creating",
+    description: "Keep doing what you love while we handle all the technical infrastructure and optimization.",
+    stepNumber: "STEP 2",
+    stepTitle: "You Focus on Creating"
   },
   {
     icon: TrendingUp,
-    title: "We Scale It",
-    description: "Our retention experts ensure members stay and pay, while our growth strategies continuously bring in new subscribers month after month."
+    title: "You Start Monetizing",
+    description: "Launch sequence that converts 10-30% of your audience into paying customers immediately.",
+    stepNumber: "STEP 3",
+    stepTitle: "You Start Monetizing"
   }
 ];
 
@@ -39,12 +47,9 @@ const ProcessSteps: React.FC = () => {
       <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20 mb-4 px-3 py-1 text-sm">
-              Our Process
-            </Badge>
-            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">Our Proven 30-Day Launch System</h2>
+            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">How It Works</h2>
             <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-              We've refined this process with dozens of creators, generating predictable monthly revenue without requiring you to work harder.
+              Our proven system that's generated millions for creators without requiring them to work harder.
             </p>
           </div>
         </MotionWrapper>
@@ -62,8 +67,17 @@ const ProcessSteps: React.FC = () => {
                 
                 <CardContent className="p-6 md:p-8">
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                      <step.icon className="h-8 w-8 text-accent" />
+                    <div className="text-xs font-medium text-muted-foreground mb-2 tracking-wider">
+                      {step.stepNumber}
+                    </div>
+                    <div className={cn(
+                      "w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform",
+                      index === 0 ? "bg-blue-500/10" : index === 1 ? "bg-purple-500/10" : "bg-green-500/10"
+                    )}>
+                      <step.icon className={cn(
+                        "h-8 w-8",
+                        index === 0 ? "text-blue-500" : index === 1 ? "text-purple-500" : "text-green-500"
+                      )} />
                     </div>
                     <h3 className="text-xl md:text-2xl font-bold mb-4">{step.title}</h3>
                     <p className="text-muted-foreground text-sm md:text-base">{step.description}</p>

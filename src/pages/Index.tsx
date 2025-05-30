@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/Hero'));
+const Statistics = lazy(() => import('@/components/Statistics'));
 const ClientNiches = lazy(() => import('@/components/ClientNiches'));
 const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
 const Deliverables = lazy(() => import('@/components/Deliverables'));
@@ -56,6 +57,9 @@ const Index: React.FC = () => {
       <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>
           <Hero />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <Statistics />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <ClientNiches />
