@@ -12,6 +12,7 @@ type Step = {
   stepTitle: string;
   color: string;
   bgColor: string;
+  emoji: string;
 };
 
 const steps: Step[] = [
@@ -22,7 +23,8 @@ const steps: Step[] = [
     stepNumber: "STEP 1",
     stepTitle: "We Build Everything",
     color: "text-blue-500",
-    bgColor: "bg-blue-500"
+    bgColor: "bg-blue-500",
+    emoji: "🔧"
   },
   {
     icon: Rocket,
@@ -31,7 +33,8 @@ const steps: Step[] = [
     stepNumber: "STEP 2",
     stepTitle: "You Focus on Creating",
     color: "text-purple-500",
-    bgColor: "bg-purple-500"
+    bgColor: "bg-purple-500",
+    emoji: "🎨"
   },
   {
     icon: TrendingUp,
@@ -40,7 +43,8 @@ const steps: Step[] = [
     stepNumber: "STEP 3",
     stepTitle: "You Start Monetizing",
     color: "text-green-500",
-    bgColor: "bg-green-500"
+    bgColor: "bg-green-500",
+    emoji: "💎"
   }
 ];
 
@@ -50,7 +54,9 @@ const ProcessSteps: React.FC = () => {
       <div className="container-custom relative z-10">
         <MotionWrapper animation="fade-in-up" delay={300}>
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">How It Works</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+              How It Works <span className="inline-block animate-pulse">✨</span>
+            </h2>
             <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
               Our proven system that's generated millions for creators without requiring them to work harder.
             </p>
@@ -60,18 +66,27 @@ const ProcessSteps: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {steps.map((step, index) => (
             <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 100)}>
-              <div className="text-center">
+              <div className="text-center group cursor-pointer">
                 <div className="text-xs font-medium text-gray-500 mb-4 tracking-wider uppercase">
                   {step.stepNumber}
                 </div>
                 <div className={cn(
-                  "w-20 h-20 rounded-full flex items-center justify-center mb-8 mx-auto",
+                  "w-20 h-20 rounded-full flex items-center justify-center mb-8 mx-auto relative overflow-hidden",
+                  "transform transition-all duration-500 hover:scale-110 hover:rotate-12",
+                  "hover:shadow-xl hover:shadow-accent/30",
                   step.bgColor
                 )}>
-                  <step.icon className="h-10 w-10 text-white" />
+                  <step.icon className="h-10 w-10 text-white transition-all duration-300 group-hover:scale-90" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/95 rounded-full">
+                    <span className="text-3xl animate-bounce">{step.emoji}</span>
+                  </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">{step.title}</h3>
-                <p className="text-gray-600 text-base md:text-lg leading-relaxed">{step.description}</p>
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 transition-all duration-300 group-hover:text-accent">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed transition-colors duration-300 group-hover:text-gray-700">
+                  {step.description}
+                </p>
               </div>
             </MotionWrapper>
           ))}
