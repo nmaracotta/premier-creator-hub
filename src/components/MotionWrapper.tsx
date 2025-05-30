@@ -1,33 +1,58 @@
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface MotionWrapperProps {
   children: React.ReactNode;
   animation?: string;
   delay?: number;
   className?: string;
+  triggerOnScroll?: boolean;
+  threshold?: number;
 }
 
 const MotionWrapper: React.FC<MotionWrapperProps> = ({ 
   children, 
   animation = 'fade-in-up', 
   delay = 0,
-  className = ''
+  className = '',
+  triggerOnScroll = false,
+  threshold = 0.1
 }) => {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(!triggerOnScroll);
+  const [hasTriggered, setHasTriggered] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, delay);
+  useEffect(() => {
+    if (!triggerOnScroll) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, delay);
+      return () => clearTimeout(timer);
+    }
 
-    return () => clearTimeout(timer);
-  }, [delay]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTriggered) {
+          setTimeout(() => {
+            setIsVisible(true);
+            setHasTriggered(true);
+          }, delay);
+        }
+      },
+      { threshold }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay, triggerOnScroll, threshold, hasTriggered]);
 
   return (
     <div 
-      className={`${isVisible ? animation : 'opacity-0'} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      ref={elementRef}
+      className={`transition-all duration-700 ${isVisible ? animation : 'opacity-0 translate-y-8'} ${className}`}
     >
       {children}
     </div>
