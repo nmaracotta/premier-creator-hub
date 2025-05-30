@@ -1,59 +1,64 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, ReactNode } from 'react';
 
 interface MotionWrapperProps {
-  children: React.ReactNode;
-  animation?: string;
+  children: ReactNode;
+  animation?: 'fade-in' | 'fade-in-up' | 'fade-in-down' | 'fade-in-left' | 'fade-in-right' | 'blur-in' | 'scale-in';
   delay?: number;
-  className?: string;
-  triggerOnScroll?: boolean;
+  duration?: number;
   threshold?: number;
+  className?: string;
+  once?: boolean;
 }
 
-const MotionWrapper: React.FC<MotionWrapperProps> = ({ 
-  children, 
-  animation = 'fade-in-up', 
+const MotionWrapper: React.FC<MotionWrapperProps> = ({
+  children,
+  animation = 'fade-in',
   delay = 0,
+  duration = 700,
+  threshold = 0.1,
   className = '',
-  triggerOnScroll = false,
-  threshold = 0.1
+  once = true
 }) => {
-  const [isVisible, setIsVisible] = useState(!triggerOnScroll);
-  const [hasTriggered, setHasTriggered] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!triggerOnScroll) {
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, delay);
-      return () => clearTimeout(timer);
-    }
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasTriggered) {
-          setTimeout(() => {
-            setIsVisible(true);
-            setHasTriggered(true);
-          }, delay);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            element.style.opacity = '0';
+            element.style.animation = `${animation} ${duration}ms cubic-bezier(0.22, 1, 0.36, 1) forwards`;
+            element.style.animationDelay = `${delay}ms`;
+            
+            if (once) {
+              observer.unobserve(element);
+            }
+          } else if (!once) {
+            // If not using "once", reset the animation when out of view
+            const element = entry.target as HTMLElement;
+            element.style.opacity = '0';
+            element.style.animation = 'none';
+          }
+        });
       },
-      { threshold }
+      { threshold, rootMargin: '10px' }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    if (ref.current) {
+      observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
-  }, [delay, triggerOnScroll, threshold, hasTriggered]);
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [animation, delay, duration, threshold, once]);
 
   return (
-    <div 
-      ref={elementRef}
-      className={`transition-all duration-700 ${isVisible ? animation : 'opacity-0 translate-y-8'} ${className}`}
-    >
+    <div ref={ref} style={{ opacity: 0 }} className={className}>
       {children}
     </div>
   );

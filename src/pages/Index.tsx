@@ -5,31 +5,22 @@ import Footer from '@/components/Footer';
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/Hero'));
-const ProofBar = lazy(() => import('@/components/ProofBar'));
+const ClientNiches = lazy(() => import('@/components/ClientNiches'));
 const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
-const FeatureGrid = lazy(() => import('@/components/FeatureGrid'));
-const SystemDemo = lazy(() => import('@/components/SystemDemo'));
+const Deliverables = lazy(() => import('@/components/Deliverables'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
-const CreatorTestimonials = lazy(() => import('@/components/CreatorTestimonials'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
-const LoadingFallback = () => {
-  console.log('Loading component...');
-  return (
-    <div className="w-full h-32 flex items-center justify-center">
-      <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full"></div>
-    </div>
-  );
-};
+const LoadingFallback = () => (
+  <div className="w-full h-screen flex items-center justify-center">
+    <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
+  </div>
+);
 
 const Index: React.FC = () => {
-  console.log('Index component mounting...');
-
   useEffect(() => {
-    console.log('Index component mounted');
-    
     // Add smooth scroll behavior for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -40,6 +31,7 @@ const Index: React.FC = () => {
         const targetElement = document.querySelector(anchor.hash);
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' });
+          // Update URL without page jump
           history.pushState(null, '', anchor.hash);
         }
       }
@@ -47,35 +39,35 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleAnchorClick);
     
+    // Check if we need to scroll to top after navigation
+    if (sessionStorage.getItem('needsScrollReset') === 'true') {
+      window.scrollTo(0, 0);
+      sessionStorage.removeItem('needsScrollReset');
+    }
+    
     return () => {
       document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col w-full">
+    <div className="min-h-screen overflow-hidden flex flex-col w-full">
       <Navbar />
       <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>
           <Hero />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <ProofBar />
+          <ClientNiches />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <ProcessSteps />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <FeatureGrid />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <SystemDemo />
+          <Deliverables />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <WhyUs />
-        </Suspense>
-        <Suspense fallback={<LoadingFallback />}>
-          <CreatorTestimonials />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <FinalCTA />

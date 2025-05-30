@@ -1,122 +1,88 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Wrench, Rocket, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { Code, Rocket, TrendingUp } from 'lucide-react';
+import MotionWrapper from './MotionWrapper';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
-interface ProcessStep {
+type Step = {
   icon: React.ElementType;
   title: string;
   description: string;
-  emoji: string;
-  gradient: string;
-}
+};
+
+const steps: Step[] = [
+  {
+    icon: Code,
+    title: "We Build It",
+    description: "In just 14 days, we create your complete membership platform with perfectly tiered pricing that converts followers into paying customers."
+  },
+  {
+    icon: Rocket,
+    title: "We Launch It",
+    description: "Using our proven conversion systems, we'll get your first paying members within 30 days — often with 10-30% of your audience joining."
+  },
+  {
+    icon: TrendingUp,
+    title: "We Scale It",
+    description: "Our retention experts ensure members stay and pay, while our growth strategies continuously bring in new subscribers month after month."
+  }
+];
 
 const ProcessSteps: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setIsVisible(true);
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  const steps: ProcessStep[] = [
-    {
-      icon: Wrench,
-      title: "We Build Everything",
-      description: "Complete monetization system with funnels, payment processing, and member areas built in 14 days.",
-      emoji: "🔧",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: Rocket,
-      title: "You Focus on Creating",
-      description: "Keep doing what you love while we handle all the technical infrastructure and optimization.",
-      emoji: "🎨",
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: TrendingUp,
-      title: "You Start Monetizing",
-      description: "Launch sequence that converts 10-30% of your audience into paying customers immediately.",
-      emoji: "💰",
-      gradient: "from-emerald-500 to-teal-500"
-    }
-  ];
-
   return (
-    <section ref={sectionRef} id="process" className="section-padding bg-white">
-      <div className="container-custom">
-        <div className={`text-center max-w-4xl mx-auto mb-20 transition-all duration-700 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <h2 className="text-5xl sm:text-6xl font-black mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-            How It Works
-          </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-medium">
-            Our proven system that's generated millions for creators without requiring them to work harder.
-          </p>
-        </div>
+    <section id="process" className="py-24 md:py-32 bg-gradient-to-b from-accent/5 to-background relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjkxRjgiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djZoLTZWMzRoLTZ2LTZoNnYtNmg2djZoNnY2aC02eiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
+      
+      <div className="container-custom relative z-10">
+        <MotionWrapper animation="fade-in-up" delay={300}>
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20 mb-4 px-3 py-1 text-sm">
+              Our Process
+            </Badge>
+            <h2 className="h2 mb-6 text-3xl md:text-4xl lg:text-5xl">Our Proven 30-Day Launch System</h2>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+              We've refined this process with dozens of creators, generating predictable monthly revenue without requiring you to work harder.
+            </p>
+          </div>
+        </MotionWrapper>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
           {steps.map((step, index) => (
-            <div 
-              key={index}
-              className={`group relative transition-all duration-700 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: `${index * 0.2 + 0.3}s` }}
-            >
-              {/* Card Background with Gradient Border */}
-              <div className="relative p-8 bg-white rounded-3xl border-2 border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+            <MotionWrapper key={index} animation="fade-in-up" delay={400 + (index * 100)}>
+              <Card className={cn(
+                "h-full border border-border hover:border-accent/30 transition-all duration-300",
+                "bg-white/50 dark:bg-black/20 backdrop-blur-sm",
+                "overflow-hidden group relative"
+              )}>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 -mt-10 -mr-10 bg-accent/5 rounded-full blur-2xl"></div>
                 
-                {/* Gradient Accent */}
-                <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br ${step.gradient} rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <div className="flex items-center justify-center w-full h-full">
-                    <step.icon className="w-8 h-8 text-white" />
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                      <step.icon className="h-8 w-8 text-accent" />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm md:text-base">{step.description}</p>
                   </div>
-                </div>
-                
-                {/* Floating Emoji */}
-                <div className="absolute top-4 right-4 text-3xl animate-bounce group-hover:animate-ping" style={{ animationDelay: `${index * 0.2}s` }}>
-                  {step.emoji}
-                </div>
-                
-                <div className="text-center pt-8">
-                  <div className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-widest">
-                    Step {index + 1}
-                  </div>
-                  
-                  <h3 className="text-2xl font-black mb-6 text-gray-900">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 leading-relaxed font-medium">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Subtle hover effect */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-              </div>
-            </div>
+                </CardContent>
+              </Card>
+            </MotionWrapper>
           ))}
         </div>
+
+        <MotionWrapper animation="fade-in-up" delay={700}>
+          <div className="text-center">
+            <div className="inline-flex items-center bg-accent/5 px-6 py-3 rounded-full border border-accent/20">
+              <p className="text-accent italic font-medium text-sm md:text-base">
+                "From zero to $12,480 in monthly recurring revenue in just 28 days with our system."
+              </p>
+            </div>
+          </div>
+        </MotionWrapper>
       </div>
     </section>
   );
