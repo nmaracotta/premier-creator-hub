@@ -9,24 +9,34 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
+
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 210 100% 56%;
+
+    --accent: 210 100% 60%;
     --accent-foreground: 240 5.9% 10%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
+
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
-    --radius: 0.75rem;
+
+    --radius: 0.5rem;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -40,23 +50,32 @@
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
+
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
+
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
+
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
+
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
+
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
+
     --accent: 210 100% 56%;
     --accent-foreground: 0 0% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -86,15 +105,10 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-feature-settings: 'cv11', 'ss01';
-    font-variation-settings: 'opsz' 32;
-    letter-spacing: -0.02em;
-    line-height: 1.5;
   }
 
   ::selection {
-    @apply bg-blue-600 text-white;
+    @apply bg-accent/30 text-foreground;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -104,207 +118,242 @@
 
   /* Hide scrollbar for IE, Edge and Firefox */
   * {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }
 
-/* Elite Agency Components */
+/* Custom classes */
 @layer components {
-  .container-section {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  .container-custom {
+    @apply container px-4 sm:px-5 md:px-6 lg:px-8 mx-auto max-w-6xl;
   }
 
-  /* Elite Button System */
-  .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl;
-    @apply bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200;
-    @apply shadow-lg hover:shadow-xl hover:-translate-y-0.5;
-    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  .h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
   }
 
-  .btn-secondary {
-    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-xl;
-    @apply border-2 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50;
-    @apply transition-all duration-200;
-    @apply focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+  .h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
   }
 
-  .btn-cta {
-    @apply relative inline-flex items-center justify-center gap-3 px-10 py-5 text-lg font-bold rounded-2xl;
-    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white;
-    @apply shadow-xl hover:shadow-2xl hover:-translate-y-1;
-    @apply transition-all duration-300 ease-out;
-    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  .h3 {
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight;
   }
 
-  .btn-cta:hover {
-    @apply from-blue-700 to-blue-800;
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
   }
 
-  /* Agency Cards */
-  .agency-card {
-    @apply relative bg-white rounded-2xl border border-slate-200;
-    @apply shadow-sm hover:shadow-lg transition-all duration-300;
-    @apply hover:-translate-y-1;
+  .underline-animation {
+    @apply relative inline-block;
   }
 
-  .agency-card-dark {
-    @apply relative bg-slate-900 rounded-2xl border border-slate-800;
-    @apply shadow-sm hover:shadow-lg transition-all duration-300;
-    @apply hover:-translate-y-1;
+  .underline-animation::after {
+    @apply content-[''] absolute bg-accent h-[1px] w-0 left-0 -bottom-1 duration-300;
   }
 
-  /* Typography System */
-  .heading-1 {
-    @apply text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none;
+  .underline-animation:hover::after {
+    @apply w-full;
   }
 
-  .heading-2 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight;
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg dark:bg-black/30;
   }
 
-  .heading-3 {
-    @apply text-2xl sm:text-3xl font-bold tracking-tight leading-tight;
+  .glass-card {
+    @apply rounded-xl bg-white/10 backdrop-blur-lg border border-white/30 dark:border-white/10;
   }
 
-  .body-large {
-    @apply text-lg sm:text-xl leading-relaxed;
+  /* Button animations */
+  .btn-hover {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
   }
 
-  .body-medium {
-    @apply text-base sm:text-lg leading-relaxed;
+  .btn-hover::before {
+    @apply content-[''] absolute bg-white/20 w-0 h-0 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500;
   }
 
-  /* Section Spacing */
-  .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+  .btn-hover:hover::before {
+    @apply w-[300%] h-[300%];
   }
 
-  .section-padding-large {
-    @apply py-20 sm:py-24 lg:py-32;
+  /* Responsive utilities */
+  .responsive-padding {
+    @apply px-4 sm:px-5 md:px-6 lg:px-8;
   }
-
-  /* Grid Layouts */
-  .grid-features {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8;
+  
+  .responsive-container {
+    @apply w-full max-w-6xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8;
   }
-
-  .grid-testimonials {
-    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6;
   }
-
-  /* Status Indicators */
-  .status-badge {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
-    @apply bg-green-50 text-green-700 border border-green-200;
+  
+  .center-content {
+    @apply flex items-center justify-center;
   }
-
-  .metric-display {
-    @apply text-4xl sm:text-5xl font-black text-slate-900;
-  }
-
-  /* Hover Effects */
-  .hover-lift {
-    @apply transition-transform duration-200 hover:-translate-y-1;
-  }
-
-  .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
+  
+  .center-flex-col {
+    @apply flex flex-col items-center justify-center;
   }
 }
 
-/* Scroll Animations */
+/* Animation keyframes */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
   }
-  to {
+  to { 
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+@keyframes fade-in-down {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px);
   }
-  to {
+  to { 
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
+@keyframes fade-in-left {
+  from { 
+    opacity: 0; 
+    transform: translateX(20px);
   }
-  to {
+  to { 
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+@keyframes fade-in-right {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px);
   }
-  to {
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blur-in {
+  from { 
+    opacity: 0; 
+    filter: blur(10px);
+  }
+  to { 
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes scale-in {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9);
+  }
+  to { 
     opacity: 1;
     transform: scale(1);
   }
 }
 
-/* Animation Classes */
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out;
+/* Animation delay classes */
+.animate-delay-100 {
+  animation-delay: 100ms;
 }
 
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
+.animate-delay-200 {
+  animation-delay: 200ms;
 }
 
-.animate-slide-in-right {
-  animation: slide-in-right 0.6s ease-out;
+.animate-delay-300 {
+  animation-delay: 300ms;
 }
 
-.animate-scale-in {
-  animation: scale-in 0.6s ease-out;
+.animate-delay-400 {
+  animation-delay: 400ms;
 }
 
-/* Scroll-triggered animations */
-.reveal {
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animate-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animate-delay-800 {
+  animation-delay: 800ms;
+}
+
+.animate-delay-900 {
+  animation-delay: 900ms;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Staggered animations */
+.stagger-animation > * {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Premium Gradient Text */
-.gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Mobile Optimizations */
+/* Mobile specific utilities */
 @media (max-width: 640px) {
-  .heading-1 {
-    @apply text-4xl;
+  .mobile-full {
+    @apply w-full !important;
   }
   
-  .heading-2 {
-    @apply text-3xl;
+  .mobile-stack {
+    @apply flex-col !important;
   }
   
-  .btn-cta {
-    @apply px-8 py-4 text-base;
+  .mobile-center {
+    @apply text-center items-center justify-center !important;
   }
+  
+  .mobile-padding {
+    @apply px-4 py-6 !important;
+  }
+}
+
+/* Add aspect ratio support for various browsers */
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: calc(var(--tw-aspect-h) / var(--tw-aspect-w) * 100%);
+  --tw-aspect-w: 16;
+}
+
+.aspect-h-9 {
+  --tw-aspect-h: 9;
+}
+
+.aspect-w-16 > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

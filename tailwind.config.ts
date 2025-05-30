@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,7 +18,7 @@ export default {
         'md': '768px',
         'lg': '1024px',
         'xl': '1280px',
-        '2xl': '1440px',
+        '2xl': '1400px',  // slightly reduced from 1536px for better centering on large screens
       }
     },
     extend: {
@@ -83,23 +82,23 @@ export default {
           to: { height: '0' }
         },
         'fade-in': {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' }
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
         },
         'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
         'fade-in-down': {
-          '0%': { opacity: '0', transform: 'translateY(-30px)' },
+          '0%': { opacity: '0', transform: 'translateY(-20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
         'fade-in-left': {
-          '0%': { opacity: '0', transform: 'translateX(30px)' },
+          '0%': { opacity: '0', transform: 'translateX(20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
         'fade-in-right': {
-          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
         'blur-in': {
@@ -107,12 +106,12 @@ export default {
           '100%': { opacity: '1', filter: 'blur(0)' }
         },
         'scale-in': {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
           '100%': { opacity: '1', transform: 'scale(1)' }
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' }
+          '50%': { transform: 'translateY(-5px)' }
         }
       },
       animation: {
@@ -129,7 +128,6 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'SF Pro Display', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        display: ['Cal Sans', 'Inter', 'sans-serif'],
       },
       height: {
         'screen-90': '90vh',
@@ -140,11 +138,6 @@ export default {
       },
       transitionTimingFunction: {
         'bounce-in-out': 'cubic-bezier(0.68, -0.6, 0.32, 1.6)',
-      },
-      spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem',
       }
     }
   },
