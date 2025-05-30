@@ -15,8 +15,8 @@ const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
 const LoadingFallback = () => (
-  <div className="w-full h-screen flex items-center justify-center">
-    <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
+  <div className="w-full h-32 flex items-center justify-center">
+    <div className="animate-spin h-8 w-8 border-2 border-accent border-t-transparent rounded-full"></div>
   </div>
 );
 
@@ -39,32 +39,13 @@ const Index: React.FC = () => {
 
     document.addEventListener('click', handleAnchorClick);
     
-    // Scroll reveal animation
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
-
-    // Observe all elements with reveal class
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach((el) => observer.observe(el));
-    
     return () => {
       document.removeEventListener('click', handleAnchorClick);
-      revealElements.forEach((el) => observer.unobserve(el));
     };
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col w-full">
+    <div className="min-h-screen flex flex-col w-full">
       <Navbar />
       <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>

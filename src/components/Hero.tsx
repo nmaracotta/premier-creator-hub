@@ -12,9 +12,8 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/80 via-white to-purple-50/80">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-purple-50/80"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl"></div>
       
@@ -23,7 +22,7 @@ const Hero: React.FC = () => {
           
           {/* Main Headline */}
           <MotionWrapper animation="fade-in-up" delay={200}>
-            <h1 className={`display-xl mb-8 ${isVisible ? 'fade-in-up' : ''}`}>
+            <h1 className="display-xl mb-8">
               We Build the Entire System
               <br />
               <span className="gradient-text">That Turns Your Audience</span>
@@ -34,7 +33,7 @@ const Hero: React.FC = () => {
 
           {/* Subheadline */}
           <MotionWrapper animation="fade-in-up" delay={400}>
-            <p className={`body-lg max-w-3xl mx-auto mb-12 ${isVisible ? 'fade-in-up-delay' : ''}`}>
+            <p className="body-lg max-w-3xl mx-auto mb-12">
               Built for creators. Designed for scale. Trusted by 500+.
               <br />
               We handle everything from funnels to payments while you focus on creating.
@@ -43,7 +42,7 @@ const Hero: React.FC = () => {
 
           {/* CTA Buttons */}
           <MotionWrapper animation="fade-in-up" delay={600}>
-            <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 ${isVisible ? 'fade-in-up-delay-2' : ''}`}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Button 
                 className="btn-primary w-full sm:w-auto"
                 asChild
