@@ -10,6 +10,7 @@ const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
 const FeatureGrid = lazy(() => import('@/components/FeatureGrid'));
 const SystemDemo = lazy(() => import('@/components/SystemDemo'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
+const CreatorTestimonials = lazy(() => import('@/components/CreatorTestimonials'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
@@ -72,6 +73,9 @@ const Index: React.FC = () => {
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <WhyUs />
+        </Suspense>
+        <Suspense fallback={<LoadingFallback />}>
+          <CreatorTestimonials />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <FinalCTA />
