@@ -116,7 +116,7 @@
 
   /* Premium Button Styles */
   .btn-premium {
-    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-2xl transition-all duration-500 overflow-hidden group;
+    @apply relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold rounded-2xl transition-all duration-500 overflow-hidden;
     background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
     box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(0);
