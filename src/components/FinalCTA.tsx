@@ -21,9 +21,9 @@ const FinalCTA: React.FC = () => {
               Book your free strategy call before all spots are filled.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Button 
-                className="btn-primary w-full sm:w-auto text-xl py-6 px-12"
+                className="btn-primary w-full sm:w-auto text-xl py-6 px-12 pulse-glow"
                 asChild
               >
                 <a href="#contact">
@@ -33,16 +33,20 @@ const FinalCTA: React.FC = () => {
               </Button>
             </div>
             
+            <p className="text-sm text-muted-foreground mb-12">
+              Free call. No tech required. See how it all works.
+            </p>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border">
+              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border hover:shadow-lg transition-all duration-300">
                 <Calendar className="w-5 h-5 text-blue-600" />
                 <span className="font-medium">30-Min Strategy Session</span>
               </div>
-              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border">
+              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border hover:shadow-lg transition-all duration-300">
                 <Clock className="w-5 h-5 text-green-600" />
                 <span className="font-medium">5 Spots Per Month</span>
               </div>
-              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border">
+              <div className="flex items-center justify-center gap-3 bg-white/80 backdrop-blur-sm rounded-xl py-4 px-6 border hover:shadow-lg transition-all duration-300">
                 <Shield className="w-5 h-5 text-purple-600" />
                 <span className="font-medium">No Obligation</span>
               </div>

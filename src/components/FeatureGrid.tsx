@@ -35,26 +35,26 @@ const FeatureGrid: React.FC = () => {
       title: "Smart Payment Processing",
       description: "Automated Stripe billing for high-ticket coaching offers and community subs",
       badge: "Automated",
-      depth: "base"
+      depth: "elevated"
     },
     {
       icon: Users,
       title: "Premium Member Portal",
       description: "Branded membership experience with content drip and progress tracking",
       badge: "Custom",
-      depth: "floating"
+      depth: "elevated"
     },
     {
       icon: BarChart3,
       title: "Revenue Intelligence",
-      description: "Real-time dashboards showing MRR, churn, and lifetime customer value",
+      description: "MRR, churn, LTV — see your numbers in real-time so you can optimize every launch",
       badge: "Advanced",
       depth: "base"
     },
     {
       icon: Mail,
       title: "Retention Automation",
-      description: "Email sequences that keep customers engaged and reduce churn by 40%",
+      description: "Behavior-based email sequences that reduce churn by 40% and boost LTV on autopilot",
       badge: "Automated",
       depth: "floating"
     },
@@ -63,7 +63,7 @@ const FeatureGrid: React.FC = () => {
       title: "Partner Revenue Engine",
       description: "Built-in affiliate system that turns customers into revenue-generating partners",
       badge: "Proven",
-      depth: "elevated"
+      depth: "floating"
     },
     {
       icon: Shield,
@@ -84,28 +84,28 @@ const FeatureGrid: React.FC = () => {
   const getCardClasses = (depth: string) => {
     switch (depth) {
       case 'elevated':
-        return 'transform hover:scale-105 hover:shadow-2xl shadow-lg bg-gradient-to-br from-white via-white to-blue-50/30 border-blue-100/50';
+        return 'transform hover:scale-105 hover:shadow-2xl shadow-lg bg-gradient-to-br from-white via-white to-blue-50/30 border-blue-100/50 hover:-translate-y-1 z-10';
       case 'floating':
         return 'transform hover:scale-105 hover:shadow-xl shadow-md bg-gradient-to-br from-white via-white to-purple-50/30 border-purple-100/50 hover:-translate-y-2';
       default:
-        return 'transform hover:scale-105 hover:shadow-lg bg-gradient-to-br from-white to-gray-50/30 border-gray-100/50';
+        return 'transform hover:scale-105 hover:shadow-lg bg-gradient-to-br from-white to-gray-50/30 border-gray-100/50 hover:-translate-y-1';
     }
   };
 
   const getBadgeVariant = (badge: string) => {
     switch (badge) {
       case 'Automated':
-        return 'bg-green-100 text-green-700 border-green-200';
+        return 'bg-emerald-500/20 text-emerald-700 border-emerald-300/60';
       case 'Proven':
-        return 'bg-blue-100 text-blue-700 border-blue-200';
+        return 'bg-blue-500/20 text-blue-700 border-blue-300/60';
       case 'Custom':
-        return 'bg-purple-100 text-purple-700 border-purple-200';
+        return 'bg-purple-500/20 text-purple-700 border-purple-300/60';
       case 'Advanced':
-        return 'bg-orange-100 text-orange-700 border-orange-200';
+        return 'bg-orange-500/20 text-orange-700 border-orange-300/60';
       case 'Secure':
-        return 'bg-gray-100 text-gray-700 border-gray-200';
+        return 'bg-slate-500/20 text-slate-700 border-slate-300/60';
       default:
-        return 'bg-accent/10 text-accent border-accent/20';
+        return 'bg-accent/20 text-accent border-accent/40';
     }
   };
 
@@ -123,14 +123,14 @@ const FeatureGrid: React.FC = () => {
               Complete System
             </Badge>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              A Fully-Built Monetization Engine
+              Everything You Need to Monetize —
               <br />
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                In One Place
+                Done For You, In One System
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Everything you need to scale from content creator to $10K+/month digital empire owner
+              From funnels to payments to analytics — we build the full backend so you can just show up and scale.
             </p>
           </div>
         </MotionWrapper>
@@ -171,7 +171,7 @@ const FeatureGrid: React.FC = () => {
               <div className={`relative h-full rounded-2xl p-8 border transition-all duration-500 group ${getCardClasses(feature.depth)}`}>
                 {/* Badge */}
                 <div className="absolute top-4 right-4">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${getBadgeVariant(feature.badge)}`}>
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${getBadgeVariant(feature.badge)}`}>
                     {feature.badge}
                   </span>
                 </div>
@@ -190,23 +190,28 @@ const FeatureGrid: React.FC = () => {
                   {feature.description}
                 </p>
 
-                {/* Hover glow effect */}
+                {/* Enhanced hover glow effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
             </MotionWrapper>
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Enhanced Bottom CTA */}
         <MotionWrapper animation="fade-in-up" delay={800} triggerOnScroll={true}>
           <div className="text-center mt-16">
             <p className="text-lg text-muted-foreground mb-6">
               Ready to see how it all works together?
             </p>
-            <button className="btn-primary group">
-              Book Your Strategy Call
-              <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-            </button>
+            <div className="flex flex-col items-center gap-3">
+              <button className="btn-primary group pulse-glow">
+                Book Your Strategy Call
+                <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              </button>
+              <p className="text-sm text-muted-foreground">
+                Free call. No tech required. See how it all works.
+              </p>
+            </div>
           </div>
         </MotionWrapper>
       </div>
