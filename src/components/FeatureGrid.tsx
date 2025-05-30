@@ -26,14 +26,14 @@ const FeatureGrid: React.FC = () => {
     {
       icon: TrendingUp,
       title: "High-Converting Funnels",
-      description: "Proven sales sequences that turn your audience into $2K-$10K course buyers",
+      description: "Sales funnels that convert 10–30% of your audience into $2K–$10K buyers.",
       badge: "Proven",
       depth: "elevated"
     },
     {
       icon: CreditCard,
       title: "Smart Payment Processing",
-      description: "Automated Stripe billing for high-ticket coaching offers and community subs",
+      description: "Automated Stripe billing for coaching, subscriptions, and upsells — no tech needed.",
       badge: "Automated",
       depth: "elevated"
     },
@@ -47,14 +47,14 @@ const FeatureGrid: React.FC = () => {
     {
       icon: BarChart3,
       title: "Revenue Intelligence",
-      description: "MRR, churn, LTV — see your numbers in real-time so you can optimize every launch",
+      description: "See MRR, churn, and lifetime value in real-time — no spreadsheets required.",
       badge: "Advanced",
       depth: "base"
     },
     {
       icon: Mail,
       title: "Retention Automation",
-      description: "Behavior-based email sequences that reduce churn by 40% and boost LTV on autopilot",
+      description: "Behavior-based email flows that re-engage buyers and boost lifetime value.",
       badge: "Automated",
       depth: "floating"
     },
@@ -75,7 +75,7 @@ const FeatureGrid: React.FC = () => {
     {
       icon: Cog,
       title: "Seamless Integrations",
-      description: "Connect with Calendly, Zoom, Slack, and your existing creator workflow",
+      description: "We connect with Calendly, Slack, Zoom, and your full workflow — zero setup on your end.",
       badge: "Custom",
       depth: "floating"
     }
@@ -95,15 +95,15 @@ const FeatureGrid: React.FC = () => {
   const getBadgeVariant = (badge: string) => {
     switch (badge) {
       case 'Automated':
-        return 'bg-emerald-500/20 text-emerald-700 border-emerald-300/60';
+        return 'bg-emerald-500/30 text-emerald-700 border-emerald-400/70';
       case 'Proven':
-        return 'bg-blue-500/20 text-blue-700 border-blue-300/60';
+        return 'bg-blue-500/30 text-blue-700 border-blue-400/70';
       case 'Custom':
-        return 'bg-purple-500/20 text-purple-700 border-purple-300/60';
+        return 'bg-purple-500/30 text-purple-700 border-purple-400/70';
       case 'Advanced':
-        return 'bg-orange-500/20 text-orange-700 border-orange-300/60';
+        return 'bg-orange-500/30 text-orange-700 border-orange-400/70';
       case 'Secure':
-        return 'bg-slate-500/20 text-slate-700 border-slate-300/60';
+        return 'bg-slate-500/30 text-slate-700 border-slate-400/70';
       default:
         return 'bg-accent/20 text-accent border-accent/40';
     }
@@ -112,7 +112,7 @@ const FeatureGrid: React.FC = () => {
   return (
     <section id="features" className="section-padding bg-gradient-to-br from-slate-50/50 via-background to-blue-50/30 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/8 via-purple-500/8 to-pink-500/8"></div>
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       
@@ -126,11 +126,11 @@ const FeatureGrid: React.FC = () => {
               Everything You Need to Monetize —
               <br />
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Done For You, In One System
+                Done For You
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              From funnels to payments to analytics — we build the full backend so you can just show up and scale.
+              From landing pages to payments to dashboards — we build the engine so you can just show up.
             </p>
           </div>
         </MotionWrapper>
@@ -209,7 +209,7 @@ const FeatureGrid: React.FC = () => {
                 <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
               </button>
               <p className="text-sm text-muted-foreground">
-                Free call. No tech required. See how it all works.
+                Free call. No obligation. We'll show you how it works.
               </p>
             </div>
           </div>
