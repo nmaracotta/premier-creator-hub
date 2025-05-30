@@ -5,17 +5,17 @@ import Footer from '@/components/Footer';
 
 // Lazy load components
 const Hero = lazy(() => import('@/components/Hero'));
-const ClientNiches = lazy(() => import('@/components/ClientNiches'));
+const SocialProof = lazy(() => import('@/components/SocialProof'));
 const ProcessSteps = lazy(() => import('@/components/ProcessSteps'));
-const Deliverables = lazy(() => import('@/components/Deliverables'));
+const BenefitsGrid = lazy(() => import('@/components/BenefitsGrid'));
 const WhyUs = lazy(() => import('@/components/WhyUs'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
 const LoadingFallback = () => (
-  <div className="w-full h-screen flex items-center justify-center">
-    <div className="animate-pulse h-8 w-8 rounded-full bg-accent"></div>
+  <div className="w-full h-64 flex items-center justify-center">
+    <div className="animate-spin h-8 w-8 border-2 border-slate-300 border-t-slate-900 rounded-full"></div>
   </div>
 );
 
@@ -58,13 +58,13 @@ const Index: React.FC = () => {
           <Hero />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <ClientNiches />
+          <SocialProof />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <ProcessSteps />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
-          <Deliverables />
+          <BenefitsGrid />
         </Suspense>
         <Suspense fallback={<LoadingFallback />}>
           <WhyUs />
