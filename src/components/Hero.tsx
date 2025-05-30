@@ -5,9 +5,11 @@ import { ArrowRight, Play, TrendingUp, Users, Zap } from 'lucide-react';
 import MotionWrapper from './MotionWrapper';
 
 const Hero: React.FC = () => {
+  console.log('Hero component loading...');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    console.log('Hero component mounted');
     setIsVisible(true);
   }, []);
 

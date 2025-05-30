@@ -14,14 +14,21 @@ const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 // Loading fallback
-const LoadingFallback = () => (
-  <div className="w-full h-32 flex items-center justify-center">
-    <div className="animate-spin h-8 w-8 border-2 border-accent border-t-transparent rounded-full"></div>
-  </div>
-);
+const LoadingFallback = () => {
+  console.log('Loading component...');
+  return (
+    <div className="w-full h-32 flex items-center justify-center">
+      <div className="animate-spin h-8 w-8 border-2 border-accent border-t-transparent rounded-full"></div>
+    </div>
+  );
+};
 
 const Index: React.FC = () => {
+  console.log('Index component mounting...');
+
   useEffect(() => {
+    console.log('Index component mounted');
+    
     // Add smooth scroll behavior for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
