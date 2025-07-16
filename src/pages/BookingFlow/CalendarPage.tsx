@@ -51,7 +51,7 @@ const CalendarPage: React.FC = () => {
       // Make sure window.Calendly is available
       if (window.Calendly) {
         window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/premiercreator/30min',
+          url: 'https://calendly.com/nickmaracotta/30',
           parentElement: document.querySelector('.calendly-inline-widget'),
           prefill: {},
           utm: {}
@@ -145,7 +145,7 @@ const CalendarPage: React.FC = () => {
               {/* Calendly inline widget */}
               <div 
                 className="calendly-inline-widget" 
-                data-url="https://calendly.com/premiercreator/30min"
+                data-url="https://calendly.com/nickmaracotta/30"
                 style={{ 
                   minWidth: '320px',
                   height: isMobile ? '600px' : '700px',
