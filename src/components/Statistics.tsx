@@ -10,32 +10,32 @@ const stats = [
     emoji: '💰',
     value: '$2.3M+',
     label: 'REVENUE GENERATED',
-    color: 'text-green-500',
-    bgColor: 'bg-green-500/10'
+    color: 'text-primary',
+    bgColor: 'bg-primary/10'
   },
   {
     icon: Users,
     emoji: '🚀',
     value: '500+',
     label: 'CREATORS SERVED',
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10'
+    color: 'text-accent',
+    bgColor: 'bg-accent/10'
   },
   {
     icon: Clock,
     emoji: '⚡',
     value: '14 Days',
     label: 'AVERAGE LAUNCH TIME',
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10'
+    color: 'text-primary',
+    bgColor: 'bg-primary/5'
   },
   {
     icon: CheckCircle,
     emoji: '✨',
     value: '100%',
     label: 'SUCCESS RATE',
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-500/10'
+    color: 'text-accent',
+    bgColor: 'bg-accent/5'
   }
 ];
 
